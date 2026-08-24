@@ -130,7 +130,7 @@ const CONTENT = {
   // ── REFERENZEN ────────────────────────────────────────────
   referenzen: {
     eyebrow:  'REFERENZEN',
-    headline: 'REFERENZEN',
+    headline: '',
     logos: [
       { html: 'J.H. JAEGER & EGGERS'              },
       { html: 'B.O.C.'                             },
