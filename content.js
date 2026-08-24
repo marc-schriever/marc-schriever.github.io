@@ -56,7 +56,8 @@ const CONTENT = {
         icon:  'ti-cpu',
         title: 'DIGITALKOMPETENZ',
         items: [
-          'Webbasierte Toolentwicklung (HTML, CSS, JavaScript)',
+          'Entwicklung webbasierter Prozesswerkzeuge mit KI-Unterstützung',
+          'Prompt Engineering und AI-assisted Development',
           'Prozessautomatisierung',
           'Datenanalyse und Auswertung',
           'GeVis, Microsoft Dynamics NAV, Excel',
