@@ -237,7 +237,7 @@ body {
   color: var(--text-1); transition: border-color 0.15s, color 0.15s;
 }
 
-.ref-logo span { display: block; font-size: 1.1rem; font-weight: 900; letter-spacing: .06em; color: var(--text-1); margin-top: 0; }
+.ref-logo span { display: block; font-size: 1.1rem; font-weight: 900; letter-spacing: .06em; color: var(--text-1); }
 .ref-logo:hover { border-color: var(--orange); color: var(--orange); }
 
 /* ── FOOTER ──────────────────────────────────────────────── */
