@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Marc Schriever · Logistikexperte</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+</head>
+<body>
+
+  <!-- NAVBAR — außerhalb #app, volle Browserbreite -->
+  <header class="navbar">
+    <div id="app">
+      <div class="nav-brand">
+        <div class="nav-logo-icon" aria-hidden="true"><i class="ti ti-package"></i></div>
+        <div>
+          <span class="nav-name"></span>
+          <span class="nav-title"></span>
+        </div>
+      </div>
+      <nav aria-label="Hauptnavigation">
+        <ul class="nav-links">
+          <li><a href="#home" class="nav-active">HOME</a></li>
+          <li><a href="#ueber-mich">ÜBER MICH</a></li>
+          <li><a href="#expertise">EXPERTISE</a></li>
+          <li><a href="#faq">FRAGEN & ANTWORTEN</a></li>
+          <li><a href="#referenzen">REFERENZEN</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="section section--hero" id="home" aria-labelledby="hero-title">
+      <div class="section__bg section__bg--hero" aria-hidden="true"></div>
+      <div id="app" class="grid grid--hero">
+        <div class="hero-content">
+          <p class="hero-eyebrow"></p>
+          <h1 id="hero-title" class="hero-title"></h1>
+          <p class="hero-sub"></p>
+          <p class="hero-text"></p>
+          <div class="hero-btns">
+            <a href="#ueber-mich" class="btn btn--primary"></a>
+            <a href="#kontakt" class="btn btn--outline"></a>
+          </div>
+        </div>
+        <div class="hero-photo" aria-label="Profilfoto Platzhalter">
+          <div class="photo-placeholder">
+            <i class="ti ti-user" aria-hidden="true"></i>
+            <span>Profilfoto</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="section section--stats" aria-label="Kennzahlen">
+      <div id="app" class="grid grid--stats"></div>
+    </section>
+
+    <!-- ÜBER MICH -->
+    <section class="section section--about" id="ueber-mich" aria-labelledby="about-title">
+      <div class="section__bg section__bg--about" aria-hidden="true"></div>
+      <div id="app" class="grid grid--about">
+        <div class="about-photo">
+          <div class="about-img" role="img" aria-label="Modernes Logistiklager"></div>
+        </div>
+        <div class="about-content">
+          <p class="section-eyebrow"></p>
+          <h2 id="about-title" class="section-title"></h2>
+          <div class="expand-content" id="about-expand" hidden>
+            <p></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERTISE -->
+    <section class="section section--expertise" id="expertise" aria-labelledby="expertise-title">
+      <div id="app">
+        <p class="section-eyebrow section-eyebrow--center"></p>
+        <h2 id="expertise-title" class="section-title section-title--center"></h2>
+        <div class="grid grid--expertise"></div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section section--faq" id="faq" aria-labelledby="faq-title">
+      <div id="app">
+        <p class="section-eyebrow section-eyebrow--center"></p>
+        <h2 id="faq-title" class="section-title section-title--center"></h2>
+        <div class="faq-list"></div>
+      </div>
+    </section>
+
+    <!-- REFERENZEN -->
+    <section class="section section--referenzen" id="referenzen" aria-labelledby="ref-title">
+      <div id="app">
+        <p class="section-eyebrow section-eyebrow--center"></p>
+        <h2 id="ref-title" class="section-title section-title--center"></h2>
+        <div class="grid grid--referenzen"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- KONTAKT -->
+  <section class="section section--kontakt" id="kontakt">
+    <div id="app">
+      <p class="section-eyebrow section-eyebrow--center"></p>
+      <h2 class="section-title section-title--center kontakt-title"></h2>
+      <p class="kontakt-text"></p>
+      <form class="kontakt-form" action="https://formspree.io/f/IHRE-FORMSPREE-ID" method="POST">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required placeholder="Ihr Name">
+        </div>
+        <div class="form-group">
+          <label for="email">E-Mail</label>
+          <input type="email" id="email" name="email" required placeholder="Ihre E-Mail-Adresse">
+        </div>
+        <div class="form-group">
+          <label for="message">Nachricht</label>
+          <textarea id="message" name="message" rows="5" required placeholder="Ihre Nachricht"></textarea>
+        </div>
+        <button type="submit" class="btn btn--primary">NACHRICHT SENDEN</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="section section--footer">
+    <div id="app" class="footer-inner">
+      <div class="footer-copy"></div>
+      <div class="footer-contact">
+        <span><i class="ti ti-map-pin" aria-hidden="true"></i> <span class="footer-location"></span></span>
+      </div>
+      <div class="footer-legal">
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="content.js" defer></script>
+  <script src="main.js" defer></script>
+</body>
+</html>
