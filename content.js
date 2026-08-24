@@ -114,7 +114,7 @@ const CONTENT = {
       },
       {
         q: 'Warum verlassen Sie Ihren bisherigen Arbeitgeber?',
-        a: 'Mein Arbeitgeber hat versucht eine einseitige Vertragsänderung durchzusetzen. Ich habe schriftlich widersprochen. Als dieser Widerspruch abgelehnt wurde, habe ich den Rechtsweg beschritten und Recht bekommen. Das Arbeitsverhältnis wurde daraufhin betriebsbedingt beendet.',
+        a: 'Es gab unterschiedliche Auffassungen über die Vertragsgrundlage. Ich habe meinen Standpunkt vertreten und durchgesetzt. Das Arbeitsverhältnis habe ich daraufhin auf eigenen Wunsch beendet.',
       },
       {
         q: 'Wo sehen Sie sich in fünf Jahren?',
