@@ -232,12 +232,12 @@ body {
 
 .ref-logo {
   background: var(--bg-3); border: 1px solid var(--border);
-  padding: 24px 16px; text-align: center;
-  font-size: 0.9rem; font-weight: 900; letter-spacing: .08em;
-  color: var(--text-2); transition: border-color 0.15s, color 0.15s;
+  padding: 32px 16px; text-align: center;
+  font-size: 1.1rem; font-weight: 900; letter-spacing: .06em;
+  color: var(--text-1); transition: border-color 0.15s, color 0.15s;
 }
 
-.ref-logo span { display: block; font-size: 0.65rem; font-weight: 400; letter-spacing: .1em; color: var(--text-3); }
+.ref-logo span { display: block; font-size: 0.8rem; font-weight: 700; letter-spacing: .06em; color: var(--text-2); margin-top: 4px; }
 .ref-logo:hover { border-color: var(--orange); color: var(--orange); }
 
 /* ── FOOTER ──────────────────────────────────────────────── */
