@@ -35,8 +35,7 @@ const faqTemplate = (item, i) => `
     </div>
   </div>`;
 
-const refTemplate = l =>
-  `<div class="ref-logo">${l.name}${l.sub ? `<span>${l.sub}</span>` : ''}</div>`;
+const refTemplate = l => `<div class="ref-logo">${l.html}</div>`;
 
 // ── RENDER FUNCTIONS ──────────────────────────────────────────
 

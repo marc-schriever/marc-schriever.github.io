@@ -132,10 +132,10 @@ const CONTENT = {
     eyebrow:  'REFERENZEN',
     headline: 'REFERENZEN',
     logos: [
-      { name: 'J.H. JAEGER &', sub: 'EGGERS'   },
-      { name: 'B.O.C.'                          },
-      { name: 'METRO',          sub: 'LOGISTICS'},
-      { name: 'KÜHNE +',        sub: 'NAGEL'   },
+      { html: 'J.H. JAEGER & EGGERS'              },
+      { html: 'B.O.C.'                             },
+      { html: 'METRO<br>LOGISTICS'                 },
+      { html: 'KÜHNE<br>+<br>NAGEL'               },
     ],
   },
 
