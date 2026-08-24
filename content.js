@@ -132,11 +132,10 @@ const CONTENT = {
     eyebrow:  'REFERENZEN',
     headline: 'BEKANNTE UNTERNEHMEN',
     logos: [
-      { name: 'METRO',   sub: 'LOGISTICS' },
-      { name: 'B.O.C.'                    },
-      { name: 'DACHSER'                   },
-      { name: 'KÜHNE+',  sub: 'NAGEL'    },
-      { name: 'DHL'                       },
+      { name: 'J.H. JAEGER &', sub: 'EGGERS'   },
+      { name: 'B.O.C.'                          },
+      { name: 'METRO',          sub: 'LOGISTICS'},
+      { name: 'KÜHNE +',        sub: 'NAGEL'   },
     ],
   },
 
