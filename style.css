@@ -289,7 +289,7 @@ body {
   .about-img            { min-height: 400px; }
 
   .grid--expertise      { grid-template-columns: repeat(4, 1fr); }
-  .grid--referenzen     { grid-template-columns: repeat(5, 1fr); }
+  .grid--referenzen     { grid-template-columns: repeat(4, 1fr); }
 
   .footer-inner         { flex-direction: row; justify-content: space-between; text-align: left; }
 }
