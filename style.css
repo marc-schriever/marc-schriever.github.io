@@ -90,7 +90,7 @@ body {
 /* ── GRIDS PRO SEKTION ───────────────────────────────────── */
 
 .grid--hero        { grid-template-columns: 1fr; gap: 40px; }
-.grid--stats       { grid-template-columns: repeat(2, 1fr); }
+.grid--stats       { grid-template-columns: 1fr; }
 .grid--about       { grid-template-columns: 1fr; gap: 40px; }
 .grid--expertise   { grid-template-columns: 1fr; margin-top: 8px; }
 .grid--referenzen  { grid-template-columns: repeat(2, 1fr); margin-top: 8px; }
@@ -173,10 +173,10 @@ body {
 .stat-item {
   padding: 28px 20px;
   text-align: left;
-  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
 }
 
-.stat-item:last-child        { border-right: none; }
+.stat-item:last-child        { border-bottom: none; }
 .stat-item .ti               { font-size: 32px; color: var(--orange); display: block; margin-bottom: 14px; }
 .stat-title                  { font-size: 0.78rem; font-weight: 900; letter-spacing: .1em; color: var(--orange); margin-bottom: 8px; }
 .stat-text                   { font-size: 0.82rem; color: var(--text-2); line-height: 1.5; }
@@ -265,10 +265,10 @@ body {
   .hero-title           { font-size: 3.6rem; }
   .section-title        { font-size: 2rem; }
 
-  .grid--stats          { grid-template-columns: repeat(4, 1fr); }
-  .stat-item            { border-bottom: none; }
-  .stat-item:nth-child(even) { border-right: 1px solid var(--border); }
-  .stat-item:last-child      { border-right: none; }
+  .grid--stats          { grid-template-columns: repeat(2, 1fr); }
+  .stat-item            { border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .stat-item:nth-child(even)  { border-right: none; }
+  .stat-item:nth-child(n+3)   { border-bottom: none; }
 
   .grid--expertise      { grid-template-columns: repeat(2, 1fr); }
   .grid--referenzen     { grid-template-columns: repeat(3, 1fr); }
@@ -287,6 +287,11 @@ body {
   .grid--hero           { grid-template-columns: 1fr 380px; }
   .grid--about          { grid-template-columns: 340px 1fr; }
   .about-img            { min-height: 400px; }
+
+  .grid--stats          { grid-template-columns: repeat(4, 1fr); }
+  .stat-item            { border-bottom: none; border-right: 1px solid var(--border); }
+  .stat-item:nth-child(even) { border-right: 1px solid var(--border); }
+  .stat-item:last-child      { border-right: none; }
 
   .grid--expertise      { grid-template-columns: repeat(4, 1fr); }
   .grid--referenzen     { grid-template-columns: repeat(4, 1fr); }
