@@ -8,7 +8,7 @@ const CONTENT = {
 
   // ── HERO ─────────────────────────────────────────────────
   hero: {
-    eyebrow:    'ERFAHRENE FÜHRUNGSKRAFT IN LAGERLOGISTIK',
+    eyebrow:    'MEINE ERGEBNISSE SPRECHEN FÜR SICH.',
     headline:   'LEIDENSCHAFT<br>FÜR LOGISTIK.',
     subline:    'Logistik leben. Lösungen entwickeln. Prozesse digitalisieren.',
     text:       'Über 20 Jahre Lagerlogistik. Prozesse optimiert, Teams geführt, digitale Tools selbst entwickelt mit messbaren Ergebnissen.',
