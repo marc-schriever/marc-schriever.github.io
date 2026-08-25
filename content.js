@@ -94,24 +94,24 @@ const CONTENT = {
     eyebrow:  'FRAGEN & ANTWORTEN',
     items: [
       {
-        q: 'Wie führen Sie Ihr Team — welchen Führungsstil bevorzugen Sie?',
-        a: 'Situativ und kooperativ. Am Anfang bin ich eng dabei ich zeige selbst vor, erkläre Hintergründe und prüfe das Verständnis. Schritt für Schritt gebe ich Verantwortung ab. Mein Ziel ist immer die Selbstständigkeit meiner Mitarbeitenden. Operative Präsenz ist dabei mein wichtigstes Führungsinstrument — ich bin im Lager, nicht im Büro.',
+        q: 'Welchen Führungsstil bevorzugen Sie?',
+        a: 'Situativ und kooperativ. Am Anfang bin ich eng dabei, zeige Abläufe selbst vor und prüfe das Verständnis. Schritt für Schritt gebe ich Verantwortung ab. Operative Präsenz ist mein wichtigstes Führungsinstrument. Ich bin im Lager, nicht im Büro.',
       },
       {
         q: 'Wie gehen Sie mit Konflikten im Team um?',
-        a: 'Direkt ansprechen, beide Seiten hören, Sach- von Beziehungsebene trennen. Wenn nötig entscheide ich — eine Entscheidung ist besser als Stillstand. Das Ziel ist immer eine funktionierende Zusammenarbeit, keine Schuldzuweisung.',
+        a: 'Direkt ansprechen, beide Seiten hören, Sach- von Beziehungsebene trennen. Wenn nötig entscheide ich. Eine Entscheidung ist besser als Stillstand. Das Ziel ist immer eine funktionierende Zusammenarbeit, keine Schuldzuweisung.',
       },
       {
         q: 'Wie arbeiten Sie neue Mitarbeitende ein?',
-        a: 'Ich begleite sie zunächst eng — zeige Abläufe selbst, erkläre Zusammenhänge und gebe Feedback. Erst wenn ich sehe dass das Verständnis da ist, lasse ich los. Ich halte nicht dauerhaft an der Hand das fördert weder Selbstständigkeit noch Vertrauen.',
+        a: 'Zunächst eng begleiten, Abläufe selbst zeigen, Zusammenhänge erklären und Feedback geben. Erst wenn das Verständnis da ist, lasse ich los. Dauerhaftes Anleiten fördert weder Selbstständigkeit noch Vertrauen.',
       },
       {
         q: 'Nennen Sie ein konkretes Beispiel für eine Prozessverbesserung.',
-        a: 'Ich habe eigenständig eine webbasierte Anwendung entwickelt, die manuelle Auswertungen für die Automatenbestückung von bis zu 30 Minuten auf unter 20 Sekunden reduziert hat. Zusätzlich habe ich die Lagerstruktur durch Einrichtung einer kundenspezifischen Regalzone neuorganisiert Kommissionierwege und Durchlaufzeiten wurden dadurch nachhaltig verkürzt.',
+        a: 'Ich habe eine webbasierte Anwendung entwickelt, die manuelle Auswertungen von bis zu 30 Minuten auf unter 20 Sekunden reduziert hat. Zusätzlich habe ich die Lagerstruktur durch Einrichtung einer kundenspezifischen Regalzone neuorganisiert. Kommissionierwege und Durchlaufzeiten wurden dadurch nachhaltig verkürzt.',
       },
       {
         q: 'Wie steigern Sie den Durchsatz ohne zusätzliches Personal?',
-        a: 'Durch Analyse der Warenflüsse, Optimierung der Prozessabläufe und gezielte Umstrukturierung der Lagerhaltung. Bei B.O.C. habe ich den täglichen Wareneingangs-Durchsatz von 10.000 auf 15.000 Einheiten gesteigert ohne Personalaufbau, allein durch optimierte Warenflusssteuerung.',
+        a: 'Durch Analyse der Warenflüsse, Optimierung der Prozessabläufe und gezielte Umstrukturierung der Lagerhaltung. Bei B.O.C. habe ich den täglichen Wareneingangs-Durchsatz von 10.000 auf 15.000 Einheiten gesteigert. Ohne Personalaufbau, allein durch optimierte Warenflusssteuerung.',
       },
       {
         q: 'Warum verlassen Sie Ihren bisherigen Arbeitgeber?',
@@ -119,11 +119,11 @@ const CONTENT = {
       },
       {
         q: 'Wo sehen Sie sich in fünf Jahren?',
-        a: 'In einer Führungsposition in der Logistik mit wachsender Verantwortung idealerweise in einem Unternehmen das Digitalisierung und Prozessoptimierung als strategisches Ziel verfolgt. Ich möchte nicht nur verwalten, sondern gestalten.',
+        a: 'In einer Führungsposition in der Logistik mit wachsender Verantwortung, in einem Unternehmen das Digitalisierung und Prozessoptimierung als strategisches Ziel verfolgt. Verwalten reicht mir nicht. Ich möchte gestalten.',
       },
       {
         q: 'Was unterscheidet Sie von anderen Bewerbern?',
-        a: 'Ich kombiniere operative Führungserfahrung mit der Fähigkeit, digitale Lösungen selbst zu entwickeln. Wenn ein Prozess mich stört und sich automatisieren lässt, programmiere ich die Lösung ohne externes IT-Budget, ohne Agentur. Das ist in der Logistik selten.',
+        a: 'Ich kombiniere operative Führungserfahrung mit der Fähigkeit, digitale Prozesslösungen selbst umzusetzen. Wenn ein Prozess sich automatisieren lässt, entwickle ich die Lösung. Ohne externes IT-Budget, ohne Agentur. Das ist in der Lagerlogistik selten.',
       },
     ],
   },
