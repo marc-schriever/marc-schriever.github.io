@@ -27,7 +27,7 @@ const CONTENT = {
   // ── ÜBER MICH ─────────────────────────────────────────────
   about: {
     eyebrow:  'ÜBER MICH',
-    headline: 'LOGISTIK IST MEHR ALS TRANSPORT,<br>ES IST STRATEGIE.',
+    headline: 'ZIELORIENTIERT. VERANTWORTUNGSBEWUSST. UMSETZUNGSSTARK.'
     expand:   '1973 in Bremen geboren. Hanseat, Kaufmann, Logistiker. Über 30 Jahre Berufserfahrung, davon mehr als 20 in der Logistik. Vom Hochregallager über Wareneingang und Lagerführung bis zur eigenverantwortlichen Bereichsleitung. Ich kenne jeden Handgriff operativ und denke gleichzeitig in Prozessen und Systemen. Wenn ein Ablauf mich stört, analysiere ich ihn. Wenn er sich automatisieren lässt, programmiere ich die Lösung selbst. IHK-zertifizierter Gefahrgutbeauftragter, Kaufmann im Groß- und Außenhandel, 2.979 Unterrichtsstunden Fachinformatiker Anwendungsentwicklung . Drei Qualifikationen, eine Haltung. Mein Anspruch: Dinge die nicht funktionieren, mache ich besser.',
   },
 
