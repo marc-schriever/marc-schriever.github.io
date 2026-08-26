@@ -4,6 +4,13 @@ const CONTENT = {
   nav: {
     name:  'MARC SCHRIEVER',
     title: 'LOGISTIKEXPERTE',
+    links: [
+      { href: '#home',        label: 'HOME', active: true },
+      { href: '#ueber-mich',  label: 'ÜBER MICH' },
+      { href: '#expertise',   label: 'EXPERTISE' },
+      { href: '#faq',         label: 'FRAGEN & ANTWORTEN' },
+      { href: '#referenzen',  label: 'REFERENZEN' },
+    ],
   },
 
   // ── HERO ─────────────────────────────────────────────────
@@ -149,8 +156,24 @@ const CONTENT = {
 
   // ── FOOTER ────────────────────────────────────────────────
   footer: {
-    copy:     '© 2026 Marc Schriever · Logistikexperte',
-    location: 'Bremen, Deutschland',
+    copy:       '© 2026 Marc Schriever · Logistikexperte',
+    location:   'Bremen, Deutschland',
+    impressum:  'Impressum',
+    datenschutz: 'Datenschutz',
+  },
+
+  photo: {
+    placeholder: 'Profilfoto',
+  },
+
+  form: {
+    label_name:    'Name',
+    label_email:   'E-Mail',
+    label_message: 'Nachricht',
+    placeholder_name:    'Ihr Name',
+    placeholder_email:   'Ihre E-Mail-Adresse',
+    placeholder_message: 'Ihre Nachricht',
+    submit:        'NACHRICHT SENDEN',
   },
 
 };

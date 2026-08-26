@@ -10,7 +10,6 @@
 </head>
 <body>
 
-  <!-- NAVBAR — außerhalb #app, volle Browserbreite -->
   <header class="navbar">
     <div id="app">
       <div class="nav-brand">
@@ -21,20 +20,13 @@
         </div>
       </div>
       <nav aria-label="Hauptnavigation">
-        <ul class="nav-links">
-          <li><a href="#home" class="nav-active">HOME</a></li>
-          <li><a href="#ueber-mich">ÜBER MICH</a></li>
-          <li><a href="#expertise">EXPERTISE</a></li>
-          <li><a href="#faq">FRAGEN & ANTWORTEN</a></li>
-          <li><a href="#referenzen">REFERENZEN</a></li>
-        </ul>
+        <ul class="nav-links"></ul>
       </nav>
     </div>
   </header>
 
   <main>
 
-    <!-- HERO -->
     <section class="section section--hero" id="home" aria-labelledby="hero-title">
       <div class="section__bg section__bg--hero" aria-hidden="true"></div>
       <div id="app" class="grid grid--hero">
@@ -48,21 +40,19 @@
             <a href="#kontakt" class="btn btn--outline"></a>
           </div>
         </div>
-        <div class="hero-photo" aria-label="Profilfoto Platzhalter">
+        <div class="hero-photo">
           <div class="photo-placeholder">
             <i class="ti ti-user" aria-hidden="true"></i>
-            <span>Profilfoto</span>
+            <span class="photo-placeholder__label"></span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- STATS -->
     <section class="section section--stats" aria-label="Kennzahlen">
       <div id="app" class="grid grid--stats"></div>
     </section>
 
-    <!-- ÜBER MICH -->
     <section class="section section--about" id="ueber-mich" aria-labelledby="about-title">
       <div class="section__bg section__bg--about" aria-hidden="true"></div>
       <div id="app" class="grid grid--about">
@@ -79,7 +69,6 @@
       </div>
     </section>
 
-    <!-- EXPERTISE -->
     <section class="section section--expertise" id="expertise" aria-labelledby="expertise-title">
       <div id="app">
         <p class="section-eyebrow section-eyebrow--center"></p>
@@ -88,7 +77,6 @@
       </div>
     </section>
 
-    <!-- FAQ -->
     <section class="section section--faq" id="faq" aria-labelledby="faq-title">
       <div id="app">
         <p class="section-eyebrow section-eyebrow--center"></p>
@@ -97,7 +85,6 @@
       </div>
     </section>
 
-    <!-- REFERENZEN -->
     <section class="section section--referenzen" id="referenzen" aria-labelledby="ref-title">
       <div id="app">
         <p class="section-eyebrow section-eyebrow--center"></p>
@@ -108,7 +95,6 @@
 
   </main>
 
-  <!-- KONTAKT -->
   <section class="section section--kontakt" id="kontakt">
     <div id="app">
       <p class="section-eyebrow section-eyebrow--center"></p>
@@ -116,23 +102,22 @@
       <p class="kontakt-text"></p>
       <form class="kontakt-form" action="https://formspree.io/f/xaewgwgz" method="POST">
         <div class="form-group">
-          <label for="name">Name</label>
-          <input type="text" id="name" name="name" required placeholder="Ihr Name">
+          <label class="form-label--name"></label>
+          <input type="text" id="name" name="name" required class="form-input--name">
         </div>
         <div class="form-group">
-          <label for="email">E-Mail</label>
-          <input type="email" id="email" name="email" required placeholder="Ihre E-Mail-Adresse">
+          <label class="form-label--email"></label>
+          <input type="email" id="email" name="email" required class="form-input--email">
         </div>
         <div class="form-group">
-          <label for="message">Nachricht</label>
-          <textarea id="message" name="message" rows="5" required placeholder="Ihre Nachricht"></textarea>
+          <label class="form-label--message"></label>
+          <textarea id="message" name="message" rows="5" required class="form-input--message"></textarea>
         </div>
-        <button type="submit" class="btn btn--primary">NACHRICHT SENDEN</button>
+        <button type="submit" class="btn btn--primary form-submit"></button>
       </form>
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer class="section section--footer">
     <div id="app" class="footer-inner">
       <div class="footer-copy"></div>
@@ -140,8 +125,8 @@
         <span><i class="ti ti-map-pin" aria-hidden="true"></i> <span class="footer-location"></span></span>
       </div>
       <div class="footer-legal">
-        <a href="impressum.html">Impressum</a>
-        <a href="datenschutz.html">Datenschutz</a>
+        <a class="footer-link--impressum" href="impressum.html"></a>
+        <a class="footer-link--datenschutz" href="datenschutz.html"></a>
       </div>
     </div>
   </footer>

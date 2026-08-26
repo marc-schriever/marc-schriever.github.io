@@ -5,8 +5,12 @@ const qsa = sel => document.querySelectorAll(sel);
 
 const setText  = (sel, val) => { const e = qs(sel); if (e) e.textContent = val; };
 const setHTML  = (sel, val) => { const e = qs(sel); if (e) e.innerHTML   = val; };
+const setAttr  = (sel, attr, val) => { const e = qs(sel); if (e) e.setAttribute(attr, val); };
 
 // ── TEMPLATES ────────────────────────────────────────────────
+
+const navTemplate = link =>
+  `<li><a href="${link.href}"${link.active ? ' class="nav-active"' : ''}>${link.label}</a></li>`;
 
 const statTemplate = s => `
   <div class="stat-item">
@@ -35,20 +39,23 @@ const faqTemplate = (item, i) => `
     </div>
   </div>`;
 
-const refTemplate = l => `<div class="ref-logo">${l.html}</div>`;
+const refTemplate = l =>
+  `<div class="ref-logo">${l.html}</div>`;
 
 // ── RENDER FUNCTIONS ──────────────────────────────────────────
 
 function renderNav() {
   setText('.nav-name',  CONTENT.nav.name);
   setText('.nav-title', CONTENT.nav.title);
+  setHTML('.nav-links', CONTENT.nav.links.map(navTemplate).join(''));
 }
 
 function renderHero() {
-  setText('.hero-eyebrow', CONTENT.hero.eyebrow);
-  setHTML('.hero-title',   CONTENT.hero.headline);
-  setText('.hero-sub',     CONTENT.hero.subline);
-  setText('.hero-text',    CONTENT.hero.text);
+  setText('.hero-eyebrow',          CONTENT.hero.eyebrow);
+  setHTML('.hero-title',            CONTENT.hero.headline);
+  setText('.hero-sub',              CONTENT.hero.subline);
+  setText('.hero-text',             CONTENT.hero.text);
+  setText('.photo-placeholder__label', CONTENT.photo.placeholder);
   const btns = qsa('.hero-btns .btn');
   btns[0].textContent = CONTENT.hero.btn_primary;
   btns[1].textContent = CONTENT.hero.btn_secondary;
@@ -85,11 +92,20 @@ function renderKontakt() {
   setText('.section--kontakt .section-eyebrow', CONTENT.kontakt.eyebrow);
   setText('.kontakt-title',                     CONTENT.kontakt.headline);
   setText('.kontakt-text',                      CONTENT.kontakt.text);
+  setText('.form-label--name',                  CONTENT.form.label_name);
+  setText('.form-label--email',                 CONTENT.form.label_email);
+  setText('.form-label--message',               CONTENT.form.label_message);
+  setAttr('.form-input--name',                  'placeholder', CONTENT.form.placeholder_name);
+  setAttr('.form-input--email',                 'placeholder', CONTENT.form.placeholder_email);
+  setAttr('.form-input--message',               'placeholder', CONTENT.form.placeholder_message);
+  setText('.form-submit',                       CONTENT.form.submit);
 }
 
 function renderFooter() {
-  setText('.footer-copy',     CONTENT.footer.copy);
-  setText('.footer-location', CONTENT.footer.location);
+  setText('.footer-copy',             CONTENT.footer.copy);
+  setText('.footer-location',         CONTENT.footer.location);
+  setText('.footer-link--impressum',  CONTENT.footer.impressum);
+  setText('.footer-link--datenschutz', CONTENT.footer.datenschutz);
 }
 
 // ── INIT FUNCTIONS ────────────────────────────────────────────
