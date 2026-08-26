@@ -5,11 +5,12 @@ const CONTENT = {
     name:  'MARC SCHRIEVER',
     title: 'LOGISTIKEXPERTE',
     links: [
-      { href: '#home',        label: 'HOME', active: true },
+      { href: '#home',        label: 'HOME',               active: true },
       { href: '#ueber-mich',  label: 'ÜBER MICH' },
       { href: '#expertise',   label: 'EXPERTISE' },
       { href: '#faq',         label: 'FRAGEN & ANTWORTEN' },
       { href: '#referenzen',  label: 'REFERENZEN' },
+      { href: '#',            label: 'DOKUMENTE',          id: 'nav-dokumente' },
     ],
   },
 
@@ -147,6 +148,22 @@ const CONTENT = {
     ],
   },
 
+  // ── FOTO
+  photo: {
+    placeholder: 'Profilfoto',
+  },
+
+  // ── FORMULAR
+  form: {
+    label_name:          'Name',
+    label_email:         'E-Mail',
+    label_message:       'Nachricht',
+    placeholder_name:    'Ihr Name',
+    placeholder_email:   'Ihre E-Mail-Adresse',
+    placeholder_message: 'Ihre Nachricht',
+    submit:              'NACHRICHT SENDEN',
+  },
+
   // ── KONTAKT
   kontakt: {
     eyebrow:  'KONTAKT',
@@ -154,26 +171,21 @@ const CONTENT = {
     text:     'Ich freue mich über Ihre Nachricht und melde mich persönlich bei Ihnen. Weitere Unterlagen sende ich Ihnen auf Anfrage gerne zu.',
   },
 
+  // ── DOKUMENTE
+  dokumente: {
+    password: 'IhrPasswort',
+    url:      'https://drive.google.com/IhrLink',
+    title:    'Zugangscode eingeben',
+    submit:   'Zugang',
+    error:    'Zugangscode nicht korrekt.',
+  },
+
   // ── FOOTER ────────────────────────────────────────────────
   footer: {
-    copy:       '© 2026 Marc Schriever · Logistikexperte',
-    location:   'Bremen, Deutschland',
-    impressum:  'Impressum',
+    copy:        '© 2026 Marc Schriever · Logistikexperte',
+    location:    'Bremen, Deutschland',
+    impressum:   'Impressum',
     datenschutz: 'Datenschutz',
-  },
-
-  photo: {
-    placeholder: 'Profilfoto',
-  },
-
-  form: {
-    label_name:    'Name',
-    label_email:   'E-Mail',
-    label_message: 'Nachricht',
-    placeholder_name:    'Ihr Name',
-    placeholder_email:   'Ihre E-Mail-Adresse',
-    placeholder_message: 'Ihre Nachricht',
-    submit:        'NACHRICHT SENDEN',
   },
 
 };

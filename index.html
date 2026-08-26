@@ -26,7 +26,8 @@
         <ul class="navbar__links"></ul>
       </nav>
       <div class="navbar__dropdown" id="navbar-dropdown" aria-hidden="true">
-        <ul class="navbar__dropdown-links"></ul>
+        <ul class="navbar__dropdown-links">  <li><a href="#" class="dropdown-dokumente">DOKUMENTE</a></li>
+</ul>
       </div>
     </div>
   </header>
@@ -148,6 +149,16 @@
       </div>
     </div>
   </footer>
+
+  <div class="dokumente-overlay" id="dokumente-overlay" aria-hidden="true">
+    <div class="dokumente-overlay__box">
+      <button class="dokumente-overlay__close" aria-label="Schließen"><i class="ti ti-x"></i></button>
+      <p class="dokumente-overlay__title dokumente-title"></p>
+      <input type="password" class="dokumente-overlay__input" id="dokumente-pw" placeholder="••••••••">
+      <button class="btn btn--primary dokumente-overlay__submit"></button>
+      <p class="dokumente-overlay__error" id="dokumente-error"></p>
+    </div>
+  </div>
 
   <script src="content.js" defer></script>
   <script src="main.js" defer></script>

@@ -171,6 +171,38 @@ function initHamburger() {
 
 // ── BOOT ─────────────────────────────────────────────────────
 
+function initDokumente() {
+  const triggers = [qs('#nav-dokumente'), qs('.dropdown-dokumente')].filter(Boolean);
+  const overlay   = el('dokumente-overlay');
+  const input     = qs('.dokumente-overlay__input');
+  const submitBtn = qs('.dokumente-overlay__submit');
+  const closeBtn  = qs('.dokumente-overlay__close');
+  const errorMsg  = el('dokumente-error');
+  if (!overlay) return;
+  setText('.dokumente-title', CONTENT.dokumente.title);
+  setText('.dokumente-overlay__submit', CONTENT.dokumente.submit);
+
+  const open  = () => { overlay.classList.add('is-open'); overlay.setAttribute('aria-hidden', 'false'); input.value = ''; errorMsg.textContent = ''; setTimeout(() => input.focus(), 100); };
+  const close = () => { overlay.classList.remove('is-open'); overlay.setAttribute('aria-hidden', 'true'); };
+
+  triggers.forEach(t => t.addEventListener('click', e => { e.preventDefault(); open(); }));
+  closeBtn.addEventListener('click', close);
+  overlay.addEventListener('click', e => { if (e.target === overlay) close(); });
+
+  submitBtn.addEventListener('click', () => {
+    if (input.value === CONTENT.dokumente.password) {
+      window.open(CONTENT.dokumente.url, '_blank');
+      close();
+    } else {
+      errorMsg.textContent = CONTENT.dokumente.error;
+      input.value = '';
+      input.focus();
+    }
+  });
+
+  input.addEventListener('keydown', e => { if (e.key === 'Enter') submitBtn.click(); });
+}
+
 function boot() {
   renderNav();
   renderHero();
@@ -185,6 +217,7 @@ function boot() {
   initExpand();
   initFaq();
   initHamburger();
+  initDokumente();
 }
 
 boot();
