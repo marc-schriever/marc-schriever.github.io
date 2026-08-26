@@ -3,14 +3,14 @@ const el  = id  => document.getElementById(id);
 const qs  = sel => document.querySelector(sel);
 const qsa = sel => document.querySelectorAll(sel);
 
-const setText  = (sel, val) => { const e = qs(sel); if (e) e.textContent = val; };
-const setHTML  = (sel, val) => { const e = qs(sel); if (e) e.innerHTML   = val; };
-const setAttr  = (sel, attr, val) => { const e = qs(sel); if (e) e.setAttribute(attr, val); };
+const setText = (sel, val) => { const e = qs(sel); if (e) e.textContent = val; };
+const setHTML = (sel, val) => { const e = qs(sel); if (e) e.innerHTML   = val; };
+const setAttr = (sel, attr, val) => { const e = qs(sel); if (e) e.setAttribute(attr, val); };
 
 // ── TEMPLATES ────────────────────────────────────────────────
 
 const navTemplate = link =>
-  `<li><a href="${link.href}"${link.active ? ' class="nav-active"' : ''}>${link.label}</a></li>`;
+  `<li><a href="${link.href}"${link.active ? ' class="is-active"' : ''}>${link.label}</a></li>`;
 
 const statTemplate = s => `
   <div class="stat-item">
@@ -20,16 +20,16 @@ const statTemplate = s => `
   </div>`;
 
 const expertiseTemplate = b => `
-  <div class="expertise-block">
-    <div class="expertise-block__head">
+  <div class="card card--orange-top">
+    <div class="card-head">
       <i class="ti ${b.icon}" aria-hidden="true"></i>
       <h3>${b.title}</h3>
     </div>
-    <ul>${b.items.map(item => `<li>${item}</li>`).join('')}</ul>
+    <ul class="list">${b.items.map(item => `<li>${item}</li>`).join('')}</ul>
   </div>`;
 
 const faqTemplate = (item, i) => `
-  <div class="faq-item" id="faq-${i}">
+  <div class="card card--orange-top faq-item" id="faq-${i}">
     <button class="faq-q" aria-expanded="false" aria-controls="faq-a-${i}">
       <span>${item.q}</span>
       <i class="ti ti-chevron-down" aria-hidden="true"></i>
@@ -40,26 +40,22 @@ const faqTemplate = (item, i) => `
   </div>`;
 
 const refTemplate = l =>
-  `<div class="ref-logo">${l.html}</div>`;
+  `<div class="card card--hover ref-logo">${l.html}</div>`;
 
 // ── RENDER FUNCTIONS ──────────────────────────────────────────
 
 function renderNav() {
-  const overlayLinks = qs('.nav-overlay__links');
-  if (overlayLinks) {
-    setHTML('.nav-overlay__links', CONTENT.nav.links.map(navTemplate).join(''));
-  }
-
-  setText('.nav-name',  CONTENT.nav.name);
-  setText('.nav-title', CONTENT.nav.title);
-  setHTML('.nav-links', CONTENT.nav.links.map(navTemplate).join(''));
+  setText('.navbar__name',  CONTENT.nav.name);
+  setText('.navbar__title', CONTENT.nav.title);
+  setHTML('.navbar__links', CONTENT.nav.links.map(navTemplate).join(''));
+  setHTML('.navbar__dropdown-links', CONTENT.nav.links.map(navTemplate).join(''));
 }
 
 function renderHero() {
-  setText('.hero-eyebrow',          CONTENT.hero.eyebrow);
-  setHTML('.hero-title',            CONTENT.hero.headline);
-  setText('.hero-sub',              CONTENT.hero.subline);
-  setText('.hero-text',             CONTENT.hero.text);
+  setText('.hero-eyebrow',             CONTENT.hero.eyebrow);
+  setHTML('.hero-title',               CONTENT.hero.headline);
+  setText('.hero-sub',                 CONTENT.hero.subline);
+  setText('.hero-text',                CONTENT.hero.text);
   setText('.photo-placeholder__label', CONTENT.photo.placeholder);
   const btns = qsa('.hero-btns .btn');
   btns[0].textContent = CONTENT.hero.btn_primary;
@@ -100,16 +96,16 @@ function renderKontakt() {
   setText('.form-label--name',                  CONTENT.form.label_name);
   setText('.form-label--email',                 CONTENT.form.label_email);
   setText('.form-label--message',               CONTENT.form.label_message);
-  setAttr('.form-input--name',                  'placeholder', CONTENT.form.placeholder_name);
-  setAttr('.form-input--email',                 'placeholder', CONTENT.form.placeholder_email);
-  setAttr('.form-input--message',               'placeholder', CONTENT.form.placeholder_message);
+  setAttr('.form-input--name',    'placeholder', CONTENT.form.placeholder_name);
+  setAttr('.form-input--email',   'placeholder', CONTENT.form.placeholder_email);
+  setAttr('.form-input--message', 'placeholder', CONTENT.form.placeholder_message);
   setText('.form-submit',                       CONTENT.form.submit);
 }
 
 function renderFooter() {
-  setText('.footer-copy',             CONTENT.footer.copy);
-  setText('.footer-location',         CONTENT.footer.location);
-  setText('.footer-link--impressum',  CONTENT.footer.impressum);
+  setText('.footer-copy',              CONTENT.footer.copy);
+  setText('.footer-location',          CONTENT.footer.location);
+  setText('.footer-link--impressum',   CONTENT.footer.impressum);
   setText('.footer-link--datenschutz', CONTENT.footer.datenschutz);
 }
 
@@ -119,7 +115,7 @@ function initReveal() {
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (!entry.isIntersecting) return;
-      entry.target.classList.add('visible');
+      entry.target.classList.add('is-visible');
       observer.unobserve(entry.target);
     });
   }, { threshold: 0.12 });
@@ -130,7 +126,7 @@ function initExpand() {
   const expandContent = el('about-expand');
   if (!expandContent) return;
   expandContent.removeAttribute('hidden');
-  expandContent.classList.add('open');
+  expandContent.classList.add('is-open');
 }
 
 function initFaq() {
@@ -143,14 +139,34 @@ function initFaq() {
     qsa('.faq-q').forEach(b => {
       b.setAttribute('aria-expanded', 'false');
       b.nextElementSibling.setAttribute('hidden', '');
-      b.nextElementSibling.classList.remove('open');
+      b.nextElementSibling.classList.remove('is-open');
     });
     if (!isExpanded) {
       btn.setAttribute('aria-expanded', 'true');
       btn.nextElementSibling.removeAttribute('hidden');
-      btn.nextElementSibling.classList.add('open');
+      btn.nextElementSibling.classList.add('is-open');
     }
   });
+}
+
+function initHamburger() {
+  const btn      = qs('.navbar__hamburger');
+  const dropdown = el('navbar-dropdown');
+  if (!btn || !dropdown) return;
+
+  btn.addEventListener('click', () => {
+    const isOpen = dropdown.classList.toggle('is-open');
+    dropdown.setAttribute('aria-hidden', String(!isOpen));
+    btn.setAttribute('aria-expanded', String(isOpen));
+  });
+
+  dropdown.querySelectorAll('a').forEach(a =>
+    a.addEventListener('click', () => {
+      dropdown.classList.remove('is-open');
+      dropdown.setAttribute('aria-hidden', 'true');
+      btn.setAttribute('aria-expanded', 'false');
+    })
+  );
 }
 
 // ── BOOT ─────────────────────────────────────────────────────
@@ -166,34 +182,9 @@ function boot() {
   renderKontakt();
   renderFooter();
   initReveal();
-  initHamburger();
   initExpand();
   initFaq();
+  initHamburger();
 }
 
 boot();
-
-function initHamburger() {
-  const btn     = qs('.nav-hamburger');
-  const overlay = qs('.nav-overlay');
-  const close   = qs('.nav-overlay__close');
-  if (!btn || !overlay) return;
-
-  btn.addEventListener('click', () => {
-    const isOpen = overlay.classList.toggle('open');
-    overlay.setAttribute('aria-hidden', String(!isOpen));
-    btn.setAttribute('aria-expanded', String(isOpen));
-  });
-
-  const closeOverlay = () => {
-    overlay.classList.remove('open');
-    overlay.setAttribute('aria-hidden', 'true');
-    btn.setAttribute('aria-expanded', 'false');
-  };
-
-  if (close) close.addEventListener('click', closeOverlay);
-
-  overlay.querySelectorAll('a').forEach(a =>
-    a.addEventListener('click', closeOverlay)
-  );
-}

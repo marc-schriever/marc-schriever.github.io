@@ -11,88 +11,98 @@
 <body>
 
   <header class="navbar">
-    <div id="app">
-      <div class="nav-brand">
-        <div class="nav-logo-icon" aria-hidden="true"><i class="ti ti-package"></i></div>
+    <div class="navbar__inner">
+      <div class="navbar__brand">
+        <div class="navbar__logo-icon" aria-hidden="true"><i class="ti ti-package"></i></div>
         <div>
-          <span class="nav-name"></span>
-          <span class="nav-title"></span>
+          <span class="navbar__name"></span>
+          <span class="navbar__title"></span>
         </div>
       </div>
       <nav aria-label="Hauptnavigation">
-        <ul class="nav-links"></ul>
+        <ul class="navbar__links"></ul>
       </nav>
-      <button class="nav-hamburger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="nav-overlay">
+      <button class="navbar__hamburger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="navbar-dropdown">
         <i class="ti ti-menu-2" aria-hidden="true"></i>
       </button>
-      <div class="nav-overlay" id="nav-overlay" aria-hidden="true">
-        <ul class="nav-overlay__links"></ul>
+      <div class="navbar__dropdown" id="navbar-dropdown" aria-hidden="true">
+        <ul class="navbar__dropdown-links"></ul>
       </div>
     </div>
   </header>
 
   <main>
 
+    <!-- HERO -->
     <section class="section section--hero" id="home" aria-labelledby="hero-title">
       <div class="section__bg section__bg--hero" aria-hidden="true"></div>
-      <div id="app" class="grid grid--hero">
-        <div class="hero-content">
-          <p class="hero-eyebrow"></p>
-          <h1 id="hero-title" class="hero-title"></h1>
-          <p class="hero-sub"></p>
-          <p class="hero-text"></p>
-          <div class="hero-btns">
-            <a href="#ueber-mich" class="btn btn--primary"></a>
-            <a href="#kontakt" class="btn btn--outline"></a>
+      <div class="section__inner">
+        <div class="wrapper grid grid--hero">
+          <div class="hero-content">
+            <p class="hero-eyebrow"></p>
+            <h1 id="hero-title" class="hero-title"></h1>
+            <p class="hero-sub"></p>
+            <p class="hero-text"></p>
+            <div class="hero-btns">
+              <a href="#ueber-mich" class="btn btn--primary"></a>
+              <a href="#kontakt" class="btn btn--outline"></a>
+            </div>
           </div>
-        </div>
-        <div class="hero-photo">
-          <div class="photo-placeholder">
-            <i class="ti ti-user" aria-hidden="true"></i>
-            <span class="photo-placeholder__label"></span>
+          <div class="hero-photo">
+            <div class="photo-placeholder">
+              <i class="ti ti-user" aria-hidden="true"></i>
+              <span class="photo-placeholder__label"></span>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- STATS -->
     <section class="section section--stats" aria-label="Kennzahlen">
-      <div id="app" class="grid grid--stats"></div>
+      <div class="wrapper grid grid--stats"></div>
     </section>
 
+    <!-- ABOUT -->
     <section class="section section--about" id="ueber-mich" aria-labelledby="about-title">
       <div class="section__bg section__bg--about" aria-hidden="true"></div>
-      <div id="app" class="grid grid--about">
-        <div class="about-photo">
-          <div class="about-img" role="img" aria-label="Modernes Logistiklager"></div>
-        </div>
-        <div class="about-content">
-          <p class="section-eyebrow"></p>
-          <h2 id="about-title" class="section-title"></h2>
-          <div class="expand-content" id="about-expand" hidden>
-            <p></p>
+      <div class="section__inner">
+        <div class="wrapper grid grid--about">
+          <div class="about-photo">
+            <div class="about-img" role="img" aria-label="Modernes Logistiklager"></div>
+          </div>
+          <div class="about-content">
+            <p class="section-eyebrow"></p>
+            <h2 id="about-title" class="section-title"></h2>
+            <div class="expand" id="about-expand" hidden>
+              <p></p>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- EXPERTISE -->
     <section class="section section--expertise" id="expertise" aria-labelledby="expertise-title">
-      <div id="app">
+      <div class="wrapper">
         <p class="section-eyebrow section-eyebrow--center"></p>
         <h2 id="expertise-title" class="section-title section-title--center"></h2>
         <div class="grid grid--expertise"></div>
       </div>
     </section>
 
+    <!-- FAQ -->
     <section class="section section--faq" id="faq" aria-labelledby="faq-title">
-      <div id="app">
+      <div class="wrapper">
         <p class="section-eyebrow section-eyebrow--center"></p>
         <h2 id="faq-title" class="section-title section-title--center"></h2>
         <div class="faq-list"></div>
       </div>
     </section>
 
+    <!-- REFERENZEN -->
     <section class="section section--referenzen" id="referenzen" aria-labelledby="ref-title">
-      <div id="app">
+      <div class="wrapper">
         <p class="section-eyebrow section-eyebrow--center"></p>
         <h2 id="ref-title" class="section-title section-title--center"></h2>
         <div class="grid grid--referenzen"></div>
@@ -101,8 +111,9 @@
 
   </main>
 
+  <!-- KONTAKT -->
   <section class="section section--kontakt" id="kontakt">
-    <div id="app">
+    <div class="wrapper">
       <p class="section-eyebrow section-eyebrow--center"></p>
       <h2 class="section-title section-title--center kontakt-title"></h2>
       <p class="kontakt-text"></p>
@@ -124,8 +135,9 @@
     </div>
   </section>
 
+  <!-- FOOTER -->
   <footer class="section section--footer">
-    <div id="app" class="footer-inner">
+    <div class="wrapper footer-inner">
       <div class="footer-copy"></div>
       <div class="footer-contact">
         <span><i class="ti ti-map-pin" aria-hidden="true"></i> <span class="footer-location"></span></span>
