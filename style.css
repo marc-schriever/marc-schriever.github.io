@@ -100,6 +100,7 @@ body {
   z-index: 100;
   background: var(--bg);
   border-bottom: 1px solid var(--border);
+  position: relative;
 }
 
 .navbar #app {
@@ -429,3 +430,63 @@ body {
 
 
 .hero-photo { }
+/* ── HAMBURGER & OVERLAY ─────────────────────────────────── */
+
+.nav-hamburger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: var(--text-1);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.25rem;
+}
+
+.nav-overlay {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  z-index: 200;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.nav-overlay.open {
+  max-height: 20rem;
+}
+
+.nav-overlay__close { display: none; }
+
+.nav-overlay__links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  padding: 0.75rem var(--app-pad);
+  gap: 0;
+}
+
+.nav-overlay__links a {
+  color: var(--text-2);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: .08em;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border);
+  display: block;
+  transition: color 0.15s;
+}
+
+.nav-overlay__links li:last-child a { border-bottom: none; }
+.nav-overlay__links a:hover { color: var(--orange); }
+
+@media (min-width: 900px) {
+  .nav-hamburger { display: none; }
+  .nav-overlay   { display: none; }
+}

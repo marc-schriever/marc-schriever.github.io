@@ -45,6 +45,11 @@ const refTemplate = l =>
 // ── RENDER FUNCTIONS ──────────────────────────────────────────
 
 function renderNav() {
+  const overlayLinks = qs('.nav-overlay__links');
+  if (overlayLinks) {
+    setHTML('.nav-overlay__links', CONTENT.nav.links.map(navTemplate).join(''));
+  }
+
   setText('.nav-name',  CONTENT.nav.name);
   setText('.nav-title', CONTENT.nav.title);
   setHTML('.nav-links', CONTENT.nav.links.map(navTemplate).join(''));
@@ -161,8 +166,34 @@ function boot() {
   renderKontakt();
   renderFooter();
   initReveal();
+  initHamburger();
   initExpand();
   initFaq();
 }
 
 boot();
+
+function initHamburger() {
+  const btn     = qs('.nav-hamburger');
+  const overlay = qs('.nav-overlay');
+  const close   = qs('.nav-overlay__close');
+  if (!btn || !overlay) return;
+
+  btn.addEventListener('click', () => {
+    const isOpen = overlay.classList.toggle('open');
+    overlay.setAttribute('aria-hidden', String(!isOpen));
+    btn.setAttribute('aria-expanded', String(isOpen));
+  });
+
+  const closeOverlay = () => {
+    overlay.classList.remove('open');
+    overlay.setAttribute('aria-hidden', 'true');
+    btn.setAttribute('aria-expanded', 'false');
+  };
+
+  if (close) close.addEventListener('click', closeOverlay);
+
+  overlay.querySelectorAll('a').forEach(a =>
+    a.addEventListener('click', closeOverlay)
+  );
+}
