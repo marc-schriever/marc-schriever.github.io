@@ -488,5 +488,4 @@ body {
 
 @media (min-width: 900px) {
   .nav-hamburger { display: none; }
-  .nav-overlay   { display: none; }
 }
