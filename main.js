@@ -34,10 +34,12 @@ const faqTemplate = (item, i) => `
       <span>${item.q}</span>
       <i class="ti ti-chevron-down" aria-hidden="true"></i>
     </button>
-    <div class="faq-a" id="faq-a-${i}" hidden>
+    <div class="faq-a" id="faq-a-${i}">
       <p>${item.a}</p>
     </div>
   </div>`;
+
+
 
 const refTemplate = l =>
   `<div class="card card--hover ref-logo">${l.html}</div>`;
@@ -136,18 +138,20 @@ function initFaq() {
     const btn = e.target.closest('.faq-q');
     if (!btn) return;
     const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+    
     qsa('.faq-q').forEach(b => {
       b.setAttribute('aria-expanded', 'false');
-      b.nextElementSibling.setAttribute('hidden', '');
       b.nextElementSibling.classList.remove('is-open');
     });
+    
     if (!isExpanded) {
       btn.setAttribute('aria-expanded', 'true');
-      btn.nextElementSibling.removeAttribute('hidden');
       btn.nextElementSibling.classList.add('is-open');
     }
   });
 }
+
+
 
 function initHamburger() {
   const btn      = qs('.navbar__hamburger');

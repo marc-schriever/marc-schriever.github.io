@@ -252,25 +252,45 @@ body {
   display: flex; 
   flex-direction: column;
   justify-content: space-between;
+  width: 24px;         /* Breite des Icons */
+  height: 18px;        /* Gesamthöhe des Icons (Abstand der Striche) */
   background: none; 
   border: none;
-  color: var(--text-1); 
-  font-size: 1.5rem;
   cursor: pointer; 
-  padding: 0.25rem;
-  margin-left: auto;   
+  padding: 0;
+  margin-left: auto;   /* Schiebt den Button nach ganz rechts */
+  z-index: 110;        /* Sorgt dafür, dass es immer oben liegt */
 }
 
-.navbar__dropdown {
-  position: absolute;
-  top: 100%; left: 0; right: 0;
-  background: var(--bg);
-  border-bottom: 1px solid var(--border);
-  z-index: 100;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease;
+/* Hier stylen wir die 3 Linien, damit sie endlich sichtbar werden */
+.navbar__hamburger span {
+  display: block;
+  width: 100%;
+  height: 2px;                            /* Dicke der Striche */
+  background-color: var(--text-1, #fff);  /* Weiß (oder Ihre Textfarbe) */
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease; /* Macht die X-Animation flüssig */
+  transform-origin: left center;          /* Drehpunkt für die Verwandlung zum X */
 }
+
+/* ── ANIMATION ZUM "X" WENN OFFEN ── */
+
+/* 1. Oberer Strich dreht sich nach unten */
+.navbar__dropdown.is-open ~ .navbar__inner .navbar__hamburger span:nth-child(1) {
+  transform: rotate(45deg);
+}
+
+/* 2. Mittlerer Strich wird unsichtbar */
+.navbar__dropdown.is-open ~ .navbar__inner .navbar__hamburger span:nth-child(2) {
+  opacity: 0;
+  transform: scale(0);
+}
+
+/* 3. Unterer Strich dreht sich nach oben */
+.navbar__dropdown.is-open ~ .navbar__inner .navbar__hamburger span:nth-child(3) {
+  transform: rotate(-45deg);
+}
+
 
 .navbar__dropdown.is-open { max-height: 20rem; }
 
@@ -403,9 +423,32 @@ body {
 .faq-q .ti   { font-size: 1rem; color: var(--orange); flex-shrink: 0; transition: transform 0.3s ease; }
 .faq-q[aria-expanded="true"] .ti { transform: rotate(180deg); }
 
-.faq-a { max-height: 0; overflow: hidden; opacity: 0; transition: max-height 0.4s ease, opacity 0.4s ease; }
-.faq-a.is-open { max-height: 25rem; opacity: 1; }
-.faq-a p { padding: 0.875rem var(--app-pad) 1.125rem; color: var(--text-2); font-size: 0.85rem; line-height: 1.8; border-top: 1px solid var(--border); }
+/* ── FAQ-ANTWORTBOX IM STANDARDZUSTAND (GESCHLOSSEN) ── */
+.faq-a { 
+  display: block !important; /* Verhindert, dass JS das Element blockiert */
+  max-height: 0;             /* Startet bei Höhe Null */
+  overflow: hidden;          /* Versteckt den heraushängenden Text */
+  opacity: 0;                /* Startet unsichtbar */
+  
+  /* Der wichtigste Teil: Zwingt den Browser zur butterweichen Animation */
+  transition: max-height 0.6s cubic-bezier(0.25, 1, 0.5, 1), 
+              opacity 0.4s ease-out; 
+}
+
+/* ── ZUSTAND WENN GEÖFFNET ── */
+.faq-a.is-open { 
+  max-height: 30rem;         /* Fährt bis zu dieser Maximalhöhe sanft aus */
+  opacity: 1;                /* Blendet sich weich ein */
+}
+
+/* Der Fließtext in der Antwortbox bekommt eine feine Border */
+.faq-a p { 
+  padding: 0.875rem var(--app-pad) 1.125rem; 
+  color: var(--text-2); 
+  font-size: 0.85rem; 
+  line-height: 1.8; 
+  border-top: 1px solid var(--border); 
+}
 
 /* ── KOMPONENTE: SECTION--REFERENZEN ────────────────────── */
 
@@ -487,11 +530,16 @@ body {
   .section-title        { font-size: 1.6rem; }
 
   .grid--stats          { grid-template-columns: repeat(2, 1fr); }
-  .stat-item            { border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-  .stat-item:nth-child(2n)      {border-right: none;}
-  .stat-item:nth-child(even)   { border-right: none; }
+  
+  /* Setzt saubere Rahmen für das 2er-Raster auf Tablets */
+  .stat-item { 
+    border-right: 1px solid var(--border); 
+    border-bottom: 1px solid var(--border); 
+  }
+  .stat-item:nth-child(2n) { border-right: none; }
   .stat-item:nth-child(3),
-  .stat-item:nth-child(4)      { border-bottom: none; }
+  .stat-item:nth-child(4)  { border-bottom: none; }
+
 
   .grid--expertise      { grid-template-columns: repeat(2, 1fr); }
   .grid--referenzen     { grid-template-columns: repeat(2, 1fr); }
@@ -504,7 +552,6 @@ body {
 
   .navbar__links     { display: flex; }
   .navbar__hamburger { display: none; }
-  .navbar__dropdown  { display: none; }
 
   .section--hero        { padding: 5rem 0; }
   .section--about,
@@ -524,10 +571,22 @@ body {
   .about-img            { min-height: 25rem; }
 
   .grid--stats          { grid-template-columns: repeat(4, 1fr); }
-  .stat-item            { border-right: 1px solid var(--border); border-bottom: none; padding: 2.5rem 1.5rem;}
-  .stat-item:last-child { border-right: none; }
+  
+  /* Aktiviert die 3 schwach sichtbaren vertikalen Linien zwischen den Boxen */
+  .stat-item { 
+    border-bottom: none !important; /* Löscht die mobile Querlinie */
+    border-right: 1px solid var(--border) !important; /* Erzwingt die Längslinie */
+    padding: 2.5rem 1.5rem;
+  }
+  
+  /* Entfernt die Linie ganz rechts außen am Bildschirmrand */
+  .stat-item:last-child { 
+    border-right: none !important; 
+  }
+  
   .stat-item .ti        { font-size: 2rem; }
   .stat-title           { font-size: 0.78rem; }
+
 
   .grid--expertise      { grid-template-columns: repeat(4, 1fr); }
   .grid--referenzen     { grid-template-columns: repeat(4, 1fr); }
@@ -611,3 +670,164 @@ body {
   color: #ef4444;
   min-height: 1rem;
 }
+
+/* ==========================================================================
+   PREMIUM-EFFEKTE FÜR DIE NAVBAR (KOMBINIERT)
+   ========================================================================== */
+
+/* ── EFFEKT 2: MILCHGLAS-EFFEKT (BACKDROP BLUR) FÜR DAS DROPDOWN ── */
+/* ==========================================================================
+   DIE REPARATUR FÜR MILCHGLAS & LINK-WELLENEFFEKT
+   ========================================================================== */
+
+/* KORREKTUR EFFEKT 2: Milchglas radikal erzwingen */
+/* KORREKTUR EFFEKT 2: Milchglas + Auf-/Zu-Zustand sauber definieren */
+.navbar__dropdown {
+  position: absolute;
+  top: 100%; left: 0; right: 0;
+  z-index: 100;
+  border-bottom: 1px solid var(--border);
+  
+  /* HIER SIND DIE WICHTIGEN STARTWERTE (Zustand: ZU) */
+  max-height: 0;
+  overflow: hidden;
+
+  /* Überschreibt hart jede andere Hintergrundfarbe mit 80% Transparenz */
+  background: rgba(17, 17, 17, 0.80) !important; 
+  /* Aktiviert den Weichzeichner für den Inhalt DARUNTER */
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Zustand wenn geöffnet: Fährt flüssig aus */
+.navbar__dropdown.is-open { 
+  max-height: 25rem; 
+}
+
+
+/* KORREKTUR EFFEKT 1: Wellen-Effekt direkt auf die Links (a) statt auf (li) anwenden */
+.navbar__dropdown-links a {
+  opacity: 0;
+  transform: translateY(15px);
+  /* Übergang für das sanfte Reinfliegen */
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Sobald das Menü geöffnet wird, fliegen die Links an ihre Position */
+.navbar__dropdown.is-open .navbar__dropdown-links a {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Zeitliche Verzögerung direkt für die Links, wenn das Menü öffnet */
+.navbar__dropdown.is-open .navbar__dropdown-links a:nth-child(1) { transition-delay: 0.05s; }
+.navbar__dropdown.is-open .navbar__dropdown-links a:nth-child(2) { transition-delay: 0.12s; }
+.navbar__dropdown.is-open .navbar__dropdown-links a:nth-child(3) { transition-delay: 0.19s; }
+.navbar__dropdown.is-open .navbar__dropdown-links a:nth-child(4) { transition-delay: 0.26s; }
+.navbar__dropdown.is-open .navbar__dropdown-links a:nth-child(5) { transition-delay: 0.33s; }
+.navbar__dropdown.is-open .navbar__dropdown-links a:nth-child(6) { transition-delay: 0.40s; }
+
+
+/* ── EFFEKT 3: WACHSENDER UNTERSTRICH (SLIDE UNDERLINE) FÜR DESKTOP ── */
+@media (min-width: 900px) {
+  .navbar__links a {
+    position: relative;
+    padding-bottom: 6px; /* Kleiner Puffer für die Linie */
+  }
+
+  /* Wir erschaffen eine unsichtbare, virtuelle Linie unter dem Link */
+  .navbar__links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--orange);
+    /* Start: Auf Breite 0 zusammengestaucht */
+    transform: scaleX(0);
+    /* Die Linie fährt von links nach rechts aus */
+    transform-origin: left center;
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Beim Drüberfahren (Hover) oder wenn der Link aktiv ist, fährt die Linie auf 100% Breite aus */
+  .navbar__links a:hover::after,
+  .navbar__links a.is-active::after {
+    transform: scaleX(1);
+  }
+}
+/* ==========================================================================
+   DESIGN-UPDATE FÜR DIE ABOUT-SEKTION
+   ========================================================================== */
+
+/* Mobil-First: Standardmäßig stehen die Blöcke untereinander */
+.grid--about {
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+}
+
+/* Die linke Box mit den Meilensteinen */
+.about-fact-box {
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--orange);
+  padding: 1.75rem;
+}
+
+.about-fact-box .section-eyebrow {
+  margin-bottom: 1.25rem;
+  font-size: 0.75rem;
+}
+
+/* Einzelne Zeile der Highlights */
+.fact-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.85rem;
+  color: var(--text-2);
+}
+
+.fact-row:last-child {
+  border-bottom: none;
+}
+
+/* Die Zahl/das Kürzel links fett hervorheben */
+.fact-row strong {
+  color: var(--orange);
+  font-size: 1.15rem;
+  font-weight: 900;
+  width: 4.5rem; /* Gibt den Zahlen eine feste Spaltenbreite */
+  flex-shrink: 0;
+  letter-spacing: -0.02em;
+}
+
+/* ==========================================================================
+   RESPONSIVE UPDATE FÜR DIE ABOUT-SEKTION (Große Bildschirme)
+   ========================================================================== */
+@media (min-width: 900px) {
+  .grid--about {
+    /* Desktop: Linke Box nimmt 22rem ein, der Text den restlichen Platz */
+    grid-template-columns: 22rem 1fr; 
+    gap: 3.5rem;
+    align-items: flex-start;
+  }
+}
+/* ==========================================================================
+   PREMIUM-UPDATE FÜR DIE ABOUT-SEKTION (MAGAZIN-STIL)
+   ========================================================================== */
+
+/* Betrifft den Textblock innerhalb Ihres Expand-Containers */
+#about-expand p {
+  color: var(--text-2);
+  font-size: 0.9rem;
+  line-height: 1.85;
+  text-align: justify;          /* Blocksatz für saubere Kanten wie im Magazin */
+  text-justify: inter-word;
+}
+
