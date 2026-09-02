@@ -16,10 +16,10 @@ const CONTENT = {
 
   // ── HERO ─────────────────────────────────────────────────
   hero: {
-    eyebrow:    'MEINE ERGEBNISSE SPRECHEN FÜR SICH.',
-    headline:   'LEIDENSCHAFT<br>FÜR LOGISTIK.',
-    subline:    'Logistik leben. Lösungen entwickeln. Prozesse digitalisieren.',
-    text:       'Über 20 Jahre Lagerlogistik. Prozesse optimiert, Teams geführt, digitale Tools selbst entwickelt mit messbaren Ergebnissen.',
+    eyebrow:    '🟢 VERFÜGBAR AB SOFORT',
+    headline:   'LEIDENSCHAFT FÜR LOGISTIK.',
+    subline:    'Effizienz durch IT-Affinität & Führungskompetenz.',
+    text:       'Als erfahrene Führungskraft optimiere ich Ihre Supply Chain. Ich habe manuelle Auswertezeiten in der Lagerlogistik durch selbst initiierte, KI-gestützte Webanwendungen von 30 Minuten auf unter 20 Sekunden verkürzt (98% Zeitersparnis).',
     btn_primary:   'MEHR ERFAHREN',
     btn_secondary: 'KONTAKT AUFNEHMEN',
   },
@@ -32,12 +32,21 @@ const CONTENT = {
     { icon: 'ti-clock',      title: '20+ JAHRE LOGISTIK', text: 'Operative Erfahrung vom Wareneingang bis zur Leitung.'  },
   ],
 
-  // ── ÜBER MICH ─────────────────────────────────────────────
+  // ── ÜBER MICH (Erweiterter, aussagekräftiger Profiltext) ──
   about: {
     eyebrow:  'ÜBER MICH',
     headline: 'ZIELORIENTIERT. VERANTWORTUNGSBEWUSST. UMSETZUNGSSTARK.',
-    expand:   '1973 in Bremen geboren. Hanseat, Kaufmann, Logistiker. Über 30 Jahre Berufserfahrung, davon mehr als 20 in der Logistik. Vom Hochregallager über Wareneingang und Lagerführung bis zur eigenverantwortlichen Bereichsleitung. Ich kenne jeden Handgriff operativ und denke gleichzeitig in Prozessen und Systemen. Wenn ein Ablauf mich stört, analysiere ich ihn. Wenn er sich automatisieren lässt, programmiere ich die Lösung selbst. IHK-zertifizierter Gefahrgutbeauftragter, Kaufmann im Groß- und Außenhandel, 2.979 Unterrichtsstunden Fachinformatiker Anwendungsentwicklung . Drei Qualifikationen, eine Haltung. Mein Anspruch: Dinge die nicht funktionieren, mache ich besser.',
+    philosophy: '1973 in Bremen geboren. Hanseat, gelernter Kaufmann und leidenschaftlicher Logistiker. Mit über 30 Jahren Berufserfahrung, davon mehr als zwei Jahrzehnte in der operativen und strategischen Logistik, kenne ich jeden Handgriff von der Pike auf. Mein Fundament bildet die kaufmännische Ausbildung im Groß- und Außenhandel sowie eine tiefgehende IT-Qualifikation über 2.979 Unterrichtsstunden in der Anwendungsentwicklung. Diese seltene Kombination erlaubt es mir, Logistikketten nicht nur effizient zu leiten, sondern Engpässe sofort durch selbst entwickelte, KI-gestützte Prozesswerkzeuge digital zu automatisieren. Vom Hochregallager bis zur eigenverantwortlichen Bereichsleitung: Ich denke nicht in Problemen, sondern in skalierbaren Systemen.',
+    credo: 'Wenn ein Ablauf mich stört, analysiere ich ihn. Wenn er sich automatisieren lässt, programmiere ich die Lösung selbst. Mein Anspruch: Dinge, die nicht funktionieren, mache ich besser.',
+    // Die 5 Zeilen-Bausteine für die rechte Kachel bleiben unverändert
+    fact_born: 'In Bremen geboren',
+    fact_exp: 'Jahre Erfahrung in Handel & Logistik',
+    fact_cert: 'Zertifizierter Gefahrgutbeauftragter',
+    fact_it: 'Fachinformatiker Anwendungsentwicklung',
+    fact_kfm: 'IHK Abschluss zum Groß- und Außenhandelskaufmann',
   },
+
+
 
   // ── EXPERTISE ─────────────────────────────────────────────
   expertise: {
@@ -150,7 +159,7 @@ const CONTENT = {
 
   // ── FOTO
   photo: {
-    placeholder: 'Profilfoto',
+    placeholder: 'Führungskraft Logistik · Jahrgang 1973',
   },
 
   // ── FORMULAR

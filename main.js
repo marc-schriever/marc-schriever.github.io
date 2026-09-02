@@ -39,8 +39,6 @@ const faqTemplate = (item, i) => `
     </div>
   </div>`;
 
-
-
 const refTemplate = l =>
   `<div class="card card--hover ref-logo">${l.html}</div>`;
 
@@ -54,14 +52,21 @@ function renderNav() {
 }
 
 function renderHero() {
-  setText('.hero-eyebrow',             CONTENT.hero.eyebrow);
-  setHTML('.hero-title',               CONTENT.hero.headline);
-  setText('.hero-sub',                 CONTENT.hero.subline);
-  setText('.hero-text',                CONTENT.hero.text);
-  setText('.photo-placeholder__label', CONTENT.photo.placeholder);
-  const btns = qsa('.hero-btns .btn');
-  btns[0].textContent = CONTENT.hero.btn_primary;
-  btns[1].textContent = CONTENT.hero.btn_secondary;
+  const hEyebrow = el('hero-eyebrow');
+  const hTitle   = el('hero-title');
+  const hSub     = el('hero-sub');
+  const hText    = el('hero-text');
+  const hBtnP    = el('hero-btn-primary');
+  const hBtnS    = el('hero-btn-secondary');
+  const hPhoto   = el('hero-photo-label');
+
+  if (hEyebrow) hEyebrow.textContent = CONTENT.hero.eyebrow;
+  if (hTitle)   hTitle.innerHTML     = CONTENT.hero.headline; 
+  if (hSub)     hSub.textContent     = CONTENT.hero.subline;
+  if (hText)    hText.textContent    = CONTENT.hero.text;
+  if (hBtnP)    hBtnP.textContent    = CONTENT.hero.btn_primary;
+  if (hBtnS)    hBtnS.textContent    = CONTENT.hero.btn_secondary;
+  if (hPhoto)   hPhoto.textContent   = CONTENT.photo.placeholder;
 }
 
 function renderStats() {
@@ -71,8 +76,24 @@ function renderStats() {
 function renderAbout() {
   setText('.section--about .section-eyebrow', CONTENT.about.eyebrow);
   setHTML('.section--about .section-title',   CONTENT.about.headline);
-  setText('#about-expand p',                  CONTENT.about.expand);
+  
+  const fBorn = el('fact-born');
+  const fExp  = el('fact-exp');
+  const fCert = el('fact-cert');
+  const fIt   = el('fact-it');
+  const fKfm  = el('fact-kfm'); // Die neue Zeile referenzieren
+  const tPhil = el('about-text-philosophy');
+  const tCred = el('about-text-credo');
+
+  if (tPhil) tPhil.textContent = CONTENT.about.philosophy;
+  if (tCred) tCred.textContent = CONTENT.about.credo;
+  if (fBorn) fBorn.textContent = CONTENT.about.fact_born;
+  if (fExp)  fExp.textContent  = CONTENT.about.fact_exp;
+  if (fCert) fCert.textContent = CONTENT.about.fact_cert;
+  if (fIt)   fIt.textContent   = CONTENT.about.fact_it;
+  if (fKfm)  fKfm.textContent  = CONTENT.about.fact_kfm; // Die neue Zeile befüllen
 }
+
 
 function renderExpertise() {
   setText('.section--expertise .section-eyebrow', CONTENT.expertise.eyebrow);
@@ -150,8 +171,6 @@ function initFaq() {
     }
   });
 }
-
-
 
 function initHamburger() {
   const btn      = qs('.navbar__hamburger');

@@ -27,12 +27,10 @@
   --gap:         0.75rem;
 }
 
-/* ── RESET ──────────────────────────────────────────────── */
+/* ── RESET & BASE ───────────────────────────────────────── */
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
-
-/* ── BASE ───────────────────────────────────────────────── */
 
 body {
   background: var(--bg);
@@ -44,56 +42,28 @@ body {
 }
 
 /* ==========================================================================
-   STRUKTUR-OBJEKTE — wiederverwendbar, skin-unabhängig
+   STRUKTUR-OBJEKTE (Wiederverwendbar, skin-unabhängig)
    ========================================================================== */
 
-/* ── OBJEKT: WRAPPER ─────────────────────────────────────── */
-
-.wrapper,
-#app {
+.wrapper, #app {
   width: 100%;
   max-width: var(--app-max);
   margin: 0 auto;
   padding: 0 var(--app-pad);
 }
 
-/* ── OBJEKT: GRID ────────────────────────────────────────── */
-
 .grid { display: grid; gap: var(--gap); }
 
-/* ── OBJEKT: SECTION ─────────────────────────────────────── */
-
 .section { position: relative; }
+.section__bg { position: absolute; inset: 0; z-index: 0; background-size: cover; background-position: center; }
+.section__inner { position: relative; z-index: 1; }
 
-.section__bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background-size: cover;
-  background-position: center;
-}
-
-.section__inner {
-  position: relative;
-  z-index: 1;
-}
-
-/* ── OBJEKT: CARD ────────────────────────────────────────── */
-/* Grundstruktur einer Box — wiederverwendbar überall        */
-
+/* ── CARD STRUCT ────────────────────────────────────────── */
 .card {
   background: var(--bg-3);
   border: 1px solid var(--border);
   padding: 1.25rem;
 }
-
-/* Skins für Card */
-.card--orange-top  { border-top: 3px solid var(--orange); }
-.card--hover       { transition: border-color 0.15s, color 0.15s; }
-.card--hover:hover { border-color: var(--orange); }
-
-/* ── OBJEKT: CARD-HEAD ───────────────────────────────────── */
-/* Kopfzeile einer Card mit Icon und Titel                   */
 
 .card-head {
   display: flex;
@@ -103,215 +73,117 @@ body {
   padding-bottom: 0.875rem;
   border-bottom: 1px solid var(--border);
 }
-
 .card-head .ti  { font-size: 1.5rem; color: var(--orange); flex-shrink: 0; }
 .card-head h3   { font-size: 0.75rem; font-weight: 700; letter-spacing: .08em; }
 
-/* ── OBJEKT: LIST ────────────────────────────────────────── */
-/* Bullet-Liste mit orangenem Punkt — wiederverwendbar       */
-
-.list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.list li {
-  font-size: 0.85rem;
-  color: var(--text-2);
-  padding-left: 0.875rem;
-  position: relative;
-}
-
+/* ── LIST STRUCT ────────────────────────────────────────── */
+.list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+.list li { font-size: 0.85rem; color: var(--text-2); padding-left: 0.875rem; position: relative; }
 .list li::before {
-  content: '';
-  position: absolute;
-  left: 0; top: 0.5rem;
-  width: 0.3125rem; height: 0.3125rem;
-  background: var(--orange);
-  border-radius: 50%;
+  content: ''; position: absolute; left: 0; top: 0.5rem;
+  width: 0.3125rem; height: 0.3125rem; background: var(--orange); border-radius: 50%;
 }
 
-/* ── OBJEKT: BTN ─────────────────────────────────────────── */
-
+/* ── UI-ELEMENTS ────────────────────────────────────────── */
 .btn {
-  display: inline-block;
-  text-decoration: none;
-  font-size: 0.82rem;
-  font-weight: 700;
-  letter-spacing: .08em;
-  padding: 0.6875rem 1.25rem;
-  border: none;
-  cursor: pointer;
+  display: inline-block; text-decoration: none; font-size: 0.82rem; font-weight: 700; letter-spacing: .08em;
+  padding: 0.6875rem 1.25rem; border: none; cursor: pointer;
   transition: background 0.15s, color 0.15s, border-color 0.15s;
 }
 
-/* Skins für Btn */
-.btn--primary       { background: var(--orange); color: #fff; }
-.btn--primary:hover { background: var(--orange-dark); }
-.btn--outline       { background: transparent; color: var(--text-1); border: 2px solid var(--border-2); }
-.btn--outline:hover { border-color: var(--orange); color: var(--orange); }
+.section-eyebrow { font-size: 0.85rem; font-weight: 700; letter-spacing: .12em; color: var(--orange); margin-bottom: 0.375rem; }
+.section-title { font-size: 1.3rem; font-weight: 900; letter-spacing: -.02em; line-height: 1.15; margin-bottom: 1.25rem; }
+.section-eyebrow--center, .section-title--center { text-align: center; }
 
-/* ── OBJEKT: SECTION-LABEL ───────────────────────────────── */
-/* Eyebrow + Titel Kombination — wiederverwendbar            */
-
-.section-eyebrow {
-  font-size: 0.85rem;
-  font-weight: 700;
-  letter-spacing: .12em;
-  color: var(--orange);
-  margin-bottom: 0.375rem;
-}
-
-.section-title {
-  font-size: 1.3rem;
-  font-weight: 900;
-  letter-spacing: -.02em;
-  line-height: 1.15;
-  margin-bottom: 1.25rem;
-}
-
-/* Skin: zentriert */
-.section-eyebrow--center,
-.section-title--center { text-align: center; }
-
-/* ── OBJEKT: EXPAND ──────────────────────────────────────── */
-
+/* ── INTERACTION OBJECTS ────────────────────────────────── */
 .expand {
-  margin-top: 1rem;
-  border-left: 3px solid var(--orange);
-  padding-left: 1rem;
-  overflow: hidden;
-  max-height: 0;
-  opacity: 0;
-  transition: max-height 0.4s ease, opacity 0.4s ease;
+  margin-top: 1rem; border-left: 3px solid var(--orange); padding-left: 1rem;
+  overflow: hidden; max-height: 0; opacity: 0; transition: max-height 0.4s ease, opacity 0.4s ease;
 }
-
 .expand.is-open { max-height: 50rem; opacity: 1; }
-.expand p       { color: var(--text-2); font-size: 0.875rem; line-height: 1.85; }
+.expand p { color: var(--text-2); font-size: 0.95rem; line-height: 1.8; text-align: left; }
 
-/* ── OBJEKT: REVEAL ──────────────────────────────────────── */
-
-.reveal         { opacity: 0; transform: translateY(1.25rem); transition: opacity 0.5s ease, transform 0.5s ease; }
-.reveal.is-visible { opacity: 1; transform: none; }
+.reveal { opacity: 0; transform: translateY(1.25rem); transition: opacity 0.5s ease, transform 0.5s ease; }
+.reveal.is-visible { transform: none; opacity: 1; }
 .reveal-delay-1 { transition-delay: 0.10s; }
 .reveal-delay-2 { transition-delay: 0.20s; }
 .reveal-delay-3 { transition-delay: 0.30s; }
 .reveal-delay-4 { transition-delay: 0.40s; }
 
 /* ==========================================================================
-   KOMPONENTEN — kombinieren Struktur-Objekte mit Skins
+   SKINS (Visuelle Ausprägungen)
    ========================================================================== */
 
-/* ── KOMPONENTE: NAVBAR ──────────────────────────────────── */
+.card--orange-top  { border-top: 3px solid var(--orange); }
+.card--hover       { transition: border-color 0.15s, color 0.15s; }
+.card--hover:hover { border-color: var(--orange); }
 
-.navbar {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: var(--bg);
-  border-bottom: 1px solid var(--border);
+.btn--primary       { background: var(--orange); color: #fff; }
+.btn--primary:hover { background: var(--orange-dark); }
+.btn--outline       { background: transparent; color: var(--text-1); border: 2px solid var(--border-2); }
+.btn--outline:hover { border-color: var(--orange); color: var(--orange); }
+
+/* Premium Glassmorphism Skins (2026) */
+.card--glass {
+  background: rgba(26, 26, 26, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.2s;
 }
+.card--glass:hover { border-color: rgba(232, 133, 10, 0.4); }
 
-.navbar__inner {
-  max-width: var(--app-max);
-  margin: 0 auto;
-  padding: 0.75rem var(--app-pad);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: relative;
-  gap: 1rem;
-}
+.card--tilt { transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1); }
+.card--tilt:hover { transform: perspective(1000px) rotateX(1.5deg) rotateY(1.5deg) translateY(-2px); }
 
+/* ==========================================================================
+   KOMPONENTEN
+   ========================================================================== */
+
+/* ── NAVBAR ─────────────────────────────────────────────── */
+.navbar { position: sticky; top: 0; z-index: 100; background: var(--bg); border-bottom: 1px solid var(--border); }
+.navbar__inner { max-width: var(--app-max); margin: 0 auto; padding: 0.75rem var(--app-pad); display: flex; justify-content: space-between; align-items: center; position: relative; gap: 1rem; }
 .navbar__brand  { display: flex; align-items: center; gap: 0.625rem; }
-
-.navbar__logo-icon {
-  width: 2.25rem; height: 2.25rem;
-  background: var(--orange);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.125rem; color: var(--text-1); flex-shrink: 0;
-}
-
+.navbar__logo-icon { width: 2.25rem; height: 2.25rem; background: var(--orange); display: flex; align-items: center; justify-content: center; font-size: 1.125rem; color: var(--text-1); flex-shrink: 0; }
 .navbar__name  { display: block; font-size: 0.8rem; font-weight: 700; letter-spacing: .08em; }
 .navbar__title { display: block; font-size: 0.65rem; letter-spacing: .1em; color: var(--orange); }
-
 .navbar__links { display: none; list-style: none; gap: 1.5rem; }
+.navbar__links a { color: var(--text-2); text-decoration: none; font-size: 0.75rem; font-weight: 600; letter-spacing: .08em; transition: color 0.15s; }
+.navbar__links a:hover, .navbar__links a.is-active { color: var(--orange); }
 
-.navbar__links a {
-  color: var(--text-2); text-decoration: none;
-  font-size: 0.75rem; font-weight: 600; letter-spacing: .08em;
-  transition: color 0.15s;
+/* Responsive Mobile Navigation Overlay */
+.navbar__hamburger { display: flex; flex-direction: column; justify-content: space-between; width: 24px; height: 18px; background: none; border: none; cursor: pointer; padding: 0; margin-left: auto; z-index: 110; }
+.navbar__hamburger span { display: block; width: 100%; height: 2px; background-color: var(--text-1); border-radius: 2px; transition: transform 0.3s ease, opacity 0.3s ease; transform-origin: left center; }
+
+.navbar__dropdown.is-open ~ .navbar__inner .navbar__hamburger span:nth-child(1) { transform: rotate(45deg); }
+.navbar__dropdown.is-open ~ .navbar__inner .navbar__hamburger span:nth-child(2) { opacity: 0; transform: scale(0); }
+.navbar__dropdown.is-open ~ .navbar__inner .navbar__hamburger span:nth-child(3) { transform: rotate(-45deg); }
+
+.navbar__dropdown {
+  position: absolute; top: 100%; left: 0; right: 0; z-index: 100; border-bottom: 1px solid var(--border);
+  max-height: 0; overflow: hidden; background: rgba(17, 17, 17, 0.80); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
-
-.navbar__links a:hover,
-.navbar__links a.is-active { color: var(--orange); }
-
-.navbar__hamburger {
-  display: flex; 
-  flex-direction: column;
-  justify-content: space-between;
-  width: 24px;         /* Breite des Icons */
-  height: 18px;        /* Gesamthöhe des Icons (Abstand der Striche) */
-  background: none; 
-  border: none;
-  cursor: pointer; 
-  padding: 0;
-  margin-left: auto;   /* Schiebt den Button nach ganz rechts */
-  z-index: 110;        /* Sorgt dafür, dass es immer oben liegt */
-}
-
-/* Hier stylen wir die 3 Linien, damit sie endlich sichtbar werden */
-.navbar__hamburger span {
-  display: block;
-  width: 100%;
-  height: 2px;                            /* Dicke der Striche */
-  background-color: var(--text-1, #fff);  /* Weiß (oder Ihre Textfarbe) */
-  border-radius: 2px;
-  transition: transform 0.3s ease, opacity 0.3s ease; /* Macht die X-Animation flüssig */
-  transform-origin: left center;          /* Drehpunkt für die Verwandlung zum X */
-}
-
-/* ── ANIMATION ZUM "X" WENN OFFEN ── */
-
-/* 1. Oberer Strich dreht sich nach unten */
-.navbar__dropdown.is-open ~ .navbar__inner .navbar__hamburger span:nth-child(1) {
-  transform: rotate(45deg);
-}
-
-/* 2. Mittlerer Strich wird unsichtbar */
-.navbar__dropdown.is-open ~ .navbar__inner .navbar__hamburger span:nth-child(2) {
-  opacity: 0;
-  transform: scale(0);
-}
-
-/* 3. Unterer Strich dreht sich nach oben */
-.navbar__dropdown.is-open ~ .navbar__inner .navbar__hamburger span:nth-child(3) {
-  transform: rotate(-45deg);
-}
-
-
-.navbar__dropdown.is-open { max-height: 20rem; }
-
+.navbar__dropdown.is-open { max-height: 25rem; }
 .navbar__dropdown-links { list-style: none; display: flex; flex-direction: column; padding: 0.75rem var(--app-pad); }
-
 .navbar__dropdown-links a {
-  color: var(--text-2); text-decoration: none;
-  font-size: 0.875rem; font-weight: 600; letter-spacing: .08em;
-  padding: 0.75rem 0; border-bottom: 1px solid var(--border);
-  display: block; transition: color 0.15s;
+  color: var(--text-2); text-decoration: none; font-size: 0.875rem; font-weight: 600; letter-spacing: .08em;
+  padding: 0.75rem 0; border-bottom: 1px solid var(--border); display: block; opacity: 0; transform: translateY(15px);
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
-
+.navbar__dropdown.is-open .navbar__dropdown-links a { opacity: 1; transform: translateY(0); }
+.navbar__dropdown.is-open .navbar__dropdown-links a:nth-child(1) { transition-delay: 0.05s; }
+.navbar__dropdown.is-open .navbar__dropdown-links a:nth-child(2) { transition-delay: 0.12s; }
+.navbar__dropdown.is-open .navbar__dropdown-links a:nth-child(3) { transition-delay: 0.19s; }
+.navbar__dropdown.is-open .navbar__dropdown-links a:nth-child(4) { transition-delay: 0.26s; }
+.navbar__dropdown.is-open .navbar__dropdown-links a:nth-child(5) { transition-delay: 0.33s; }
+.navbar__dropdown.is-open .navbar__dropdown-links a:nth-child(6) { transition-delay: 0.40s; }
 .navbar__dropdown-links li:last-child a { border-bottom: none; }
 .navbar__dropdown-links a:hover { color: var(--orange); }
 
-/* ── KOMPONENTE: SECTION--HERO ───────────────────────────── */
-
-.section--hero { padding: 2rem 0 1.5rem; overflow: hidden; }
-
+/* ── HERO ───────────────────────────────────────────────── */
+.section--hero { padding: 3rem 0; background: radial-gradient(circle at top right, var(--orange-tint), transparent 60%); }
 .section__bg--hero  { background-image: url('assets/background.jpg'); opacity: 0.25; }
-
 .grid--hero { grid-template-columns: 1fr; gap: 1.5rem; }
 
 .hero-eyebrow { font-size: 0.7rem; font-weight: 600; letter-spacing: .12em; color: var(--orange); margin-bottom: 0.625rem; }
@@ -321,176 +193,73 @@ body {
 .hero-btns    { display: flex; flex-wrap: wrap; gap: 0.625rem; }
 
 .hero-photo { aspect-ratio: 4/3; }
-
-.hero-photo img,
-.hero-photo .photo-placeholder { width: 100%; height: 100%; display: block; object-fit: cover; }
-
+.hero-photo img, .hero-photo .photo-placeholder { width: 100%; height: 100%; display: block; object-fit: cover; }
 .photo-placeholder {
   background: var(--bg-3); border: 2px dashed var(--border-2);
-  display: flex; flex-direction: column; align-items: center;
-  justify-content: center; gap: 0.75rem;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.75rem;
   color: var(--text-3); font-size: 0.8rem; letter-spacing: .06em;
 }
-
 .photo-placeholder .ti { font-size: 2.5rem; color: var(--text-3); }
 
-/* ── KOMPONENTE: SECTION--STATS ──────────────────────────── */
+/* ── STATS ──────────────────────────────────────────────── */
+.section--stats { background: var(--bg-2); border-top: 3px solid var(--orange); border-bottom: 1px solid var(--border); }
+.grid--stats { display: grid; grid-template-columns: 1fr; }
+.stat-item { padding: 2rem 1rem; text-align: center; border-bottom: 1px solid var(--border); }
+.stat-item:last-child { border-bottom: none; }
+.stat-item .ti  { font-size: 2rem; color: var(--orange); display: inline-block; margin-bottom: 0.75rem; }
+.stat-title { font-size: 0.75rem; font-weight: 900; letter-spacing: .12em; color: var(--orange); text-transform: uppercase; margin-bottom: 0.5rem; }
+.stat-text  { font-size: 0.85rem; color: var(--text-2); line-height: 1.5; max-width: 280px; margin: 0 auto; }
 
-.section--stats { 
-  background: var(--bg-2); 
-  border-top: 3px solid var(--orange); 
-  border-bottom: 1px solid var(--border); 
-}
-
-.grid--stats { 
-  display: grid;
-  grid-template-columns: 1fr; /* Mobil: Standardmäßig untereinander */
-}
-
-/* Die Boxen selbst komplett zentrieren */
-.stat-item { 
-  padding: 2rem 1rem; 
-  text-align: center; 
-  border-bottom: 1px solid var(--border); 
-}
-
-.stat-item:last-child { 
-  border-bottom: none; 
-}
-
-/* Das Icon sitzt sauber in der Mitte */
-.stat-item .ti  { 
-  font-size: 2rem; /* Etwas größer für mehr Präsenz wie im Bild */
-  color: var(--orange); 
-  display: inline-block; /* Verhält sich wie Text und folgt dem text-align: center */
-  margin-bottom: 0.75rem;
-}
-
-  /* Titel: Kräftig, klein und zentriert */
-.stat-title     { 
-  font-size: 0.75rem; 
-  font-weight: 900; 
-  letter-spacing: .12em; 
-  color: var(--orange); 
-  text-transform: uppercase; /* Lässt es wie in Variante 1 & 3 knackig wirken */
-  margin-bottom: 0.5rem;
-  text-align: center;
-}
-  /* Beschreibungstext: Zentriert mit angenehmer Breite */
-.stat-text      { 
-    font-size: 0.85rem; 
-    color: var(--text-2); 
-    line-height: 1.5; 
-    text-align: center;
-    max-width: 280px;
-    margin: 0 auto;
-  }
-
-/* ── KOMPONENTE: SECTION--ABOUT ──────────────────────────── */
-
+/* ── ABOUT ──────────────────────────────────────────────── */
 .section--about { padding: 2rem 0; }
-
 .section__bg--about { background-image: url('assets/background2.jpg'); opacity: 0.08; }
-
 .grid--about { grid-template-columns: 1fr; gap: 1.5rem; }
 
-.about-img { background: url('assets/background2.jpg') center / cover no-repeat; width: 100%; min-height: 13.75rem; }
+.about-fact-box { background: var(--bg-2); border: 1px solid var(--border); border-left: 3px solid var(--orange); padding: 1.75rem; }
+.about-fact-box .section-eyebrow { margin-bottom: 1.25rem; font-size: 0.75rem; }
 
-/* ── KOMPONENTE: SECTION--EXPERTISE ─────────────────────── */
+.fact-row { display: flex; align-items: center; gap: 1rem; padding: 0.75rem 0; border-bottom: 1px solid var(--border); font-size: 0.85rem; color: var(--text-2); }
+.fact-row:last-child { border-bottom: none; }
+.fact-row strong { color: var(--orange); font-size: 1.15rem; font-weight: 900; width: 4.5rem; flex-shrink: 0; letter-spacing: -0.02em; }
 
+/* ── EXPERTISE & FAQ & REFERENZEN ───────────────────────── */
 .section--expertise { padding: 2rem 0; background: var(--bg-2); }
-
 .grid--expertise { grid-template-columns: 1fr; margin-top: 0.5rem; }
 
-/* Expertise-Block = card + card--orange-top + card-head + list */
-
-/* ── KOMPONENTE: SECTION--FAQ ────────────────────────────── */
-
 .section--faq { padding: 2rem 0; background: var(--bg-2); }
-
 .faq-list { display: flex; flex-direction: column; gap: var(--gap); margin-top: 0.5rem; }
-
-/* faq-item = card + card--orange-top */
 .faq-q {
-  width: 100%; background: var(--bg-3); border: none;
-  padding: 1rem var(--app-pad);
+  width: 100%; background: var(--bg-3); border: none; padding: 1rem var(--app-pad);
   display: flex; justify-content: space-between; align-items: center; gap: 0.75rem;
-  cursor: pointer; text-align: left; color: var(--text-1);
-  font-size: 0.875rem; font-weight: 600; transition: background 0.15s;
+  cursor: pointer; text-align: left; color: var(--text-1); font-size: 0.875rem; font-weight: 600; transition: background 0.15s;
 }
-
 .faq-q:hover { background: var(--bg-4); }
 .faq-q .ti   { font-size: 1rem; color: var(--orange); flex-shrink: 0; transition: transform 0.3s ease; }
 .faq-q[aria-expanded="true"] .ti { transform: rotate(180deg); }
 
-/* ── FAQ-ANTWORTBOX IM STANDARDZUSTAND (GESCHLOSSEN) ── */
-.faq-a { 
-  display: block !important; /* Verhindert, dass JS das Element blockiert */
-  max-height: 0;             /* Startet bei Höhe Null */
-  overflow: hidden;          /* Versteckt den heraushängenden Text */
-  opacity: 0;                /* Startet unsichtbar */
-  
-  /* Der wichtigste Teil: Zwingt den Browser zur butterweichen Animation */
-  transition: max-height 0.6s cubic-bezier(0.25, 1, 0.5, 1), 
-              opacity 0.4s ease-out; 
-}
-
-/* ── ZUSTAND WENN GEÖFFNET ── */
-.faq-a.is-open { 
-  max-height: 30rem;         /* Fährt bis zu dieser Maximalhöhe sanft aus */
-  opacity: 1;                /* Blendet sich weich ein */
-}
-
-/* Der Fließtext in der Antwortbox bekommt eine feine Border */
-.faq-a p { 
-  padding: 0.875rem var(--app-pad) 1.125rem; 
-  color: var(--text-2); 
-  font-size: 0.85rem; 
-  line-height: 1.8; 
-  border-top: 1px solid var(--border); 
-}
-
-/* ── KOMPONENTE: SECTION--REFERENZEN ────────────────────── */
+.faq-a { display: block !important; max-height: 0; overflow: hidden; opacity: 0; transition: max-height 0.6s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.4s ease-out; }
+.faq-a.is-open { max-height: 30rem; opacity: 1; }
+.faq-a p { padding: 0.875rem var(--app-pad) 1.125rem; color: var(--text-2); font-size: 0.85rem; line-height: 1.8; border-top: 1px solid var(--border); }
 
 .section--referenzen { padding: 2rem 0; }
-
 .grid--referenzen { grid-template-columns: 1fr; margin-top: 0.5rem; }
-
-/* ref-logo = card + card--hover */
 .ref-logo { text-align: center; font-size: 1rem; font-weight: 400; letter-spacing: .06em; color: var(--text-1); line-height: 1.6; }
 
-/* ── KOMPONENTE: SECTION--KONTAKT ────────────────────────── */
-
+/* ── KONTAKT & FOOTER ───────────────────────────────────── */
 .section--kontakt { padding: 2rem 0; }
-
 .kontakt-text { text-align: center; color: var(--text-2); font-size: 0.9rem; margin-bottom: 1.5rem; line-height: 1.7; }
-
 .kontakt-form { width: 100%; display: flex; flex-direction: column; gap: 1rem; }
-
 .form-group { display: flex; flex-direction: column; gap: 0.375rem; }
-
 .form-group label { font-size: 0.75rem; font-weight: 600; letter-spacing: .08em; color: var(--text-2); text-transform: uppercase; }
-
-.form-group input,
-.form-group textarea {
-  background: var(--bg-3); border: 1px solid var(--border);
-  color: var(--text-1); font-family: inherit; font-size: 0.9rem;
-  padding: 0.75rem 0.875rem; outline: none;
-  transition: border-color 0.15s; resize: vertical; width: 100%;
+.form-group input, .form-group textarea {
+  background: var(--bg-3); border: 1px solid var(--border); color: var(--text-1); font-family: inherit; font-size: 0.9rem;
+  padding: 0.75rem 0.875rem; outline: none; transition: border-color 0.15s; resize: vertical; width: 100%;
 }
-
-.form-group input:focus,
-.form-group textarea:focus { border-color: var(--orange); }
-
-.form-group input::placeholder,
-.form-group textarea::placeholder { color: var(--text-3); }
-
+.form-group input:focus, .form-group textarea:focus { border-color: var(--orange); }
+.form-group input::placeholder, .form-group textarea::placeholder { color: var(--text-3); }
 .kontakt-form .btn { align-self: flex-start; margin-top: 0.25rem; }
 
-/* ── KOMPONENTE: SECTION--FOOTER ─────────────────────────── */
-
 .section--footer { background: var(--bg-2); border-top: 3px solid var(--orange); padding: 1.25rem 0; }
-
 .footer-inner   { display: flex; flex-direction: column; gap: 0.5rem; align-items: center; text-align: center; }
 .footer-copy    { font-size: 0.75rem; color: var(--text-3); letter-spacing: .04em; }
 .footer-contact { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
@@ -500,8 +269,6 @@ body {
 .footer-legal a { color: var(--text-3); text-decoration: none; font-size: 0.75rem; transition: color 0.15s; }
 .footer-legal a:hover { color: var(--orange); }
 
-/* ── KOMPONENTE: LEGAL PAGES ─────────────────────────────── */
-
 .section--legal { padding: 2.5rem 0; }
 .section--legal h1 { font-size: 1.5rem; font-weight: 900; color: var(--text-1); margin-bottom: 1.5rem; letter-spacing: -.02em; }
 .section--legal h2 { font-size: 0.9rem; font-weight: 700; color: var(--orange); letter-spacing: .06em; text-transform: uppercase; margin: 1.5rem 0 0.5rem; }
@@ -509,325 +276,166 @@ body {
 .section--legal a  { color: var(--orange); text-decoration: none; }
 .section--legal a:hover { text-decoration: underline; }
 
+/* ── OVERLAY SYSTEM ─────────────────────────────────────── */
+.dokumente-overlay {
+  position: fixed; inset: 0; background: rgba(0, 0, 0, 0.75); z-index: 300;
+  display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.2s ease;
+}
+.dokumente-overlay.is-open { opacity: 1; pointer-events: all; }
+.dokumente-overlay__box { background: var(--bg-2); border: 1px solid var(--border); border-top: 3px solid var(--orange); padding: 2rem; width: 90%; max-width: 22rem; display: flex; flex-direction: column; gap: 1rem; position: relative; }
+.dokumente-overlay__close { position: absolute; top: 0.75rem; right: 0.75rem; background: none; border: none; color: var(--text-3); font-size: 1.25rem; cursor: pointer; transition: color 0.15s; }
+.dokumente-overlay__close:hover { color: var(--text-1); }
+.dokumente-overlay__title { font-size: 0.875rem; font-weight: 600; letter-spacing: .06em; color: var(--text-1); }
+.dokumente-overlay__input { background: var(--bg-3); border: 1px solid var(--border); color: var(--text-1); font-family: inherit; font-size: 1rem; padding: 0.75rem; outline: none; width: 100%; transition: border-color 0.15s; letter-spacing: .1em; }
+.dokumente-overlay__input:focus { border-color: var(--orange); }
+.dokumente-overlay__error { font-size: 0.8rem; color: #ef4444; min-height: 1rem; }
 
 /* ==========================================================================
-   ANPASSUNG FÜR DIE RESPONSIVE-BREAKPOINTS 
+   RESPONSIVE BREAKPOINTS (Konsolidierte, kontrollierte Kaskade)
    ========================================================================== */
-
 
 @media (min-width: 640px) {
   :root { --app-pad: 1.5rem; --gap: 1rem; }
 
-  .section--hero        { padding: 3rem 0 2.25rem; }
-  .section--about,
-  .section--expertise,
-  .section--referenzen,
-  .section--faq,
-  .section--kontakt     { padding: 3rem 0; }
+  .section--hero { padding: 3rem 0 2.25rem; }
+  .section--about, .section--expertise, .section--referenzen, .section--faq, .section--kontakt { padding: 3rem 0; }
 
-  .hero-title           { font-size: 2.8rem; }
-  .section-eyebrow      { font-size: 1rem; }
-  .section-title        { font-size: 1.6rem; }
+  .hero-title { font-size: 2.8rem; }
+  .section-eyebrow { font-size: 1rem; }
+  .section-title { font-size: 1.6rem; }
 
-  .grid--stats          { grid-template-columns: repeat(2, 1fr); }
-  
-  /* Setzt saubere Rahmen für das 2er-Raster auf Tablets */
-  .stat-item { 
-    border-right: 1px solid var(--border); 
-    border-bottom: 1px solid var(--border); 
-  }
+  .grid--stats { grid-template-columns: repeat(2, 1fr); }
+  .stat-item { border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); }
   .stat-item:nth-child(2n) { border-right: none; }
-  .stat-item:nth-child(3),
-  .stat-item:nth-child(4)  { border-bottom: none; }
+  .stat-item:nth-child(3), .stat-item:nth-child(4) { border-bottom: none; }
 
-
-  .grid--expertise      { grid-template-columns: repeat(2, 1fr); }
-  .grid--referenzen     { grid-template-columns: repeat(2, 1fr); }
-  .about-img            { min-height: 18.75rem; }
-  .kontakt-form         { max-width: 35rem; margin: 0 auto; }
+  .grid--expertise { grid-template-columns: repeat(2, 1fr); }
+  .grid--referenzen { grid-template-columns: repeat(2, 1fr); }
+  .kontakt-form { max-width: 35rem; margin: 0 auto; }
 }
 
 @media (min-width: 900px) {
   :root { --app-pad: 2rem; --gap: 1.5rem; }
 
-  .navbar__links     { display: flex; }
+  .navbar__links { display: flex; }
   .navbar__hamburger { display: none; }
 
-  .section--hero        { padding: 5rem 0; }
-  .section--about,
-  .section--expertise,
-  .section--referenzen,
-  .section--faq,
-  .section--kontakt     { padding: 3.75rem 0; }
-
-  .hero-title           { font-size: 4.2rem; }
-  .hero-text            { font-size: 0.975rem; }
-  .section-title        { font-size: 2rem; }
-
-  .grid--hero           { grid-template-columns: 1fr 20rem; gap: 0; align-items: stretch; }
-  .hero-photo           { aspect-ratio: unset; }
-
-  .grid--about          { grid-template-columns: 21.25rem 1fr; gap: 3.75rem; }
-  .about-img            { min-height: 25rem; }
-
-  .grid--stats          { grid-template-columns: repeat(4, 1fr); }
-  
-  /* Aktiviert die 3 schwach sichtbaren vertikalen Linien zwischen den Boxen */
-  .stat-item { 
-    border-bottom: none !important; /* Löscht die mobile Querlinie */
-    border-right: 1px solid var(--border) !important; /* Erzwingt die Längslinie */
-    padding: 2.5rem 1.5rem;
-  }
-  
-  /* Entfernt die Linie ganz rechts außen am Bildschirmrand */
-  .stat-item:last-child { 
-    border-right: none !important; 
-  }
-  
-  .stat-item .ti        { font-size: 2rem; }
-  .stat-title           { font-size: 0.78rem; }
-
-
-  .grid--expertise      { grid-template-columns: repeat(4, 1fr); }
-  .grid--referenzen     { grid-template-columns: repeat(4, 1fr); }
-
-  .footer-inner         { flex-direction: row; justify-content: space-between; text-align: left; }
-  .footer-contact,
-  .footer-legal         { justify-content: flex-end; }
-}
-
-/* ── KOMPONENTE: DOKUMENTE OVERLAY ───────────────────────── */
-
-.dokumente-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.75);
-  z-index: 300;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.2s ease;
-}
-
-.dokumente-overlay.is-open {
-  opacity: 1;
-  pointer-events: all;
-}
-
-.dokumente-overlay__box {
-  background: var(--bg-2);
-  border: 1px solid var(--border);
-  border-top: 3px solid var(--orange);
-  padding: 2rem;
-  width: 90%;
-  max-width: 22rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  position: relative;
-}
-
-.dokumente-overlay__close {
-  position: absolute;
-  top: 0.75rem;
-  right: 0.75rem;
-  background: none;
-  border: none;
-  color: var(--text-3);
-  font-size: 1.25rem;
-  cursor: pointer;
-  transition: color 0.15s;
-}
-
-.dokumente-overlay__close:hover { color: var(--text-1); }
-
-.dokumente-overlay__title {
-  font-size: 0.875rem;
-  font-weight: 600;
-  letter-spacing: .06em;
-  color: var(--text-1);
-}
-
-.dokumente-overlay__input {
-  background: var(--bg-3);
-  border: 1px solid var(--border);
-  color: var(--text-1);
-  font-family: inherit;
-  font-size: 1rem;
-  padding: 0.75rem;
-  outline: none;
-  width: 100%;
-  transition: border-color 0.15s;
-  letter-spacing: .1em;
-}
-
-.dokumente-overlay__input:focus { border-color: var(--orange); }
-
-.dokumente-overlay__error {
-  font-size: 0.8rem;
-  color: #ef4444;
-  min-height: 1rem;
-}
-
-/* ==========================================================================
-   PREMIUM-EFFEKTE FÜR DIE NAVBAR (KOMBINIERT)
-   ========================================================================== */
-
-/* ── EFFEKT 2: MILCHGLAS-EFFEKT (BACKDROP BLUR) FÜR DAS DROPDOWN ── */
-/* ==========================================================================
-   DIE REPARATUR FÜR MILCHGLAS & LINK-WELLENEFFEKT
-   ========================================================================== */
-
-/* KORREKTUR EFFEKT 2: Milchglas radikal erzwingen */
-/* KORREKTUR EFFEKT 2: Milchglas + Auf-/Zu-Zustand sauber definieren */
-.navbar__dropdown {
-  position: absolute;
-  top: 100%; left: 0; right: 0;
-  z-index: 100;
-  border-bottom: 1px solid var(--border);
-  
-  /* HIER SIND DIE WICHTIGEN STARTWERTE (Zustand: ZU) */
-  max-height: 0;
-  overflow: hidden;
-
-  /* Überschreibt hart jede andere Hintergrundfarbe mit 80% Transparenz */
-  background: rgba(17, 17, 17, 0.80) !important; 
-  /* Aktiviert den Weichzeichner für den Inhalt DARUNTER */
-  backdrop-filter: blur(16px) !important;
-  -webkit-backdrop-filter: blur(16px) !important;
-  
-  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Zustand wenn geöffnet: Fährt flüssig aus */
-.navbar__dropdown.is-open { 
-  max-height: 25rem; 
-}
-
-
-/* KORREKTUR EFFEKT 1: Wellen-Effekt direkt auf die Links (a) statt auf (li) anwenden */
-.navbar__dropdown-links a {
-  opacity: 0;
-  transform: translateY(15px);
-  /* Übergang für das sanfte Reinfliegen */
-  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Sobald das Menü geöffnet wird, fliegen die Links an ihre Position */
-.navbar__dropdown.is-open .navbar__dropdown-links a {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Zeitliche Verzögerung direkt für die Links, wenn das Menü öffnet */
-.navbar__dropdown.is-open .navbar__dropdown-links a:nth-child(1) { transition-delay: 0.05s; }
-.navbar__dropdown.is-open .navbar__dropdown-links a:nth-child(2) { transition-delay: 0.12s; }
-.navbar__dropdown.is-open .navbar__dropdown-links a:nth-child(3) { transition-delay: 0.19s; }
-.navbar__dropdown.is-open .navbar__dropdown-links a:nth-child(4) { transition-delay: 0.26s; }
-.navbar__dropdown.is-open .navbar__dropdown-links a:nth-child(5) { transition-delay: 0.33s; }
-.navbar__dropdown.is-open .navbar__dropdown-links a:nth-child(6) { transition-delay: 0.40s; }
-
-
-/* ── EFFEKT 3: WACHSENDER UNTERSTRICH (SLIDE UNDERLINE) FÜR DESKTOP ── */
-@media (min-width: 900px) {
-  .navbar__links a {
-    position: relative;
-    padding-bottom: 6px; /* Kleiner Puffer für die Linie */
-  }
-
-  /* Wir erschaffen eine unsichtbare, virtuelle Linie unter dem Link */
+  /* Desktop Link Hover Underline Slide */
+  .navbar__links a { position: relative; padding-bottom: 6px; }
   .navbar__links a::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: var(--orange);
-    /* Start: Auf Breite 0 zusammengestaucht */
-    transform: scaleX(0);
-    /* Die Linie fährt von links nach rechts aus */
-    transform-origin: left center;
+    content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 2px;
+    background-color: var(--orange); transform: scaleX(0); transform-origin: left center;
     transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   }
+  .navbar__links a:hover::after, .navbar__links a.is-active::after { transform: scaleX(1); }
 
-  /* Beim Drüberfahren (Hover) oder wenn der Link aktiv ist, fährt die Linie auf 100% Breite aus */
-  .navbar__links a:hover::after,
-  .navbar__links a.is-active::after {
-    transform: scaleX(1);
-  }
+  .section--hero { padding: 5rem 0; }
+  .section--about, .section--expertise, .section--referenzen, .section--faq, .section--kontakt { padding: 3.75rem 0; }
+
+  .hero-title { font-size: 4.2rem; }
+  .hero-text { font-size: 0.975rem; }
+  .section-title { font-size: 2rem; }
+
+  /* Integriertes, asymmetrisches Bento-Grid für Hero & About ohne !important-Ketten */
+  .grid--hero { grid-template-columns: 1.3fr 1fr; align-items: stretch; }
+  .hero-content { margin-bottom: 0; display: flex; flex-direction: column; justify-content: center; }
+  .hero-photo { height: 100%; aspect-ratio: unset; }
+
+  .grid--about { grid-template-columns: 22rem 1fr; gap: 3.5rem; align-items: flex-start; }
+
+  /* Stat-Grid Zeilenbegrenzung */
+  .grid--stats { grid-template-columns: repeat(4, 1fr); }
+  .stat-item { border-bottom: none; border-right: 1px solid var(--border); padding: 2.5rem 1.5rem; }
+  .stat-item:last-child { border-right: none; }
+  .stat-title { font-size: 0.78rem; }
+
+  .grid--expertise { grid-template-columns: repeat(4, 1fr); }
+  .grid--referenzen { grid-template-columns: repeat(4, 1fr); }
+
+  .footer-inner { flex-direction: row; justify-content: space-between; text-align: left; }
+  .footer-contact, .footer-legal { justify-content: flex-end; }
 }
 /* ==========================================================================
-   DESIGN-UPDATE FÜR DIE ABOUT-SEKTION
+   ABOUT BENTO LAYOUT (2026 RECONSTRUCTION)
    ========================================================================== */
 
-/* Mobil-First: Standardmäßig stehen die Blöcke untereinander */
-.grid--about {
+.grid--about-bento {
+  display: grid;
   grid-template-columns: 1fr;
-  gap: 2.5rem;
+  gap: var(--gap);
 }
 
-/* Die linke Box mit den Meilensteinen */
-.about-fact-box {
-  background: var(--bg-2);
-  border: 1px solid var(--border);
-  border-left: 3px solid var(--orange);
-  padding: 1.75rem;
+/* HIER NEU EINSETZEN: Mobil-Reihenfolge steuern */
+.bento-tile--facts {
+  order: 1; /* Kommt auf dem Smartphone an 1. Stelle ganz oben */
 }
 
-.about-fact-box .section-eyebrow {
-  margin-bottom: 1.25rem;
-  font-size: 0.75rem;
+.bento-tile--main {
+  order: 2; /* Kommt an 2. Stelle darunter */
 }
 
-/* Einzelne Zeile der Highlights */
+.bento-tile--credo {
+  order: 3; /* Bleibt ganz unten */
+}
+
+.text-magazine {
+  color: var(--text-2);
+  font-size: 0.95rem;
+  line-height: 1.8;
+  text-align: left !important;
+}
+
+.text-highlight-box {
+  color: var(--text-1);
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+.about-fact-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-top: 0.5rem;
+}
+
 .fact-row {
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding: 0.75rem 0;
+  padding-bottom: 0.5rem;
   border-bottom: 1px solid var(--border);
   font-size: 0.85rem;
   color: var(--text-2);
 }
+.fact-row:last-child { border-bottom: none; }
 
-.fact-row:last-child {
-  border-bottom: none;
-}
-
-/* Die Zahl/das Kürzel links fett hervorheben */
 .fact-row strong {
   color: var(--orange);
   font-size: 1.15rem;
   font-weight: 900;
-  width: 4.5rem; /* Gibt den Zahlen eine feste Spaltenbreite */
+  width: 5.5rem; 
   flex-shrink: 0;
   letter-spacing: -0.02em;
 }
 
-/* ==========================================================================
-   RESPONSIVE UPDATE FÜR DIE ABOUT-SEKTION (Große Bildschirme)
-   ========================================================================== */
 @media (min-width: 900px) {
-  .grid--about {
-    /* Desktop: Linke Box nimmt 22rem ein, der Text den restlichen Platz */
-    grid-template-columns: 22rem 1fr; 
-    gap: 3.5rem;
-    align-items: flex-start;
+  .grid--about-bento {
+    grid-template-columns: 1.4fr 1fr !important;
+    align-items: stretch !important;
+  }
+  
+  /* HIER NEU EINSETZEN: Mobil-Reihenfolge auf großen Bildschirmen deaktivieren */
+  .bento-tile--main { 
+    grid-column: span 1; 
+    order: unset; 
+  }
+  .bento-tile--facts { 
+    grid-column: span 1; 
+    order: unset; 
+  }
+  .bento-tile--credo { 
+    grid-column: span 2; 
+    order: unset; 
   }
 }
-/* ==========================================================================
-   PREMIUM-UPDATE FÜR DIE ABOUT-SEKTION (MAGAZIN-STIL)
-   ========================================================================== */
-
-/* Betrifft den Textblock innerhalb Ihres Expand-Containers */
-#about-expand p {
-  color: var(--text-2);
-  font-size: 0.9rem;
-  line-height: 1.85;
-  text-align: justify;          /* Blocksatz für saubere Kanten wie im Magazin */
-  text-justify: inter-word;
-}
-
