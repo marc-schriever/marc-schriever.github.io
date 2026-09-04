@@ -109,7 +109,7 @@
   </div>
   <div class="about-fact-rows">
     <div class="fact-row"><strong>1973</strong><span id="fact-born"></span></div>
-    <div class="fact-row"><strong>30 J.</strong><span id="fact-exp"></span></div>
+    <div class="fact-row"><strong>30 </strong><span id="fact-exp"></span></div>
     <div class="fact-row"><strong>IHK</strong><span id="fact-cert"></span></div>
     <div class="fact-row"><strong>2.979h</strong><span id="fact-it"></span></div>
     <div class="fact-row"><strong>1994</strong><span id="fact-kfm"></span></div>
@@ -201,16 +201,46 @@
     </div>
   </footer>
 
-  <div class="dokumente-overlay" id="dokumente-overlay" aria-hidden="true">
-    <div class="dokumente-overlay__box">
-      <button class="dokumente-overlay__close" aria-label="Schließen"><i class="ti ti-x"></i></button>
-      <p class="dokumente-overlay__title dokumente-title"></p>
-      <input type="password" class="dokumente-overlay__input" id="dokumente-pw" placeholder="••••••••">
-      <button class="btn btn--primary dokumente-overlay__submit"></button>
-      <p class="dokumente-overlay__error" id="dokumente-error"></p>
+<!-- DOKUMENTE MODAL / OVERLAY -->
+<div class="dokumente-overlay">
+  <div class="dokumente-overlay__box">
+    <button class="dokumente-overlay__close" id="dokumente-close">&times;</button>
+
+      <!-- BEREICH 1: TOKEN EINGABE -->
+<div id="token-step">
+      <h3 class="dokumente-overlay__title">Dokumente freischalten</h3>
+      <input type="text" class="dokumente-overlay__input" id="dokumente-token" placeholder="Token eingeben">
+      <button class="btn btn--primary" id="dokumente-submit" style="margin-top: 1rem; width: 100%;">Freischalten</button>
+      <div class="dokumente-overlay__error" id="dokumente-error"></div>
+    </div>
+
+      <!-- BEREICH 2: DOKUMENTE ANZEIGEN (Standardmäßig versteckt) -->
+<div id="document-step" style="display: none;">
+      <h3 class="dokumente-overlay__title">Erfolg!</h3>
+      <p style="color: var(--text-2); font-size: 0.85rem; margin-bottom: 1rem;">Ihr Dokument steht bereit.</p>
+      <a id="download-btn" href="#" target="_blank" class="btn btn--primary" style="display: block; text-align: center;">PDF herunterladen</a>
     </div>
   </div>
+</div>
 
+<!-- Im <head> der Hauptseite einbinden -->
+<script src="https://unpkg.com/html5-qrcode"></script>
+
+<!-- Im HTML-Formular neben dem Eingabefeld -->
+<div style="display: flex; gap: 8px;">
+  <input type="text" id="token-input" placeholder="Token eingeben...">
+  <button type="button" id="scan-btn" class="btn">📷 Scan</button>
+</div>
+
+<!-- Modal / Container für die Kamera (Standardmäßig versteckt) -->
+<div id="scanner-modal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 1000; padding: 20px; align-items: center; justify-content: center; flex-direction: column;">
+  <div id="reader" style="width: 100%; max-width: 400px; background: #fff; border-radius: 8px; overflow: hidden;"></div>
+  <button type="button" id="close-scanner" class="btn" style="margin-top: 15px; background: #ef4444;">Abbrechen</button>
+</div>
+
+<!-- Supabase SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  
   <script src="content.js" defer></script>
   <script src="main.js" defer></script>
 </body>

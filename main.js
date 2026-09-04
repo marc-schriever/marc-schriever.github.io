@@ -81,7 +81,7 @@ function renderAbout() {
   const fExp  = el('fact-exp');
   const fCert = el('fact-cert');
   const fIt   = el('fact-it');
-  const fKfm  = el('fact-kfm'); // Die neue Zeile referenzieren
+  const fKfm  = el('fact-kfm');
   const tPhil = el('about-text-philosophy');
   const tCred = el('about-text-credo');
 
@@ -91,9 +91,8 @@ function renderAbout() {
   if (fExp)  fExp.textContent  = CONTENT.about.fact_exp;
   if (fCert) fCert.textContent = CONTENT.about.fact_cert;
   if (fIt)   fIt.textContent   = CONTENT.about.fact_it;
-  if (fKfm)  fKfm.textContent  = CONTENT.about.fact_kfm; // Die neue Zeile befüllen
+  if (fKfm)  fKfm.textContent  = CONTENT.about.fact_kfm;
 }
-
 
 function renderExpertise() {
   setText('.section--expertise .section-eyebrow', CONTENT.expertise.eyebrow);
@@ -192,39 +191,189 @@ function initHamburger() {
   );
 }
 
-// ── BOOT ─────────────────────────────────────────────────────
+// ── SUPABASE & DOKUMENTE MODAL LOGIK ──────────────────────────
+
+const SUPABASE_URL = 'https://hepceceszvkblanffoju.supabase.co';
+// HIER DEINEN VOLLSTÄNDIGEN PUBLISHABLE KEY EINFÜGEN:
+const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_FaQ7I0SgAHgj_E7aDGNx0Q_B7Ldw-WJ'; 
+
+let supabaseClient = null;
 
 function initDokumente() {
-  const triggers = [qs('#nav-dokumente'), qs('.dropdown-dokumente')].filter(Boolean);
-  const overlay   = el('dokumente-overlay');
-  const input     = qs('.dokumente-overlay__input');
-  const submitBtn = qs('.dokumente-overlay__submit');
-  const closeBtn  = qs('.dokumente-overlay__close');
-  const errorMsg  = el('dokumente-error');
-  if (!overlay) return;
-  setText('.dokumente-title', CONTENT.dokumente.title);
-  setText('.dokumente-overlay__submit', CONTENT.dokumente.submit);
+  if (typeof supabase !== 'undefined') {
+    supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+  } else {
+    console.error('Supabase SDK wurde nicht geladen.');
+    return;
+  }
 
-  const open  = () => { overlay.classList.add('is-open'); overlay.setAttribute('aria-hidden', 'false'); input.value = ''; errorMsg.textContent = ''; setTimeout(() => input.focus(), 100); };
-  const close = () => { overlay.classList.remove('is-open'); overlay.setAttribute('aria-hidden', 'true'); };
+  // Greift auf die Klasse aus deiner style.css zu
+  const overlay = qs('.dokumente-overlay'); 
+  const closeBtn = el('dokumente-close') || qs('.dokumente-overlay__close');
+  const submitBtn = el('dokumente-submit');
+  const tokenInput = el('dokumente-token') || qs('.dokumente-overlay__input');
+  const errorMsg = el('dokumente-error') || qs('.dokumente-overlay__error');
+  const tokenStep = el('token-step');
+  const documentStep = el('document-step');
+  const downloadBtn = el('download-btn');
 
-  triggers.forEach(t => t.addEventListener('click', e => { e.preventDefault(); open(); }));
-  closeBtn.addEventListener('click', close);
-  overlay.addEventListener('click', e => { if (e.target === overlay) close(); });
+  // Universal Klick-Handler für "DOKUMENTE"
+  document.addEventListener('click', (e) => {
+    const targetLink = e.target.closest('a');
+    
+    // Prüft Text, Klasse oder Ziel des Links
+    const isDokumenteClick = 
+      (targetLink && targetLink.textContent.trim().toUpperCase() === 'DOKUMENTE') ||
+      (targetLink && targetLink.classList.contains('dropdown-dokumente')) ||
+      (targetLink && targetLink.getAttribute('href') === '#dokumente');
 
-  submitBtn.addEventListener('click', () => {
-    if (input.value === CONTENT.dokumente.password) {
-      window.open(CONTENT.dokumente.url, '_blank');
-      close();
-    } else {
-      errorMsg.textContent = CONTENT.dokumente.error;
-      input.value = '';
-      input.focus();
+    if (isDokumenteClick) {
+      e.preventDefault();
+      
+      // Mobile Navbar schließen
+      const dropdown = el('navbar-dropdown');
+      if (dropdown) dropdown.classList.remove('is-open');
+
+      // Overlay über die CSS-Klasse .is-open einblenden
+      if (overlay) {
+        overlay.classList.add('is-open');
+      } else {
+        console.error('Element .dokumente-overlay wurde im HTML nicht gefunden!');
+      }
     }
   });
 
-  input.addEventListener('keydown', e => { if (e.key === 'Enter') submitBtn.click(); });
+  // Schließen-Button
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => {
+      if (overlay) overlay.classList.remove('is-open');
+    });
+  }
+
+  // Schließen beim Klick auf den dunklen Hintergrund
+  if (overlay) {
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) {
+        overlay.classList.remove('is-open');
+      }
+    });
+  }
+
+  // Absenden via Button
+  if (submitBtn) {
+    submitBtn.addEventListener('click', () => {
+      const tokenVal = tokenInput ? tokenInput.value.trim() : '';
+      if (!tokenVal) {
+        if (errorMsg) errorMsg.innerText = 'Bitte geben Sie einen Token ein.';
+        return;
+      }
+      verifyAndRedeemToken(tokenVal);
+    });
+  }
+
+  // Automatischer Aufruf bei ?token=MESSE-XXX in der URL
+  const urlParams = new URLSearchParams(window.location.search);
+  const urlToken = urlParams.get('token');
+  if (urlToken && overlay) {
+    overlay.classList.add('is-open');
+    if (tokenInput) tokenInput.value = urlToken;
+    verifyAndRedeemToken(urlToken);
+  }
+
+  async function verifyAndRedeemToken(tokenVal) {
+    if (!errorMsg || !submitBtn) return;
+
+    errorMsg.innerText = '';
+    submitBtn.innerText = 'Prüfe...';
+    submitBtn.disabled = true;
+
+    const { data: isValid, error } = await supabaseClient.rpc('redeem_token', { user_token: tokenVal });
+
+    if (error || !isValid) {
+      errorMsg.innerText = 'Dieser Token ist ungültig oder wurde bereits verwendet!';
+      submitBtn.innerText = 'Freischalten';
+      submitBtn.disabled = false;
+      return;
+    }
+
+    /*const { data: fileData, error: fileError } = await supabaseClient
+      .storage
+      .from('geschuetzte-dokumente')
+      .createSignedUrl('Dokumente_MSchriever.pdf', 60);
+
+    if (fileError) {
+      errorMsg.innerText = 'Fehler beim Laden des Dokuments.';
+      submitBtn.innerText = 'Freischalten';
+      submitBtn.disabled = false;
+      return;
+    }*/
+
+    //Temporär zu Testzwecken, danach wieder löschen//
+// Ändere 'messeseite_dokument.pdf' zu 'Dokumente_MSchriever.pdf'
+const { data: fileData, error: fileError } = await supabaseClient
+  .storage
+  .from('geschuetzte-dokumente')
+  .createSignedUrl('Dokumente_MSchriever.pdf', 60);
+
+if (fileError) {
+  console.error('Storage-Fehler:', fileError);
+  errorMsg.innerText = 'Fehler beim Laden des Dokuments.';
+  submitBtn.innerText = 'Freischalten';
+  submitBtn.disabled = false;
+  return;
 }
+
+
+    if (tokenStep) tokenStep.style.display = 'none';
+    if (documentStep) documentStep.style.display = 'block';
+    if (downloadBtn) downloadBtn.href = fileData.signedUrl;
+  }
+}
+
+let html5QrCode = null;
+
+const scanBtn = document.getElementById('scan-btn');
+const closeBtn = document.getElementById('close-scanner');
+const scannerModal = document.getElementById('scanner-modal');
+const tokenInput = document.getElementById('token-input');
+
+scanBtn.addEventListener('click', async () => {
+  scannerModal.style.display = 'flex';
+  html5QrCode = new Html5Qrcode("reader");
+
+  try {
+    await html5QrCode.start(
+      { facingMode: "environment" }, // Verwendet die Hauptkamera hinten
+      { fps: 10, qrbox: { width: 250, height: 250 } },
+      (decodedText) => {
+        // QR-Code erfolgreich gelesen:
+        tokenInput.value = decodedText; // Liest den Token ins Feld ein
+        stopScanner();
+      },
+      (errorMessage) => { /* Sucht noch nach QR-Code */ }
+    );
+  } catch (err) {
+    alert("Kamera konnte nicht geöffnet werden: " + err);
+    stopScanner();
+  }
+});
+
+closeBtn.addEventListener('click', stopScanner);
+
+function stopScanner() {
+  if (html5QrCode) {
+    html5QrCode.stop().then(() => {
+      html5QrCode.clear();
+      scannerModal.style.display = 'none';
+    }).catch(() => {
+      scannerModal.style.display = 'none';
+    });
+  } else {
+    scannerModal.style.display = 'none';
+  }
+}
+
+// ── BOOT ─────────────────────────────────────────────────────
 
 function boot() {
   renderNav();
