@@ -7,6 +7,8 @@
   <title>Marc Schriever · Logistikexperte</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <!-- Im <head> der Hauptseite einbinden -->
+<script src="https://unpkg.com/html5-qrcode"></script>
 </head>
 <body>
 
@@ -206,13 +208,24 @@
   <div class="dokumente-overlay__box">
     <button class="dokumente-overlay__close" id="dokumente-close">&times;</button>
 
-      <!-- BEREICH 1: TOKEN EINGABE -->
+<!-- BEREICH 1: TOKEN EINGABE & SCANNER -->
 <div id="token-step">
-      <h3 class="dokumente-overlay__title">Dokumente freischalten</h3>
-      <input type="text" class="dokumente-overlay__input" id="dokumente-token" placeholder="Token eingeben">
-      <button class="btn btn--primary" id="dokumente-submit" style="margin-top: 1rem; width: 100%;">Freischalten</button>
-      <div class="dokumente-overlay__error" id="dokumente-error"></div>
-    </div>
+  <h3 class="dokumente-overlay__title">Dokumente freischalten</h3>
+  
+  <div style="display: flex; gap: 8px; margin-bottom: 1rem;">
+    <input type="text" class="dokumente-overlay__input" id="dokumente-token" placeholder="Token eingeben" style="flex: 1;">
+    <button type="button" class="btn btn--primary" id="scan-btn" style="padding: 0.6rem 0.8rem;">📷 Scan</button>
+  </div>
+
+  <button class="btn btn--primary" id="dokumente-submit" style="width: 100%;">Freischalten</button>
+  <div class="dokumente-overlay__error" id="dokumente-error"></div>
+</div>
+
+<!-- Kamera-Modal für den Scanner -->
+<div id="scanner-modal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 2000; padding: 20px; align-items: center; justify-content: center; flex-direction: column;">
+  <div id="reader" style="width: 100%; max-width: 400px; background: #fff; border-radius: 8px; overflow: hidden;"></div>
+  <button type="button" id="close-scanner" class="btn btn--primary" style="margin-top: 15px; background: #ef4444; border-color: #ef4444;">Abbrechen</button>
+</div>
 
       <!-- BEREICH 2: DOKUMENTE ANZEIGEN (Standardmäßig versteckt) -->
 <div id="document-step" style="display: none;">
@@ -223,20 +236,6 @@
   </div>
 </div>
 
-<!-- Im <head> der Hauptseite einbinden -->
-<script src="https://unpkg.com/html5-qrcode"></script>
-
-<!-- Im HTML-Formular neben dem Eingabefeld -->
-<div style="display: flex; gap: 8px;">
-  <input type="text" id="token-input" placeholder="Token eingeben...">
-  <button type="button" id="scan-btn" class="btn">📷 Scan</button>
-</div>
-
-<!-- Modal / Container für die Kamera (Standardmäßig versteckt) -->
-<div id="scanner-modal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 1000; padding: 20px; align-items: center; justify-content: center; flex-direction: column;">
-  <div id="reader" style="width: 100%; max-width: 400px; background: #fff; border-radius: 8px; overflow: hidden;"></div>
-  <button type="button" id="close-scanner" class="btn" style="margin-top: 15px; background: #ef4444;">Abbrechen</button>
-</div>
 
 <!-- Supabase SDK -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>

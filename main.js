@@ -330,46 +330,83 @@ if (fileError) {
   }
 }
 
+// ── QR-SCANNER LOGIK ─────────────────────────────────────────
+
+// ── QR-SCANNER LOGIK ─────────────────────────────────────────
+
 let html5QrCode = null;
 
-const scanBtn = document.getElementById('scan-btn');
-const closeBtn = document.getElementById('close-scanner');
-const scannerModal = document.getElementById('scanner-modal');
-const tokenInput = document.getElementById('token-input');
-
-scanBtn.addEventListener('click', async () => {
-  scannerModal.style.display = 'flex';
-  html5QrCode = new Html5Qrcode("reader");
-
-  try {
-    await html5QrCode.start(
-      { facingMode: "environment" }, // Verwendet die Hauptkamera hinten
-      { fps: 10, qrbox: { width: 250, height: 250 } },
-      (decodedText) => {
-        // QR-Code erfolgreich gelesen:
-        tokenInput.value = decodedText; // Liest den Token ins Feld ein
-        stopScanner();
-      },
-      (errorMessage) => { /* Sucht noch nach QR-Code */ }
-    );
-  } catch (err) {
-    alert("Kamera konnte nicht geöffnet werden: " + err);
-    stopScanner();
-  }
-});
-
-closeBtn.addEventListener('click', stopScanner);
-
 function stopScanner() {
-  if (html5QrCode) {
+  const scannerModal = el('scanner-modal');
+  if (html5QrCode && html5QrCode.isScanning) {
     html5QrCode.stop().then(() => {
       html5QrCode.clear();
-      scannerModal.style.display = 'none';
-    }).catch(() => {
-      scannerModal.style.display = 'none';
+      if (scannerModal) scannerModal.style.display = 'none';
+    }).catch((err) => {
+      console.error('Fehler beim Stoppen der Kamera:', err);
+      if (scannerModal) scannerModal.style.display = 'none';
     });
   } else {
-    scannerModal.style.display = 'none';
+    if (scannerModal) scannerModal.style.display = 'none';
+  }
+}
+
+function initQrScanner() {
+  const scanBtn = el('scan-btn');
+  const closeBtn = el('close-scanner');
+  const scannerModal = el('scanner-modal');
+  const tokenInput = el('dokumente-token');
+
+  if (!scanBtn || !closeBtn || !scannerModal || !tokenInput) return;
+
+  scanBtn.addEventListener('click', async () => {
+    if (typeof Html5Qrcode === 'undefined') {
+      alert('Scanner-Bibliothek wurde nicht geladen.');
+      return;
+    }
+
+    scannerModal.style.display = 'flex';
+    html5QrCode = new Html5Qrcode("reader");
+
+    try {
+      await html5QrCode.start(
+        { facingMode: "environment" },
+        { fps: 10, qrbox: { width: 250, height: 250 } },
+        (decodedText) => {
+          tokenInput.value = decodedText.trim();
+          stopScanner();
+          
+          const submitBtn = el('dokumente-submit');
+          if (submitBtn) submitBtn.click();
+        },
+        (errorMessage) => { /* Sucht noch nach QR-Code... */ }
+      );
+    } catch (err) {
+      alert("Kamera konnte nicht geöffnet werden: " + err);
+      stopScanner();
+    }
+  });
+
+  // Event-Listener direkt an den Abbrechen-Button binden
+  closeBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    stopScanner();
+  });
+
+
+  closeBtn.addEventListener('click', stopScanner);
+
+  function stopScanner() {
+    if (html5QrCode) {
+      html5QrCode.stop().then(() => {
+        html5QrCode.clear();
+        scannerModal.style.display = 'none';
+      }).catch(() => {
+        scannerModal.style.display = 'none';
+      });
+    } else {
+      scannerModal.style.display = 'none';
+    }
   }
 }
 
@@ -390,6 +427,7 @@ function boot() {
   initFaq();
   initHamburger();
   initDokumente();
+  initQrScanner(); // <-- Neu hinzugefügt
 }
 
 boot();
