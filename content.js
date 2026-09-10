@@ -19,7 +19,7 @@ const CONTENT = {
     eyebrow:    '🟢 VERFÜGBAR AB SOFORT',
     headline:   'LEIDENSCHAFT FÜR LOGISTIK.',
     subline:    'Effizienz durch IT-Affinität & Führungskompetenz.',
-    text:       'Als erfahrene Führungskraft optimiere ich Ihre Supply Chain. Ich habe manuelle Auswertezeiten in der Lagerlogistik durch selbst initiierte, KI-gestützte Webanwendungen von 30 Minuten auf unter 20 Sekunden verkürzt (98% Zeitersparnis).',
+    text:       'Mit rund 20 Jahren Erfahrung in unterschiedlichen Positionen der Lagerlogistik habe ich sowohl operative als auch führende Rollen durchlaufen und kenne jeden operativen Handgriff im Warehousing. Knapp 10 Jahre davon habe ich Teams geführt und Prozesse verantwortet, KVP und PDCA dabei angewendet, bevor ich die Fachbegriffe dafür kannte.Damit bringe ich nicht nur Führungserfahrung, sondern vor allem Praxisnähe mit. Durch eine Ausbildung zum Fachinformatiker Anwendungsentwicklung erlernte ich Grundlagen wie Clean Code, OOP und MVC, die ich seitdem für bedarfsgerechte, KI-gestützte digitale Werkzeuge nutze. Damit löse ich konkrete Probleme im Tagesgeschäft eigenständig, von der Idee bis zur einsatzfähigen Anwendung.',
     btn_primary:   'MEHR ERFAHREN',
     btn_secondary: 'KONTAKT AUFNEHMEN',
   },
@@ -34,10 +34,10 @@ const CONTENT = {
 
   // ── ÜBER MICH (Erweiterter, aussagekräftiger Profiltext) ──
   about: {
-    eyebrow:  'ÜBER MICH',
-    headline: 'ZIELORIENTIERT. VERANTWORTUNGSBEWUSST. UMSETZUNGSSTARK.',
+    eyebrow:  'ICH BIETE...',
+    headline: 'ZIELORIENTIERUNG. VERANTWORTUNGSBEWUSSTSEIN. UMSETZUNGSSTÄRKE.',
     philosophy: '1973 in Bremen geboren. Hanseat, gelernter Kaufmann und leidenschaftlicher Logistiker. Mit über 30 Jahren Berufserfahrung, davon mehr als zwei Jahrzehnte in der operativen und strategischen Logistik, kenne ich jeden Handgriff von der Pike auf. Mein Fundament bildet die kaufmännische Ausbildung im Groß- und Außenhandel sowie eine tiefgehende IT-Qualifikation über 2.979 Unterrichtsstunden in der Anwendungsentwicklung. Diese seltene Kombination erlaubt es mir, Logistikketten nicht nur effizient zu leiten, sondern Engpässe sofort durch selbst entwickelte, KI-gestützte Prozesswerkzeuge digital zu automatisieren. Vom Hochregallager bis zur eigenverantwortlichen Bereichsleitung: Ich denke nicht in Problemen, sondern in skalierbaren Systemen.',
-    credo: 'Prozessphilosophie: Der Prozess führt, nicht die Diszipin. Fehler entstehen selten durch Nachlässigkeit, sondern durch Prozesse, die eine Eigendynamik durch Nachlässigkeit erst ermöglichen. Mein Ansatz: ein digitaler Arbeitsablauf führt den Mitarbeiter, nicht umgekehrt. Wo Zuordnung, Erfassung oder Nachschub bislang von manueller Sorgfalt abhingen, ersetze ich das durch Systeme, die Fehlerquellen strukturell minimieren, im Sinne kontinuierlicher Prozessverbesserung (KVP) nach dem PDCA-Zyklus. Konkret umgesetzt in einem selbst entwickelten Label-Generator, der Reklamationen messbar reduzierte, einem digitalen Mutter-Kind-Nachschubtool, das einen 30-minütigen manuellen Vorgang auf 15 Sekunden verkürzte, und einem durchgängigen Nummern- und Zuordnungssystem für Karton, Inhalt und Palette in der Versandvorbereitung, das Fehlzuordnungen bei Verladung und Versand strukturell verhindert.',
+    credo: 'Prozessphilosophie: Der Prozess führt, nicht die Diszipin. Fehler sind selten Zufall. Sie sind das logische Ergebnis schlechter Prozesse. Mein Ansatz: ein digitaler Arbeitsablauf führt den Mitarbeiter, nicht umgekehrt. Wo Zuordnung, Erfassung oder Nachschub bislang von manueller Sorgfalt abhingen, ersetze ich das durch Systeme, die Fehlerquellen strukturell minimieren, im Sinne kontinuierlicher Prozessverbesserung (KVP) nach dem PDCA-Zyklus. Konkret umgesetzt in einem selbst entwickelten Label-Generator, der Reklamationen messbar reduzierte, einem digitalen Mutter-Kind-Nachschubtool, das einen 30-minütigen manuellen Vorgang auf 15 Sekunden verkürzte, und einem durchgängigen Nummern- und Zuordnungssystem für Karton, Inhalt und Palette in der Versandvorbereitung, das Fehlzuordnungen bei Verladung und Versand strukturell verhindert.',
     // Die 5 Zeilen-Bausteine für die rechte Kachel bleiben unverändert
     fact_born: 'In Bremen geboren',
     fact_exp: 'Jahre Erfahrung in Handel & Logistik',
