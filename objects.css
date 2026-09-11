@@ -1,0 +1,105 @@
+/* ==========================================================================
+   OOCSS OBJECTS (Struktur & Grid)
+   ========================================================================== */
+.o-container {
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+}
+
+.o-section {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  position: relative;
+}
+
+.o-section--hero {
+  padding-top: 30px;
+  padding-bottom: 50px;
+}
+
+/* Sektion mit sauberen Trennlinien oben und unten im korrekten o-Namespace */
+.o-section.o-section--bordered {
+  border-top: 0.8rem solid var(--color-border);
+  border-bottom: 0.8rem solid var(--color-border);
+  background-color: #D5CEC7;
+}
+
+.o-section--sand {
+  background-color: var(--color-card-bg);
+  border-top: 1px solid var(--color-border);
+}
+
+.o-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.o-grid--2col {
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .o-grid--2col {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.o-grid--3col {
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .o-grid--3col {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 992px) {
+  .o-grid--3col {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.o-grid--4col {
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 550px) {
+  .o-grid--4col {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 992px) {
+  .o-grid--4col {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.o-flex {
+  display: flex;
+}
+
+.o-flex--between {
+  justify-content: space-between;
+}
+
+.o-flex--center {
+  align-items: center;
+}
+
+.o-flex--wrap {
+  flex-wrap: wrap;
+}
+
+.o-flex--gap-sm {
+  gap: 8px;
+}
+
+.o-flex--gap-md {
+  gap: 16px;
+}

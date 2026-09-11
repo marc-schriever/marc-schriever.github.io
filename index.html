@@ -1,246 +1,318 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="">
-  <title>Marc Schriever · Logistikexperte</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
-  <!-- Im <head> der Hauptseite einbinden -->
-<script src="https://unpkg.com/html5-qrcode"></script>
-</head>
-<body>
+<!doctype html>
+<html lang="de" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Marc Schriever · Logistikexperte</title>
+    <meta name="description" content="Marc Schriever – Logistikexperte mit Fokus auf Effizienz, Digitalisierung und Führung." />
+    <meta property="og:title" content="Marc Schriever · Logistikexperte" />
+    <meta property="og:description" content="Marc Schriever – Logistikexperte mit Fokus auf Effizienz, Digitalisierung und Führung." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
 
-  <header class="navbar">
-    <!-- 1. Dropdown nach ganz oben verschoben, damit das CSS das "X" steuern kann -->
-    <div class="navbar__dropdown" id="navbar-dropdown" aria-hidden="true">
-      <ul class="navbar__dropdown-links">
-        <li><a href="#" class="dropdown-dokumente">DOKUMENTE</a></li>
-      </ul>
+    <!-- Schriftarten -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
+
+    <!-- Tabler Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+
+    <!-- OOCSS Stylesheet -->
+<!-- Pfad zur CSS-Datei im css/-Ordner -->
+<!-- In index.html im <head>-Bereich -->
+<link rel="stylesheet" href="style.css" />
+
+    <!-- Supabase SDK & QR Scanner Bibliothek -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://unpkg.com/html5-qrcode"></script>
+  </head>
+  <body>
+    <div class="site-background"></div>
+    <div class="c-page-deco" aria-hidden="true">
+      <i class="ti ti-forklift c-page-deco-icon"></i>
+      <i class="ti ti-box c-page-deco-icon"></i>
+      <i class="ti ti-package c-page-deco-icon"></i>
+      <i class="ti ti-box c-page-deco-icon"></i>
+      <i class="ti ti-forklift c-page-deco-icon"></i>
+      <i class="ti ti-package c-page-deco-icon"></i>
+      <i class="ti ti-box c-page-deco-icon"></i>
+      <i class="ti ti-forklift c-page-deco-icon"></i>
+      <i class="ti ti-package c-page-deco-icon"></i>
+      <i class="ti ti-box c-page-deco-icon"></i>
     </div>
 
-    <div class="navbar__inner">
-      <div class="navbar__brand">
-        <!-- Das Paket-Icon bleibt wie gewünscht erhalten -->
-        <div class="navbar__logo-icon" aria-hidden="true"><i class="ti ti-package"></i></div>
-        <div>
-          <span class="navbar__name"></span>
-          <span class="navbar__title"></span>
+    <div class="site-wrapper">
+      <!-- NAVIGATION -->
+      <nav class="c-navbar">
+        <div class="o-container c-navbar__inner">
+          <a href="#home" class="c-navbar__brand">
+            <span class="c-navbar__brand-name navbar__name">MARC SCHRIEVER</span>
+            <span class="c-navbar__brand-title navbar__title">LAGERLEITER</span>
+          </a>
+
+          <!-- Desktop Navigation -->
+          <ul class="c-navbar__menu navbar__links"></ul>
+
+          <!-- Mobile Hamburger Toggle -->
+          <button class="c-navbar__toggle navbar__hamburger" aria-label="Menü öffnen" aria-expanded="false">
+            <span class="c-navbar__toggle-line"></span>
+            <span class="c-navbar__toggle-line"></span>
+            <span class="c-navbar__toggle-line"></span>
+          </button>
         </div>
-      </div>
-      
-      <!-- 2. Altes i-Tag entfernt und durch die 3 spans für das Animations-Kreuz ersetzt -->
-      <button class="navbar__hamburger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="navbar-dropdown">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-      
-      <nav aria-label="Hauptnavigation">
-        <ul class="navbar__links"></ul>
       </nav>
+
+      <!-- Mobile Nav Drawer -->
+      <ul id="navbar-dropdown" class="c-mobile-nav navbar__dropdown-links" aria-hidden="true"></ul>
+
+      <main>
+        <!-- HERO SECTION -->
+        <section id="home" class="o-section o-section--hero">
+          <div class="o-container">
+            <div class="c-hero">
+              <div class="c-hero__image-bg"></div>
+              <div class="c-hero__overlay"></div>
+              <div class="c-hero__inner">
+                <div class="c-hero__content">
+                  <span id="hero-eyebrow" class="c-hero__badge"></span>
+                  <h1 id="hero-title" class="c-hero__headline"></h1>
+                  <p id="hero-sub" class="c-hero__subline"></p>
+                  <div id="hero-text" class="u-mb-md"></div>
+                  <div class="c-hero__actions">
+                    <a id="hero-btn-primary" href="#ueber-mich" class="c-button c-button--primary"></a>
+                    <a id="hero-btn-secondary" href="#kontakt" class="c-button c-button--secondary"></a>
+                  </div>
+                </div>
+
+                <!-- Profilbild-Kachel -->
+                <div class="c-hero__profile">
+                  <div class="c-hero__avatar-frame">
+                    <div class="c-hero__avatar-placeholder">
+                      <i class="ti ti-user c-hero__avatar-icon" aria-hidden="true"></i>
+                      <span class="c-hero__avatar-name">Marc Schriever</span>
+                      <span id="hero-photo-label" class="c-hero__avatar-hint"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- STATS SECTION -->
+        <section class="o-section o-section--bordered">
+          <div class="o-container">
+            <div class="o-grid o-grid--4col grid--stats"></div>
+          </div>
+        </section>
+
+        <!-- ÜBER MICH SECTION -->
+        <section id="ueber-mich" class="o-section section--about">
+          <div class="o-container">
+            <div class="c-section-header">
+              <span class="c-section-header__eyebrow section-eyebrow"></span>
+              <h2 class="c-section-header__title section-title"></h2>
+            </div>
+            <div class="o-grid o-grid--2col u-mb-lg">
+              <div id="about-text-philosophy" class="c-card reveal"></div>
+              <div id="about-text-credo" class="c-card reveal"></div>
+            </div>
+            <div id="about-fact-rows" class="o-grid o-grid--3col"></div>
+          </div>
+        </section>
+
+        <!-- EXPERTISE SECTION -->
+<section id="expertise" class="o-section section--expertise">
+  <div class="o-container">
+    <div class="c-section-header">
+      <span class="c-section-header__eyebrow section-eyebrow"></span>
+      <h2 class="c-section-header__title section-title"></h2>
     </div>
-  </header>
-
-
-  <main>
-
-<!-- HERO -->
-<section class="section section--hero" id="home" aria-labelledby="hero-title">
-  <div class="section__bg section__bg--hero" aria-hidden="true"></div>
-  <div class="section__inner">
-    <div class="wrapper grid grid--hero">
-      
-      <!-- Linkes Objekt: Inhalts-Panel bekommt den Glaseffekt-Skin -->
-      <div class="hero-content card card--glass">
-        <p class="hero-eyebrow" id="hero-eyebrow"></p>
-        <h1 id="hero-title" class="hero-title"></h1>
-        <p class="hero-sub" id="hero-sub"></p>
-        <p class="hero-text" id="hero-text"></p>
-        <div class="hero-btns">
-          <a href="#ueber-mich" class="btn btn--primary" id="hero-btn-primary"></a>
-          <a href="#kontakt" class="btn btn--outline" id="hero-btn-secondary"></a>
-        </div>
-      </div>
-      
-      <!-- Rechtes Objekt: Foto-Panel bekommt den 3D-Tilt- und Glaseffekt-Skin -->
-      <div class="hero-photo card card--glass card--tilt">
-        <div class="photo-placeholder">
-          <i class="ti ti-user" aria-hidden="true"></i>
-          <span class="photo-placeholder__label" id="hero-photo-label"></span>
-        </div>
-      </div>
-
-    </div>
+    <div class="o-grid o-grid--2col grid--expertise"></div>
   </div>
 </section>
 
-
-    <!-- STATS -->
-    <section class="section section--stats" aria-label="Kennzahlen">
-      <div class="wrapper grid grid--stats"></div>
-    </section>
-
-<!-- ÜBER MICH -->
-<section class="section section--about" id="ueber-mich" aria-labelledby="about-title">
-  <div class="section__bg section__bg--about" aria-hidden="true"></div>
-  <div class="section__inner">
-    <div class="wrapper">
-      
-      <p class="section-eyebrow" id="about-eyebrow"></p>
-      <h2 class="section-title" id="about-title"></h2>
-      
-      <!-- Das asymmetrische Grid-System für 2026 -->
-      <div class="grid grid--about-bento">
-        
-        <!-- Kachel 1: Kern-Philosophie -->
-        <div class="card card--glass bento-tile--main">
-          <div class="card-head">
-            <h3>MEINE PHILOSOPHIE</h3>
-            <i class="ti ti-quote" aria-hidden="true"></i>
+        <!-- FAQ SECTION -->
+        <section id="faq" class="o-section section--faq">
+          <div class="o-container">
+            <div class="c-section-header">
+              <span class="c-section-header__eyebrow section-eyebrow"></span>
+              <h2 class="c-section-header__title">HÄUFIG GESTELLTE FRAGEN</h2>
+            </div>
+            <div class="c-accordion faq-list"></div>
           </div>
-          <p id="about-text-philosophy" class="text-magazine"></p>
-        </div>
+        </section>
 
-      <!-- Kachel 2: Die Meilensteine als sauberes, kompaktes Band mit 5 Datenzeilen -->
-<div class="card card--glass bento-tile--facts">
-  <div class="card-head">
-    <h3>STATIONEN & QUALIFIKATIONEN</h3>
-    <i class="ti ti-id" aria-hidden="true"></i>
-  </div>
-  <div class="about-fact-rows">
-    <div class="fact-row"><strong>1973</strong><span id="fact-born"></span></div>
-    <div class="fact-row"><strong>30 </strong><span id="fact-exp"></span></div>
-    <div class="fact-row"><strong>IHK</strong><span id="fact-cert"></span></div>
-    <div class="fact-row"><strong>2.979h</strong><span id="fact-it"></span></div>
-    <div class="fact-row"><strong>1994</strong><span id="fact-kfm"></span></div>
-  </div>
-</div>
-
-
-        <!-- Kachel 3: Macher-Credo auf voller Breite darunter -->
-        <div class="card card--glass card--orange-top bento-tile--credo">
-          <div class="card-head">
-            <h3>PROZESS-CREDO</h3>
-            <i class="ti ti-bolt" aria-hidden="true"></i>
+        <!-- REFERENZEN SECTION -->
+        <section id="referenzen" class="o-section section--referenzen">
+          <div class="o-container">
+            <div class="c-section-header">
+              <span class="c-section-header__eyebrow section-eyebrow"></span>
+              <h2 class="c-section-header__title section-title"></h2>
+            </div>
+            <div class="c-reference-strip grid--referenzen"></div>
           </div>
-          <p id="about-text-credo" class="text-highlight-box"></p>
+        </section>
+
+        <!-- KONTAKT SECTION -->
+        <section id="kontakt" class="o-section o-section--sand section--kontakt">
+          <div class="o-container">
+            <div class="c-section-header">
+              <span class="c-section-header__eyebrow section-eyebrow"></span>
+              <h2 class="c-section-header__title kontakt-title"></h2>
+              <p class="kontakt-text u-text-muted u-mt-sm"></p>
+            </div>
+            <div class="c-card reveal" style="max-width: 600px; margin: 0 auto;">
+              <form class="c-form" onsubmit="event.preventDefault(); alert('Vielen Dank für Ihre Nachricht!');">
+                <div class="c-form__group">
+                  <label class="c-form__label form-label--name" for="kontakt-name"></label>
+                  <input id="kontakt-name" class="c-form__input form-input--name" type="text" required />
+                </div>
+                <div class="c-form__group">
+                  <label class="c-form__label form-label--email" for="kontakt-email"></label>
+                  <input id="kontakt-email" class="c-form__input form-input--email" type="email" required />
+                </div>
+                <div class="c-form__group">
+                  <label class="c-form__label form-label--message" for="kontakt-message"></label>
+                  <textarea id="kontakt-message" class="c-form__textarea form-input--message" required></textarea>
+                </div>
+                <button type="submit" class="c-button c-button--primary c-button--full form-submit"></button>
+              </form>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- FOOTER -->
+      <footer class="c-footer">
+        <div class="o-container c-footer__inner">
+          <div class="c-footer__brand">
+            <span class="footer-copy"></span> · <span class="footer-location"></span>
+          </div>
+          <div class="c-footer__links">
+            <button type="button" class="c-footer__link footer-link--impressum" onclick="document.getElementById('impressum-modal').classList.add('is-open')"></button>
+            <button type="button" class="c-footer__link footer-link--datenschutz" onclick="document.getElementById('datenschutz-modal').classList.add('is-open')"></button>
+          </div>
         </div>
-
-      </div><!-- .grid -->
-      
+      </footer>
     </div>
-  </div>
-</section>
 
-
-
-    <!-- EXPERTISE -->
-    <section class="section section--expertise" id="expertise" aria-labelledby="expertise-title">
-      <div class="wrapper">
-        <p class="section-eyebrow section-eyebrow--center"></p>
-        <h2 id="expertise-title" class="section-title section-title--center"></h2>
-        <div class="grid grid--expertise"></div>
-      </div>
-    </section>
-
-    <!-- FAQ -->
-    <section class="section section--faq" id="faq" aria-labelledby="faq-title">
-      <div class="wrapper">
-        <p class="section-eyebrow section-eyebrow--center"></p>
-        <h2 id="faq-title" class="section-title section-title--center"></h2>
-        <div class="faq-list"></div>
-      </div>
-    </section>
-
-    <!-- REFERENZEN -->
-    <section class="section section--referenzen" id="referenzen" aria-labelledby="ref-title">
-      <div class="wrapper">
-        <p class="section-eyebrow section-eyebrow--center"></p>
-        <h2 id="ref-title" class="section-title section-title--center"></h2>
-        <div class="grid grid--referenzen"></div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- KONTAKT -->
-  <section class="section section--kontakt" id="kontakt">
-    <div class="wrapper">
-      <p class="section-eyebrow section-eyebrow--center"></p>
-      <h2 class="section-title section-title--center kontakt-title"></h2>
-      <p class="kontakt-text"></p>
-      <form class="kontakt-form" action="https://formspree.io/f/xaewgwgz" method="POST">
-        <div class="form-group">
-          <label class="form-label--name"></label>
-          <input type="text" id="name" name="name" required class="form-input--name">
+    <!-- DOKUMENTE MODAL (Supabase Token & Freischaltung) -->
+    <div id="dokumente-overlay" class="c-modal dokumente-overlay">
+      <div class="c-modal__backdrop"></div>
+      <div class="c-modal__window">
+        <div class="c-modal__header">
+          <h3 class="c-modal__title">Geschützte Dokumente</h3>
+          <button type="button" id="dokumente-close" class="c-modal__close dokumente-overlay__close" aria-label="Schließen">&times;</button>
         </div>
-        <div class="form-group">
-          <label class="form-label--email"></label>
-          <input type="email" id="email" name="email" required class="form-input--email">
+        <div class="c-modal__body">
+          <div id="token-step">
+            <p class="u-mb-md">
+              Bitte geben Sie Ihren persönlichen Zugangstoken ein oder nutzen Sie den QR-Scanner, um Unterlagen freizuschalten.
+            </p>
+            <div class="c-form__group u-mb-md">
+              <label for="dokumente-token" class="c-form__label">Zugangstoken</label>
+              <div class="o-flex o-flex--gap-sm">
+                <input type="text" id="dokumente-token" class="c-form__input dokumente-overlay__input" placeholder="Token hier eingeben..." />
+                <button type="button" id="scan-btn" class="c-button c-button--secondary" title="QR-Code mit Kamera scannen">
+                  <i class="ti ti-qrcode" aria-hidden="true"></i> Scan
+                </button>
+              </div>
+            </div>
+            <div id="dokumente-error" class="dokumente-overlay__error c-form__error u-mb-md"></div>
+            <button type="button" id="dokumente-submit" class="c-button c-button--primary c-button--full">Freischalten</button>
+          </div>
+
+          <div id="document-step" style="display: none;">
+            <div class="c-form__alert c-form__alert--success u-mb-md" style="display: block;">
+              <strong>Zugang erfolgreich verifiziert!</strong><br />
+              Sie können die Unterlagen jetzt herunterladen.
+            </div>
+            <a id="download-btn" href="#" target="_blank" rel="noopener" class="c-button c-button--primary c-button--full">
+              <i class="ti ti-download" aria-hidden="true"></i> Dokumente Herunterladen (PDF)
+            </a>
+          </div>
         </div>
-        <div class="form-group">
-          <label class="form-label--message"></label>
-          <textarea id="message" name="message" rows="5" required class="form-input--message"></textarea>
+      </div>
+    </div>
+
+    <!-- QR SCANNER MODAL -->
+    <div id="scanner-modal" class="c-modal">
+      <div class="c-modal__backdrop"></div>
+      <div class="c-modal__window" style="max-width: 440px;">
+        <div class="c-modal__header">
+          <h3 class="c-modal__title">QR-Code Scannen</h3>
+          <button type="button" id="close-scanner" class="c-modal__close" aria-label="Schließen">&times;</button>
         </div>
-        <button type="submit" class="btn btn--primary form-submit"></button>
-      </form>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="section section--footer">
-    <div class="wrapper footer-inner">
-      <div class="footer-copy"></div>
-      <div class="footer-contact">
-        <span><i class="ti ti-map-pin" aria-hidden="true"></i> <span class="footer-location"></span></span>
-      </div>
-      <div class="footer-legal">
-        <a class="footer-link--impressum" href="impressum.html"></a>
-        <a class="footer-link--datenschutz" href="datenschutz.html"></a>
+        <div class="c-modal__body u-text-center">
+          <p class="u-mb-md u-text-muted" style="font-size: 0.85rem;">
+            Richten Sie die Kamera auf den QR-Code mit Ihrem Token.
+          </p>
+          <div id="reader" style="width: 100%; min-height: 250px; background-color: #000; border-radius: var(--radius-sm); overflow: hidden;"></div>
+        </div>
       </div>
     </div>
-  </footer>
 
-<!-- DOKUMENTE MODAL / OVERLAY -->
-<div class="dokumente-overlay">
-  <div class="dokumente-overlay__box">
-    <button class="dokumente-overlay__close" id="dokumente-close">&times;</button>
-
-<!-- BEREICH 1: TOKEN EINGABE & SCANNER -->
-<div id="token-step">
-  <h3 class="dokumente-overlay__title">Dokumente freischalten</h3>
-  
-  <div style="display: flex; gap: 8px; margin-bottom: 1rem;">
-    <input type="text" class="dokumente-overlay__input" id="dokumente-token" placeholder="Token eingeben" style="flex: 1;">
-    <button type="button" class="btn btn--primary" id="scan-btn" style="padding: 0.6rem 0.8rem;">📷 Scan</button>
-  </div>
-
-  <button class="btn btn--primary" id="dokumente-submit" style="width: 100%;">Freischalten</button>
-  <div class="dokumente-overlay__error" id="dokumente-error"></div>
-</div>
-
-<!-- Kamera-Modal für den Scanner -->
-<div id="scanner-modal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 2000; padding: 20px; align-items: center; justify-content: center; flex-direction: column;">
-  <div id="reader" style="width: 100%; max-width: 400px; background: #fff; border-radius: 8px; overflow: hidden;"></div>
-  <button type="button" id="close-scanner" class="btn btn--primary" style="margin-top: 15px; background: #ef4444; border-color: #ef4444;">Abbrechen</button>
-</div>
-
-      <!-- BEREICH 2: DOKUMENTE ANZEIGEN (Standardmäßig versteckt) -->
-<div id="document-step" style="display: none;">
-      <h3 class="dokumente-overlay__title">Erfolg!</h3>
-      <p style="color: var(--text-2); font-size: 0.85rem; margin-bottom: 1rem;">Ihr Dokument steht bereit.</p>
-      <a id="download-btn" href="#" target="_blank" class="btn btn--primary" style="display: block; text-align: center;">PDF herunterladen</a>
+    <!-- IMPRESSUM MODAL -->
+    <div id="impressum-modal" class="c-modal">
+      <div class="c-modal__backdrop" onclick="document.getElementById('impressum-modal').classList.remove('is-open')"></div>
+      <div class="c-modal__window">
+        <div class="c-modal__header">
+          <h3 class="c-modal__title">Impressum</h3>
+          <button type="button" class="c-modal__close" onclick="document.getElementById('impressum-modal').classList.remove('is-open')">&times;</button>
+        </div>
+        <div class="c-modal__body">
+          <p class="u-bold">Marc Schriever</p>
+          <p>Logistikexperte</p>
+          <p>Bremen, Deutschland</p>
+          <p class="u-mt-md">E-Mail: kontakt@marc-schriever.de</p>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
+    <!-- DATENSCHUTZ MODAL -->
+    <div id="datenschutz-modal" class="c-modal">
+      <div class="c-modal__backdrop" onclick="document.getElementById('datenschutz-modal').classList.remove('is-open')"></div>
+      <div class="c-modal__window">
+        <div class="c-modal__header">
+          <h3 class="c-modal__title">Datenschutzerklärung</h3>
+          <button type="button" class="c-modal__close" onclick="document.getElementById('datenschutz-modal').classList.remove('is-open')">&times;</button>
+        </div>
+        <div class="c-modal__body">
+          <p>Verantwortlich im Sinne der Datenschutzgesetze ist Marc Schriever.</p>
+          <p class="u-mt-md">Diese Website verarbeitet keine personenbezogenen Daten ohne Ihre explizite Einwilligung.</p>
+        </div>
+      </div>
+    </div>
 
-<!-- Supabase SDK -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  
-  <script src="content.js" defer></script>
-  <script src="main.js" defer></script>
-</body>
+    <!-- SCROLL-STAPLER -->
+    <div class="c-scroll-track" aria-hidden="true">
+      <svg class="c-scroll-track__vehicle" id="scroll-vehicle" viewBox="0 0 90 40" width="72" height="32">
+        <!-- Hubwagen: Deichsel, Rad, durchgehende Gabel -->
+        <line x1="8" y1="34" x2="2" y2="16" stroke="var(--color-navy)" stroke-width="2.5" stroke-linecap="round" />
+        <circle cx="2" cy="16" r="2" fill="var(--color-navy)" />
+        <circle cx="8" cy="34" r="4" fill="var(--color-navy)" />
+        <rect x="8" y="30.5" width="60" height="3" fill="var(--color-navy)" />
+        <circle cx="66" cy="34" r="3" fill="var(--color-navy)" />
+
+        <!-- Fülllevel: Ladung sitzt direkt auf der Gabel, wächst von dort nach oben -->
+        <clipPath id="scroll-fill-clip">
+          <rect id="scroll-fill-rect" x="12" y="30.5" width="52" height="0" />
+        </clipPath>
+        <g clip-path="url(#scroll-fill-clip)">
+          <rect x="12" y="6" width="52" height="24.5" style="fill: var(--color-primary);" />
+          <line x1="12" y1="12" x2="64" y2="12" stroke="var(--color-navy)" stroke-width="0.6" opacity="0.25" />
+          <line x1="12" y1="18" x2="64" y2="18" stroke="var(--color-navy)" stroke-width="0.6" opacity="0.25" />
+          <line x1="12" y1="24" x2="64" y2="24" stroke="var(--color-navy)" stroke-width="0.6" opacity="0.25" />
+          <line x1="24" y1="6" x2="24" y2="30.5" stroke="var(--color-navy)" stroke-width="0.6" opacity="0.2" />
+          <line x1="38" y1="6" x2="38" y2="30.5" stroke="var(--color-navy)" stroke-width="0.6" opacity="0.2" />
+          <line x1="52" y1="6" x2="52" y2="30.5" stroke="var(--color-navy)" stroke-width="0.6" opacity="0.2" />
+        </g>
+      </svg>
+    </div>
+
+    <!-- HAUPT-SKRIPT (Pfad: js/main.js) -->
+<script type="module" src="js/main.js"></script>
+  </body>
 </html>

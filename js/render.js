@@ -1,0 +1,120 @@
+// ============================================================================
+// RENDER.JS — Verbindet CONTENT-Daten mit dem DOM
+// Jede Funktion ist für genau eine Sektion zuständig (Single Responsibility).
+// ============================================================================
+
+import { CONTENT } from './content.js';
+import { byId, qs, setText, setHTML, setAttr, renderParagraphs } from './dom-utils.js';
+import {
+  navLinkTemplate,
+  statTemplate,
+  expertiseBlockTemplate,
+  faqItemTemplate,
+  referenzLogoTemplate,
+  factRowTemplate,
+} from './templates.js';
+
+export function renderNav() {
+  setText('.navbar__name', CONTENT.nav.name);
+  setText('.navbar__title', CONTENT.nav.title);
+  
+  const linksHTML = CONTENT.nav.links
+    .map(link => {
+      const isDocumentLink = 
+        (link.label && link.label.toLowerCase().includes('dokument')) || 
+        (link.href && link.href.toLowerCase().includes('dok'));
+      
+      return navLinkTemplate({
+        ...link,
+        isButton: isDocumentLink || link.isButton
+      });
+    })
+    .join('');
+
+  setHTML('.navbar__links', linksHTML);
+  setHTML('.navbar__dropdown-links', linksHTML);
+}
+
+export function renderHero() {
+  const eyebrow = byId('hero-eyebrow');
+  const title = byId('hero-title');
+  const sub = byId('hero-sub');
+  const text = byId('hero-text');
+  const btnPrimary = byId('hero-btn-primary');
+  const btnSecondary = byId('hero-btn-secondary');
+  const photoLabel = byId('hero-photo-label');
+
+  if (eyebrow) eyebrow.textContent = CONTENT.hero.eyebrow;
+  if (title) title.textContent = CONTENT.hero.headline;
+  if (sub) sub.textContent = CONTENT.hero.subline;
+  if (text) renderParagraphs(text, CONTENT.hero.textParagraphs);
+  if (btnPrimary) btnPrimary.textContent = CONTENT.hero.btn_primary;
+  if (btnSecondary) btnSecondary.textContent = CONTENT.hero.btn_secondary;
+  if (photoLabel) photoLabel.textContent = CONTENT.photo.placeholder;
+}
+
+export function renderStats() {
+  setHTML('.grid--stats', CONTENT.stats.map(statTemplate).join(''));
+}
+
+export function renderAbout() {
+  setText('.section--about .section-eyebrow', CONTENT.about.eyebrow);
+  setText('.section--about .section-title', CONTENT.about.headline);
+
+  const philosophyEl = byId('about-text-philosophy');
+  const credoEl = byId('about-text-credo');
+  const factsEl = byId('about-fact-rows');
+
+  if (philosophyEl) renderParagraphs(philosophyEl, CONTENT.about.philosophyParagraphs);
+  if (credoEl) renderParagraphs(credoEl, CONTENT.about.credoParagraphs);
+  if (factsEl) factsEl.innerHTML = CONTENT.about.facts.map(factRowTemplate).join('');
+}
+
+export function renderExpertise() {
+  setText('.section--expertise .section-eyebrow', CONTENT.expertise.eyebrow);
+  setText('.section--expertise .section-title', CONTENT.expertise.headline);
+  setHTML('.grid--expertise', CONTENT.expertise.blocks.map(expertiseBlockTemplate).join(''));
+}
+
+export function renderFaq() {
+  setText('.section--faq .section-eyebrow', CONTENT.faq.eyebrow);
+  setHTML('.faq-list', CONTENT.faq.items.map(faqItemTemplate).join(''));
+}
+
+export function renderReferenzen() {
+  setText('.section--referenzen .section-eyebrow', CONTENT.referenzen.eyebrow);
+  setText('.section--referenzen .section-title', CONTENT.referenzen.headline);
+  setHTML('.grid--referenzen', CONTENT.referenzen.logos.map(referenzLogoTemplate).join(''));
+}
+
+export function renderKontakt() {
+  setText('.section--kontakt .section-eyebrow', CONTENT.kontakt.eyebrow);
+  setText('.kontakt-title', CONTENT.kontakt.headline);
+  setText('.kontakt-text', CONTENT.kontakt.text);
+  setText('.form-label--name', CONTENT.form.label_name);
+  setText('.form-label--email', CONTENT.form.label_email);
+  setText('.form-label--message', CONTENT.form.label_message);
+  setAttr('.form-input--name', 'placeholder', CONTENT.form.placeholder_name);
+  setAttr('.form-input--email', 'placeholder', CONTENT.form.placeholder_email);
+  setAttr('.form-input--message', 'placeholder', CONTENT.form.placeholder_message);
+  setText('.form-submit', CONTENT.form.submit);
+}
+
+export function renderFooter() {
+  setText('.footer-copy', CONTENT.footer.copy);
+  setText('.footer-location', CONTENT.footer.location);
+  setText('.footer-link--impressum', CONTENT.footer.impressum);
+  setText('.footer-link--datenschutz', CONTENT.footer.datenschutz);
+}
+
+export function renderAll() {
+  renderNav();
+  renderHero();
+  renderStats();
+  renderAbout();
+  renderExpertise();
+  renderFaq();
+  renderReferenzen();
+  renderKontakt();
+  renderFooter();
+}
