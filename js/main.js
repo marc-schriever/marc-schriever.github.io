@@ -10,6 +10,7 @@ import { initQrScanner } from './qr-scanner.js';
 import { initScrollVehicle } from './scroll-vehicle.js';
 import { initPageDeco } from './page-deco.js';
 import { initHeroPhoto } from './hero-photo.js';
+import { initLegalContent } from './legal-content.js';
 
 function initScrollSpy() {
   const menu = document.querySelector('.c-navbar__menu');
@@ -85,6 +86,7 @@ function boot() {
   initScrollVehicle();
   initPageDeco();
   initHeroPhoto();
+  initLegalContent();
 }
 
 document.addEventListener('DOMContentLoaded', boot);

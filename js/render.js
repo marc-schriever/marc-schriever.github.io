@@ -12,7 +12,6 @@ import {
   faqItemTemplate,
   referenzLogoTemplate,
   factRowTemplate,
-  legalSectionTemplate,
 } from './templates.js';
 
 export function renderNav() {
@@ -131,7 +130,6 @@ export function renderModals() {
   setText('#impressum-email', `E-Mail: ${CONTENT.impressum.email}`);
 
   setText('#datenschutz-title', CONTENT.datenschutz.title);
-  setHTML('#datenschutz-body', CONTENT.datenschutz.sections.map(legalSectionTemplate).join(''));
 }
 
 export function renderAll() {

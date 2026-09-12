@@ -48,9 +48,3 @@ export const factRowTemplate = (fact) => `
     <span class="c-fact-badge__num">${fact.year}</span>
     <span class="c-fact-badge__label">${fact.label}</span>
   </div>`;
-
-export const legalSectionTemplate = (section) => `
-  <div class="c-legal-section">
-    <h4 class="c-legal-section__heading">${section.heading}</h4>
-    ${section.paragraphs.map((p) => `<p>${p}</p>`).join('')}
-  </div>`;
