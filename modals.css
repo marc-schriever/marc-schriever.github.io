@@ -78,3 +78,26 @@
   color: var(--color-text-main);
   background-color: transparent;
 }
+
+.c-legal-section + .c-legal-section {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--color-border);
+}
+
+.c-legal-section__heading {
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-navy);
+  margin-bottom: 8px;
+}
+
+.c-legal-section p {
+  margin: 0 0 8px;
+}
+
+.c-legal-section p:last-child {
+  margin-bottom: 0;
+}

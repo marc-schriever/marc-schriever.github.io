@@ -78,6 +78,11 @@
                 <!-- Profilbild-Kachel -->
                 <div class="c-hero__profile">
                   <div class="c-hero__avatar-frame">
+                    <img
+                      src="assets/portrait.jpg"
+                      alt="Marc Schriever"
+                      class="c-hero__avatar-img"
+                    />
                     <div class="c-hero__avatar-placeholder">
                       <i class="ti ti-user c-hero__avatar-icon" aria-hidden="true"></i>
                       <span class="c-hero__avatar-name">Marc Schriever</span>
@@ -128,7 +133,7 @@
           <div class="o-container">
             <div class="c-section-header">
               <span class="c-section-header__eyebrow section-eyebrow"></span>
-              <h2 class="c-section-header__title">HÄUFIG GESTELLTE FRAGEN</h2>
+              <h2 class="c-section-header__title section-title"></h2>
             </div>
             <div class="c-accordion faq-list"></div>
           </div>
@@ -193,34 +198,32 @@
       <div class="c-modal__backdrop"></div>
       <div class="c-modal__window">
         <div class="c-modal__header">
-          <h3 class="c-modal__title">Geschützte Dokumente</h3>
+          <h3 class="c-modal__title" id="dokumente-title"></h3>
           <button type="button" id="dokumente-close" class="c-modal__close dokumente-overlay__close" aria-label="Schließen">&times;</button>
         </div>
         <div class="c-modal__body">
           <div id="token-step">
-            <p class="u-mb-md">
-              Bitte geben Sie Ihren persönlichen Zugangstoken ein oder nutzen Sie den QR-Scanner, um Unterlagen freizuschalten.
-            </p>
+            <p class="u-mb-md" id="dokumente-intro"></p>
             <div class="c-form__group u-mb-md">
-              <label for="dokumente-token" class="c-form__label">Zugangstoken</label>
+              <label for="dokumente-token" class="c-form__label" id="dokumente-token-label"></label>
               <div class="o-flex o-flex--gap-sm">
-                <input type="text" id="dokumente-token" class="c-form__input dokumente-overlay__input" placeholder="Token hier eingeben..." />
+                <input type="text" id="dokumente-token" class="c-form__input dokumente-overlay__input" />
                 <button type="button" id="scan-btn" class="c-button c-button--secondary" title="QR-Code mit Kamera scannen">
-                  <i class="ti ti-qrcode" aria-hidden="true"></i> Scan
+                  <i class="ti ti-qrcode" aria-hidden="true"></i> <span id="dokumente-scan-label"></span>
                 </button>
               </div>
             </div>
             <div id="dokumente-error" class="dokumente-overlay__error c-form__error u-mb-md"></div>
-            <button type="button" id="dokumente-submit" class="c-button c-button--primary c-button--full">Freischalten</button>
+            <button type="button" id="dokumente-submit" class="c-button c-button--primary c-button--full"></button>
           </div>
 
           <div id="document-step" style="display: none;">
             <div class="c-form__alert c-form__alert--success u-mb-md" style="display: block;">
-              <strong>Zugang erfolgreich verifiziert!</strong><br />
-              Sie können die Unterlagen jetzt herunterladen.
+              <strong id="dokumente-success-title"></strong><br />
+              <span id="dokumente-success-text"></span>
             </div>
             <a id="download-btn" href="#" target="_blank" rel="noopener" class="c-button c-button--primary c-button--full">
-              <i class="ti ti-download" aria-hidden="true"></i> Dokumente Herunterladen (PDF)
+              <i class="ti ti-download" aria-hidden="true"></i> <span id="dokumente-download-label"></span>
             </a>
           </div>
         </div>
@@ -232,13 +235,11 @@
       <div class="c-modal__backdrop"></div>
       <div class="c-modal__window" style="max-width: 440px;">
         <div class="c-modal__header">
-          <h3 class="c-modal__title">QR-Code Scannen</h3>
+          <h3 class="c-modal__title" id="scanner-title"></h3>
           <button type="button" id="close-scanner" class="c-modal__close" aria-label="Schließen">&times;</button>
         </div>
         <div class="c-modal__body u-text-center">
-          <p class="u-mb-md u-text-muted" style="font-size: 0.85rem;">
-            Richten Sie die Kamera auf den QR-Code mit Ihrem Token.
-          </p>
+          <p class="u-mb-md u-text-muted" style="font-size: 0.85rem;" id="scanner-intro"></p>
           <div id="reader" style="width: 100%; min-height: 250px; background-color: #000; border-radius: var(--radius-sm); overflow: hidden;"></div>
         </div>
       </div>
@@ -249,14 +250,14 @@
       <div class="c-modal__backdrop" onclick="document.getElementById('impressum-modal').classList.remove('is-open')"></div>
       <div class="c-modal__window">
         <div class="c-modal__header">
-          <h3 class="c-modal__title">Impressum</h3>
+          <h3 class="c-modal__title" id="impressum-title"></h3>
           <button type="button" class="c-modal__close" onclick="document.getElementById('impressum-modal').classList.remove('is-open')">&times;</button>
         </div>
         <div class="c-modal__body">
-          <p class="u-bold">Marc Schriever</p>
-          <p>Logistikexperte</p>
-          <p>Bremen, Deutschland</p>
-          <p class="u-mt-md">E-Mail: kontakt@marc-schriever.de</p>
+          <p class="u-bold" id="impressum-name"></p>
+          <p id="impressum-role"></p>
+          <p id="impressum-location"></p>
+          <p class="u-mt-md" id="impressum-email"></p>
         </div>
       </div>
     </div>
@@ -266,13 +267,10 @@
       <div class="c-modal__backdrop" onclick="document.getElementById('datenschutz-modal').classList.remove('is-open')"></div>
       <div class="c-modal__window">
         <div class="c-modal__header">
-          <h3 class="c-modal__title">Datenschutzerklärung</h3>
+          <h3 class="c-modal__title" id="datenschutz-title"></h3>
           <button type="button" class="c-modal__close" onclick="document.getElementById('datenschutz-modal').classList.remove('is-open')">&times;</button>
         </div>
-        <div class="c-modal__body">
-          <p>Verantwortlich im Sinne der Datenschutzgesetze ist Marc Schriever.</p>
-          <p class="u-mt-md">Diese Website verarbeitet keine personenbezogenen Daten ohne Ihre explizite Einwilligung.</p>
-        </div>
+        <div class="c-modal__body" id="datenschutz-body"></div>
       </div>
     </div>
 

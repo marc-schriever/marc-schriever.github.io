@@ -305,6 +305,26 @@
   border-color: var(--color-primary);
 }
 
+.c-hero__avatar-frame.has-photo {
+  border-style: solid;
+  border-color: var(--color-border);
+}
+
+.c-hero__avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: none;
+}
+
+.c-hero__avatar-frame.has-photo .c-hero__avatar-img {
+  display: block;
+}
+
+.c-hero__avatar-frame.has-photo .c-hero__avatar-placeholder {
+  display: none;
+}
+
 .c-hero__avatar-placeholder {
   display: flex;
   flex-direction: column;

@@ -6,7 +6,7 @@
 
 import { byId } from './dom-utils.js';
 
-const ICON_COUNT = 136;
+const ICON_COUNT = 16;
 const ICON_NAMES = ['ti-forklift', 'ti-box', 'ti-package'];
 
 const RANGES = {

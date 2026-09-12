@@ -10,7 +10,7 @@ export const CONTENT = {
   // ── NAVIGATION ───────────────────────────────────────────
   nav: {
     name: 'MARC SCHRIEVER',
-    title: 'LOGISTIKEXPERTE',
+    title: 'LAGERLEITER',
     links: [
       { href: '#home', label: 'HOME', active: true },
       { href: '#ueber-mich', label: 'ÜBER MICH' },
@@ -127,6 +127,7 @@ export const CONTENT = {
   // ── FAQ ───────────────────────────────────────────────────
   faq: {
     eyebrow: 'FRAGEN & ANTWORTEN',
+    headline: 'HÄUFIG GESTELLTE FRAGEN',
     items: [
       { q: 'Welchen Führungsstil bevorzugen Sie?', a: 'Situativ und kooperativ. Am Anfang bin ich eng dabei, zeige Abläufe selbst vor und prüfe das Verständnis. Schritt für Schritt gebe ich Verantwortung ab. Operative Präsenz ist mein wichtigstes Führungsinstrument. Ich bin im Lager, nicht im Büro.' },
       { q: 'Wie gehen Sie mit Konflikten im Team um?', a: 'Direkt ansprechen, beide Seiten hören, Sach- von Beziehungsebene trennen. Wenn nötig entscheide ich. Eine Entscheidung ist besser als Stillstand. Das Ziel ist immer eine funktionierende Zusammenarbeit, keine Schuldzuweisung.' },
@@ -172,9 +173,107 @@ export const CONTENT = {
   },
 
   dokumente: {
-    title: 'Zugangscode eingeben',
-    submit: 'Zugang',
-    error: 'Zugangscode nicht korrekt.',
+    title: 'Geschützte Dokumente',
+    intro: 'Bitte geben Sie Ihren persönlichen Zugangstoken ein oder nutzen Sie den QR-Scanner, um Unterlagen freizuschalten.',
+    tokenLabel: 'Zugangstoken',
+    tokenPlaceholder: 'Token hier eingeben...',
+    scanButton: 'Scan',
+    submit: 'Freischalten',
+    successTitle: 'Zugang erfolgreich verifiziert!',
+    successText: 'Sie können die Unterlagen jetzt herunterladen.',
+    downloadButton: 'Dokumente Herunterladen (PDF)',
+  },
+
+  scanner: {
+    title: 'QR-Code Scannen',
+    intro: 'Richten Sie die Kamera auf den QR-Code mit Ihrem Token.',
+  },
+
+  impressum: {
+    title: 'Impressum',
+    name: 'Marc Schriever',
+    role: 'Lagerleiter',
+    location: 'Bremen, Deutschland',
+    email: 'kontakt@marc-schriever.de',
+  },
+
+  datenschutz: {
+    title: 'Datenschutzerklärung',
+    sections: [
+      {
+        heading: '1. Verantwortlicher',
+        paragraphs: [
+          'Verantwortlicher im Sinne der Datenschutz-Grundverordnung (DSGVO) ist:',
+          'Marc Schriever, [VOLLSTÄNDIGE ANSCHRIFT ERGÄNZEN], E-Mail: kontakt@marc-schriever.de',
+        ],
+      },
+      {
+        heading: '2. Allgemeines zur Datenverarbeitung',
+        paragraphs: [
+          'Diese Website verarbeitet personenbezogene Daten nur, soweit dies zur Bereitstellung einer funktionsfähigen Website sowie unserer Inhalte und Leistungen erforderlich ist, oder soweit Sie freiwillig Daten eingeben, etwa über das Kontaktformular.',
+          'Rechtsgrundlage ist, soweit Sie in eine Verarbeitung eingewilligt haben, Art. 6 Abs. 1 lit. a DSGVO. Bei der Erfüllung vertraglicher oder vorvertraglicher Maßnahmen, etwa im Rahmen einer Bewerbungs- oder Kontaktanfrage, ist Rechtsgrundlage Art. 6 Abs. 1 lit. b DSGVO.',
+        ],
+      },
+      {
+        heading: '3. Hosting',
+        paragraphs: [
+          'Diese Website wird über GitHub Pages gehostet, einen Dienst der GitHub Inc. bzw. Microsoft Corporation. Dabei werden automatisch Informationen in sogenannten Server-Logfiles erfasst, die Ihr Browser übermittelt, unter anderem IP-Adresse, Datum und Uhrzeit der Anfrage sowie der verwendete Browsertyp.',
+          'Die Verarbeitung erfolgt auf Grundlage berechtigter Interessen an einer sicheren und funktionsfähigen Bereitstellung der Website (Art. 6 Abs. 1 lit. f DSGVO). Eine Übermittlung in die USA erfolgt auf Grundlage geeigneter Garantien, soweit der Anbieter im Rahmen des EU-US Data Privacy Framework zertifiziert ist, andernfalls auf Grundlage von EU-Standardvertragsklauseln.',
+        ],
+      },
+      {
+        heading: '4. Kontaktformular',
+        paragraphs: [
+          'Wenn Sie das Kontaktformular nutzen, werden die von Ihnen eingegebenen Daten, Name, E-Mail-Adresse und Nachricht, zur Bearbeitung Ihrer Anfrage an den Formular-Dienstleister Formspree, Inc. (USA) übermittelt und dort verarbeitet.',
+          'Rechtsgrundlage ist Art. 6 Abs. 1 lit. b bzw. lit. f DSGVO. Auch hier erfolgt eine Übermittlung in die USA auf Grundlage geeigneter Garantien entsprechend Abschnitt 3.',
+        ],
+      },
+      {
+        heading: '5. Freischaltung geschützter Dokumente',
+        paragraphs: [
+          'Zur Freischaltung geschützter Bewerbungsunterlagen nutzt diese Website den Dienst Supabase. Bei Eingabe eines Zugangstokens wird dieser zur Prüfung an Supabase übermittelt und dort verarbeitet.',
+          'Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO, das berechtigte Interesse liegt in der kontrollierten Weitergabe personenbezogener Bewerbungsunterlagen ausschließlich an berechtigte Empfänger.',
+        ],
+      },
+      {
+        heading: '6. QR-Code-Scanner (Kamerazugriff)',
+        paragraphs: [
+          'Für den optionalen QR-Code-Scanner fragt die Website mit Ihrer ausdrücklichen Erlaubnis Zugriff auf die Kamera Ihres Geräts an. Der Kamerastream wird ausschließlich lokal in Ihrem Browser zur Erkennung des QR-Codes verarbeitet, nicht aufgezeichnet und nicht an einen Server übertragen.',
+          'Rechtsgrundlage ist Ihre Einwilligung, Art. 6 Abs. 1 lit. a DSGVO, die Sie über die Berechtigungsabfrage Ihres Browsers erteilen und jederzeit widerrufen können.',
+        ],
+      },
+      {
+        heading: '7. Eingebundene Schriftarten und Skripte',
+        paragraphs: [
+          'Diese Website lädt Icon-Schriftarten und JavaScript-Bibliotheken von externen Content-Delivery-Networks nach (jsdelivr, unpkg). Beim Laden dieser Ressourcen wird technisch bedingt Ihre IP-Adresse an den jeweiligen Anbieter übertragen, unabhängig davon, ob Sie dort ein Konto besitzen.',
+          'Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO, das berechtigte Interesse liegt in einer performanten und wartungsarmen Bereitstellung der Website.',
+        ],
+      },
+      {
+        heading: '8. Cookies',
+        paragraphs: [
+          'Diese Website selbst setzt keine Cookies. Die eingebundenen Drittanbieter-Dienste können im Rahmen ihrer technischen Funktion eigene Cookies oder vergleichbare Technologien einsetzen, siehe hierzu die Datenschutzhinweise der jeweiligen Anbieter.',
+        ],
+      },
+      {
+        heading: '9. Ihre Rechte',
+        paragraphs: [
+          'Sie haben das Recht auf Auskunft über die zu Ihrer Person gespeicherten Daten (Art. 15 DSGVO), auf Berichtigung unrichtiger Daten (Art. 16 DSGVO), auf Löschung (Art. 17 DSGVO), auf Einschränkung der Verarbeitung (Art. 18 DSGVO), auf Datenübertragbarkeit (Art. 20 DSGVO) sowie auf Widerspruch gegen die Verarbeitung (Art. 21 DSGVO). Wenden Sie sich hierzu an die oben genannte Kontaktadresse.',
+        ],
+      },
+      {
+        heading: '10. Beschwerderecht',
+        paragraphs: [
+          'Sie haben das Recht, sich bei einer Datenschutz-Aufsichtsbehörde über die Verarbeitung Ihrer personenbezogenen Daten durch uns zu beschweren, zuständig ist unter anderem die Landesbeauftragte für Datenschutz und Informationsfreiheit der Freien Hansestadt Bremen.',
+        ],
+      },
+      {
+        heading: '11. Änderung dieser Erklärung',
+        paragraphs: [
+          'Diese Datenschutzerklärung wird bei Änderungen an der Website oder den eingesetzten Diensten entsprechend angepasst. Es gilt die jeweils aktuelle, auf dieser Seite veröffentlichte Fassung.',
+        ],
+      },
+    ],
   },
 
   footer: {

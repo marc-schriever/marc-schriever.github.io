@@ -12,6 +12,7 @@ import {
   faqItemTemplate,
   referenzLogoTemplate,
   factRowTemplate,
+  legalSectionTemplate,
 } from './templates.js';
 
 export function renderNav() {
@@ -78,6 +79,7 @@ export function renderExpertise() {
 
 export function renderFaq() {
   setText('.section--faq .section-eyebrow', CONTENT.faq.eyebrow);
+  setText('.section--faq .section-title', CONTENT.faq.headline);
   setHTML('.faq-list', CONTENT.faq.items.map(faqItemTemplate).join(''));
 }
 
@@ -107,6 +109,31 @@ export function renderFooter() {
   setText('.footer-link--datenschutz', CONTENT.footer.datenschutz);
 }
 
+export function renderModals() {
+  const d = CONTENT.dokumente;
+  setText('#dokumente-title', d.title);
+  setText('#dokumente-intro', d.intro);
+  setText('#dokumente-token-label', d.tokenLabel);
+  setAttr('#dokumente-token', 'placeholder', d.tokenPlaceholder);
+  setText('#dokumente-scan-label', d.scanButton);
+  setText('#dokumente-submit', d.submit);
+  setText('#dokumente-success-title', d.successTitle);
+  setText('#dokumente-success-text', d.successText);
+  setText('#dokumente-download-label', d.downloadButton);
+
+  setText('#scanner-title', CONTENT.scanner.title);
+  setText('#scanner-intro', CONTENT.scanner.intro);
+
+  setText('#impressum-title', CONTENT.impressum.title);
+  setText('#impressum-name', CONTENT.impressum.name);
+  setText('#impressum-role', CONTENT.impressum.role);
+  setText('#impressum-location', CONTENT.impressum.location);
+  setText('#impressum-email', `E-Mail: ${CONTENT.impressum.email}`);
+
+  setText('#datenschutz-title', CONTENT.datenschutz.title);
+  setHTML('#datenschutz-body', CONTENT.datenschutz.sections.map(legalSectionTemplate).join(''));
+}
+
 export function renderAll() {
   renderNav();
   renderHero();
@@ -117,4 +144,5 @@ export function renderAll() {
   renderReferenzen();
   renderKontakt();
   renderFooter();
+  renderModals();
 }
