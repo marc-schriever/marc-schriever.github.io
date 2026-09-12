@@ -281,6 +281,12 @@
   margin: 0 auto;
 }
 
+@media (min-width: 768px) and (max-width: 991px) {
+  .c-hero__profile {
+    margin-top: 20px;
+  }
+}
+
 @media (min-width: 992px) {
   .c-hero__profile {
     margin: 0;
@@ -385,6 +391,13 @@
 }
 
 @media (min-width: 768px) {
+  .c-hero__headline {
+    font-size: 2.3rem;
+    white-space: nowrap;
+  }
+}
+
+@media (min-width: 992px) {
   .c-hero__headline {
     font-size: 3rem;
   }
@@ -585,7 +598,7 @@
 
 .c-expertise-list__item {
   position: relative;
-  padding-left: 18px;
+  padding-left: 24px;
   font-size: 0.88rem;
   color: var(--color-text-main);
   line-height: 1.45;

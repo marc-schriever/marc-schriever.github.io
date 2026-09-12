@@ -54,6 +54,16 @@ html {
   overflow-x: hidden;
 }
 
+/* Tablets werden typischerweise weiter vom Auge entfernt gehalten als
+   Smartphones, bei gleicher rem-Basis wirkt Text dort spürbar kleiner
+   und erfordert Pinch-Zoom. Deshalb eigene, größere Basis für den
+   Tablet-Bereich (~600px bis ~1024px Breite). */
+@media (min-width: 600px) {
+  html {
+    font-size: 18px;
+  }
+}
+
 body {
   line-height: var(--line-height-base);
   min-height: 100vh;
