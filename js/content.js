@@ -10,7 +10,7 @@ export const CONTENT = {
   // ── NAVIGATION ───────────────────────────────────────────
   nav: {
     name: 'MARC SCHRIEVER',
-    title: 'LAGERLEITER',
+    title: 'LOGISTIKEXPERTE',
     links: [
       { href: '#home', label: 'HOME', active: true },
       { href: '#ueber-mich', label: 'ÜBER MICH' },
@@ -178,7 +178,7 @@ export const CONTENT = {
   },
 
   footer: {
-    copy: '© 2026 Marc Schriever · LAGER & LOGISTIK',
+    copy: '© 2026 Marc Schriever · Logistikexperte',
     location: 'Bremen, Deutschland',
     impressum: 'Impressum',
     datenschutz: 'Datenschutz',

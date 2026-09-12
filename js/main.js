@@ -8,6 +8,7 @@ import { initReveal, initFaq, initHamburger } from './ui-interactions.js';
 import { initDocumentsModal } from './documents-modal.js';
 import { initQrScanner } from './qr-scanner.js';
 import { initScrollVehicle } from './scroll-vehicle.js';
+import { initPageDeco } from './page-deco.js';
 
 function initScrollSpy() {
   const menu = document.querySelector('.c-navbar__menu');
@@ -81,6 +82,7 @@ function boot() {
   initDocumentsModal();
   initQrScanner();
   initScrollVehicle();
+  initPageDeco();
 }
 
 document.addEventListener('DOMContentLoaded', boot);
