@@ -277,7 +277,7 @@ export const CONTENT = {
   },
 
   footer: {
-    copy: '© 2026 Marc Schriever · Logistikexperte',
+    copy: '© 2026 Marc Schriever · Lager & Logistik',
     location: 'Bremen, Deutschland',
     impressum: 'Impressum',
     datenschutz: 'Datenschutz',
