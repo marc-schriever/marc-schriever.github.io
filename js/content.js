@@ -10,7 +10,7 @@ export const CONTENT = {
   // ── NAVIGATION ───────────────────────────────────────────
   nav: {
     name: 'MARC SCHRIEVER',
-    title: 'WAREHOUSING-EXPERTE',
+    title: 'LAGERLEITER',
     links: [
       { href: '#home', label: 'HOME', active: true },
       { href: '#ueber-mich', label: 'ÜBER MICH' },
@@ -28,11 +28,10 @@ export const CONTENT = {
     subline: 'Effizienz durch IT-Affinität & Führungskompetenz.',
     // Absatzgrenzen entsprechen der ursprünglichen Gedankengliederung des Texts.
     textParagraphs: [
-      'Mit rund 20 Jahren Erfahrung in unterschiedlichen Positionen der Lagerlogistik habe ich sowohl operative als auch führende Rollen durchlaufen und kenne im Warehousing jeden operativen Handgriff.',
-      'In knapp 10 Jahre Führungserfahrung, habe ich Prozesse verantwortet, Teams geführt und entwickelt, KVP und PDCA angewendet, bevor ich die Fachbegriffe dafür kannte.',
-      'Damit bringe ich nicht nur langjährige Führungserfahrung, sondern vor allem Praxisnähe mit.',
-      'Während meiner Ausbildung zum Fachinformatiker Anwendungsentwicklung, welche ich leider nicht erfolgreich beendete, erlernte ich Grundlagen wie Clean Code, OOP und MVC, die ich seitdem für bedarfsgerechte, KI-gestützte digitale Werkzeuge nutze.',
-      'Komplikationen im Tagesgeschäft löse ich so eigenständig, von der Idee bis zur einsatzfähigen App.',
+      '1973 in Bremen geboren, habe ich 1994 meine Ausbildung zum Kaufmann im Groß- und Außenhandel erfolgreich abgeschlossen. Mein beruflicher Weg führte mich anschließend in die Logistik. Was zunächst eher zufällig begann, entwickelte sich schnell zu einer bewussten beruflichen Entscheidung, in deren Verlauf ich mich über verschiedene verantwortungsvolle Positionen kontinuierlich weiterentwickelt habe.',
+      'Zunächst übernahm ich die fachliche Führung kleiner Teams, später die Leitung des Wareneingangs sowie temporär die Vertretung der Lagerleitung. Meine letzte Station führte mich schließlich zur dreijährigen Gesamtverantwortung für den Lagerbereich.',
+      'Besonderen Fokus lege ich dabei auf die operative Steuerung, insbesondere auf die Führung und Entwicklung von Mitarbeitern, die Optimierung von Abläufen sowie auf eine wirtschaftliche und leistungsorientierte Organisation des gesamten Lagerbereichs.',
+      'Zusätzlich absolvierte ich 2018 eine Umschulung zum Fachinformatiker für Anwendungsentwicklung, die ich aufgrund der Corona-Situation abbrechen musste.',
     ],
     btn_primary: 'MEHR ERFAHREN',
     btn_secondary: 'KONTAKT AUFNEHMEN',
@@ -51,15 +50,17 @@ export const CONTENT = {
     eyebrow: 'ICH BIETE...',
     headline: 'ZIELORIENTIERUNG. VERANTWORTUNGSBEWUSSTSEIN. UMSETZUNGSSTÄRKE.',
     philosophyParagraphs: [
-      '1973 in Bremen geboren. Hanseat, gelernter Kaufmann und leidenschaftlicher Logistiker. Mit über 30 Jahren Berufserfahrung, davon mehr als zwei Jahrzehnte in der operativen und strategischen Logistik, kenne ich jeden Handgriff von der Pike auf. Mein Fundament bildet die kaufmännische Ausbildung im Groß- und Außenhandel sowie eine tiefgehende IT-Qualifikation über 2.979 Unterrichtsstunden in der Anwendungsentwicklung.',
-      'Diese seltene Kombination erlaubt es mir, Logistikketten nicht nur effizient zu leiten, sondern Engpässe sofort durch selbst entwickelte, KI-gestützte Prozesswerkzeuge digital zu automatisieren. Vom Hochregallager bis zur eigenverantwortlichen Bereichsleitung: Ich denke nicht in Problemen, sondern in skalierbaren Systemen.',
+      'Ich verbinde operative Logistikerfahrung mit technischem Verständnis und entwickle daraus praxisorientierte Lösungen für wiederkehrende Abläufe und Prozessschwachstellen. Dabei geht es mir nicht darum, bestehende Prozesse lediglich zu verwalten, sondern darum, sie nachvollziehbar, prozesssicher und effizient zu gestalten.',
+      'Mein Ansatz folgt dabei einem klaren Grundsatz: Nicht die Disziplin des Mitarbeiters soll Abweichungen verhindern, sondern ein sauber aufgebauter Prozess. Wo Zuordnung, Erfassung oder Nachschub bislang von manueller Sorgfalt abhängig waren, setze ich auf systemgestützte Abläufe, die mögliche Fehlerquellen bereits im Prozess minimieren. Grundlage dafür ist die kontinuierliche Prozessverbesserung nach dem PDCA-Zyklus.',
+      'Diese Verbindung aus Logistikpraxis und Anwendungsentwicklung habe ich unter anderem in eigenen Lösungen umgesetzt: Ein selbst entwickelter Label-Generator reduzierte Reklamationen messbar. Ein digitales Mutter-Kind-Nachschubtool verkürzte einen zuvor rund 30-minütigen manuellen Vorgang auf etwa 20 Sekunden. Ein durchgängiges Nummern- und Zuordnungssystem für Karton, Inhalt und Palette in der Versandvorbereitung verhindert Fehlzuordnungen bei Verladung und Versand strukturell.',
+      'Ich bringe damit langjährige Erfahrung in der operativen Lagerführung mit der Fähigkeit zusammen, Prozesse nicht nur zu steuern, sondern ihre Schwachstellen zu erkennen und mit geeigneten digitalen Lösungen nachhaltig zu verbessern.',
     ],
     credoParagraphs: [
-      'Prozessphilosophie: Der Prozess führt, nicht die Disziplin. Fehler sind selten Zufall. Sie sind das logische Ergebnis schlechter Prozesse. Mein Ansatz: ein digitaler Arbeitsablauf führt den Mitarbeiter, nicht umgekehrt.',
-      'Wo Zuordnung, Erfassung oder Nachschub bislang von manueller Sorgfalt abhingen, ersetze ich das durch Systeme, die Fehlerquellen strukturell minimieren, im Sinne kontinuierlicher Prozessverbesserung (KVP) nach dem PDCA-Zyklus. Konkret umgesetzt in einem selbst entwickelten Label-Generator, der Reklamationen messbar reduzierte, einem digitalen Mutter-Kind-Nachschubtool, das einen 30-minütigen manuellen Vorgang auf 15 Sekunden verkürzte, und einem durchgängigen Nummern- und Zuordnungssystem für Karton, Inhalt und Palette in der Versandvorbereitung, das Fehlzuordnungen bei Verladung und Versand strukturell verhindert.',
+      'Meine Stärke liegt in der kontinuierlichen Verbesserung nach dem Kaizen-Prinzip: nicht der radikale Umbruch zählt, sondern die konsequente Summe vieler kleiner Schritte im Alltag. Dabei steht für mich nicht nur das Ergebnis im Fokus, sondern der Weg dorthin, Prozesse werden fortlaufend hinterfragt und weiterentwickelt, nicht einmalig optimiert und dann liegen gelassen.',
+      'Verbesserung gelingt dabei nie im Alleingang. Ich beziehe jede Ebene im Team aktiv ein, denn die besten Ideen zur Optimierung entstehen dort, wo tatsächlich gearbeitet wird, nicht am Schreibtisch darüber.',
+      'Mein berufliches Fundament aus kaufmännischer Ausbildung und über 30 Jahren Berufserfahrung in der Logistik hat meinen Weg geprägt. Es verbindet kaufmännisches Verständnis mit langjähriger praktischer Erfahrung in der Lagerorganisation, Prozesssteuerung und Mitarbeiterführung. Ergänzt wird dieses Profil durch meine IT-Qualifikation in der Anwendungsentwicklung.',
     ],
     facts: [
-      { year: '1973', label: 'In Bremen geboren' },
       { year: '30', label: 'Jahre Erfahrung in Handel & Logistik' },
       { year: 'IHK', label: 'Zertifizierter Gefahrgutbeauftragter' },
       { year: '2.979h', label: 'Fachinformatiker Anwendungsentwicklung' },
@@ -192,7 +193,7 @@ export const CONTENT = {
   impressum: {
     title: 'Impressum',
     name: 'Marc Schriever',
-    role: 'Warehousing-Experte',
+    role: 'Lagerleiter',
     location: 'Bremen, Deutschland',
     email: 'kontakt@marc-schriever.de',
   },
