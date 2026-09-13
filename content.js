@@ -10,7 +10,7 @@ export const CONTENT = {
   // ── NAVIGATION ───────────────────────────────────────────
   nav: {
     name: 'MARC SCHRIEVER',
-    title: 'WAREHOUSING-EXPERTE',
+    title: 'LAGERLEITER',
     links: [
       { href: '#home', label: 'HOME', active: true },
       { href: '#ueber-mich', label: 'ÜBER MICH' },
