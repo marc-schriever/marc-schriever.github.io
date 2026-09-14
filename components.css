@@ -772,6 +772,89 @@
   will-change: left;
   overflow: visible;
 }
+/* ─── C-PHOTO-BAND (Jetzt absolut blickdicht gegen den Seitenhintergrund) ─── */
+.c-photo-band {
+  height: 10rem;
+  position: relative;
+  overflow: hidden; 
+  background-color: var(--color-card-bg); /* NEU HIER: Blockiert das Bild von hinten komplett (100% deckend) */
+}
+
+/* 1. Das ::before bleibt als leere Ebene darüber liegen */
+.c-photo-band::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2; /* Liegt über dem Bild */
+}
+
+/* 2. Das Bild (lager-2) liegt über der deckenden Farbe */
+#photo-band-2::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('assets/lager-2.jpg'); 
+  background-size: cover;       
+  background-position: center;  
+  background-repeat: no-repeat; 
+  opacity: 0.3; /* Macht NUR das Bild transparent, nicht mehr die Hintergrundfarbe */
+  z-index: 1;   /* Liegt über der background-color des Hauptcontainers */
+}
+
+
+
+
+
+
+@media (min-width: 768px) {
+  .c-photo-band { height: 170px; }
+}
+
+/* ─── C-TICKER (Erfolgs-Laufband) ─── */
+.c-ticker {
+  background-color: var(--color-navy);
+  overflow: hidden;
+  padding: 16px 0;
+}
+
+.c-ticker__track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: ticker-scroll 36s linear infinite;
+}
+
+.c-ticker__item {
+  color: #FFFFFF;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  padding: 0 10px;
+}
+
+.c-ticker__sep {
+  color: var(--color-primary);
+  font-size: 0.7rem;
+  padding: 0 14px;
+}
+
+@keyframes ticker-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .c-ticker__track {
+    animation: none;
+    flex-wrap: wrap;
+    width: auto;
+  }
+}
+
+@media (min-width: 768px) {
+  .c-ticker__item { font-size: 0.95rem; }
+}
 /* ─── C-FOOTER ─── */
 .c-footer {
   margin-top: auto;

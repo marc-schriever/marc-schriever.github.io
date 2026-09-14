@@ -48,3 +48,6 @@ export const factRowTemplate = (fact) => `
     <span class="c-fact-badge__num">${fact.year}</span>
     <span class="c-fact-badge__label">${fact.label}</span>
   </div>`;
+
+export const achievementTickerItem = (text) =>
+  `<span class="c-ticker__item">${text}</span><span class="c-ticker__sep" aria-hidden="true">◆</span>`;

@@ -126,6 +126,16 @@ export const CONTENT = {
   },
 
   // ── FAQ ───────────────────────────────────────────────────
+  achievements: [
+    'Auswertezeit von 30 Minuten auf unter 20 Sekunden reduziert',
+    'Reklamationen durch eigenen Label-Generator messbar gesenkt',
+    'Wareneingangs-Durchsatz bei B.O.C. von 10.000 auf 15.000 Einheiten gesteigert',
+    'Kommissionierwege durch neue Regalzone nachhaltig verkürzt',
+    'Fehlzuordnungen bei Verladung und Versand strukturell verhindert',
+    'Personalverantwortung für vier Mitarbeitende',
+    'Gesamtverantwortung für 2.000 m² Lagerfläche mit über 8.000 Artikeln',
+  ],
+
   faq: {
     eyebrow: 'FRAGEN & ANTWORTEN',
     headline: 'HÄUFIG GESTELLTE FRAGEN',

@@ -12,6 +12,7 @@ import {
   faqItemTemplate,
   referenzLogoTemplate,
   factRowTemplate,
+  achievementTickerItem,
 } from './templates.js';
 
 export function renderNav() {
@@ -76,6 +77,14 @@ export function renderExpertise() {
   setHTML('.grid--expertise', CONTENT.expertise.blocks.map(expertiseBlockTemplate).join(''));
 }
 
+export function renderStatHighlight() {
+  const items = CONTENT.achievements.map(achievementTickerItem).join('');
+  const prefersReducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+  // Nur für die animierte Endlosschleife verdoppeln (nahtloser Sprung bei
+  // -50% Transform). Bei reduzierter Bewegung reicht ein einzelner Durchlauf.
+  setHTML('#achievement-ticker', prefersReducedMotion ? items : items + items);
+}
+
 export function renderFaq() {
   setText('.section--faq .section-eyebrow', CONTENT.faq.eyebrow);
   setText('.section--faq .section-title', CONTENT.faq.headline);
@@ -138,6 +147,7 @@ export function renderAll() {
   renderStats();
   renderAbout();
   renderExpertise();
+  renderStatHighlight();
   renderFaq();
   renderReferenzen();
   renderKontakt();
