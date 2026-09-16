@@ -11,7 +11,6 @@ import { initScrollVehicle } from './scroll-vehicle.js';
 import { initPageDeco } from './page-deco.js';
 import { initHeroPhoto } from './hero-photo.js';
 import { initLegalContent } from './legal-content.js';
-import { bindModalHandlers } from './modal-bindings.js';
 
 function initScrollSpy() {
   const menu = document.querySelector('.c-navbar__menu');
@@ -77,18 +76,8 @@ function initScrollSpy() {
 }
 
 function boot() {
-  renderAll();
-  bindModalHandlers();
-
-  const contactForm = document.getElementById('contact-form');
-  if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      alert('Vielen Dank für Ihre Nachricht!');
-    });
-  }
-
-  initScrollSpy();
+  renderAll();          // Zuerst HTML ins DOM rendern!
+  initScrollSpy();      // Dann erst den ScrollSpy initialisieren, damit die Links da sind
   initReveal();
   initFaq();
   initHamburger();
