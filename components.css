@@ -73,7 +73,6 @@
   color: var(--color-primary);
 }
 
-/* Unterlinie Basis-Zustand (unsichtbar) */
 .c-navbar__link::after {
   content: "";
   position: absolute;
@@ -87,14 +86,12 @@
   transition: transform var(--transition-fast), opacity var(--transition-fast);
 }
 
-/* Unterlinie Aktiv/Hover-Zustand (sanftes Einblenden) */
 .c-navbar__link:hover::after,
 .c-navbar__link.is-active::after {
   opacity: 1;
   transform: scaleX(1);
 }
 
-/* Navigations-Button (z. B. Dokumente) */
 .c-navbar__link.c-navbar__link--btn {
   background-color: var(--color-primary);
   color: var(--color-white);
@@ -110,7 +107,6 @@
   transform: translateY(-1px);
 }
 
-/* Verhindert die Unterlinie beim Button */
 .c-navbar__link.c-navbar__link--btn::after {
   display: none;
 }
@@ -233,19 +229,13 @@
 }
 
 .c-hero__image-bg {
-  position: absolute;
-  inset: 0;
-  background-image: url('../assets/background.jpg');
-  background-size: cover;
-  background-position: center;
-  opacity: 0.22;
-  pointer-events: none;
+  display: none;
 }
 
 .c-hero__overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to right, rgba(234, 230, 225, 0.95) 0%, rgba(234, 230, 225, 0.85) 60%, rgba(234, 230, 225, 0.7) 100%);
+  background: rgba(234, 230, 225, 0.88);
   pointer-events: none;
 }
 
@@ -278,93 +268,22 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  margin: 0 auto;
+  margin: 24px auto 0;
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
   .c-hero__profile {
-    margin-top: 20px;
+    margin-top: 28px;
   }
 }
 
 @media (min-width: 992px) {
   .c-hero__profile {
-    margin: 0;
+    margin: 36px 0 0;
   }
 }
 
-.c-hero__avatar-frame {
-  position: relative;
-  width: 220px;
-  height: 220px;
-  border-radius: var(--radius-sm);
-  background-color: var(--color-sand-light);
-  border: 2px dashed #C5BEB5;
-  box-shadow: 0 4px 12px rgba(22, 40, 63, 0.08);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  transition: all var(--transition-fast);
-}
-
-.c-hero__avatar-frame:hover {
-  border-color: var(--color-primary);
-}
-
-.c-hero__avatar-frame.has-photo {
-  border-style: solid;
-  border-color: var(--color-border);
-}
-
-.c-hero__avatar-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: none;
-}
-
-.c-hero__avatar-frame.has-photo .c-hero__avatar-img {
-  display: block;
-}
-
-.c-hero__avatar-frame.has-photo .c-hero__avatar-placeholder {
-  display: none;
-}
-
-.c-hero__avatar-placeholder {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 16px;
-  color: var(--color-navy);
-  user-select: none;
-}
-
-.c-hero__avatar-icon {
-  font-size: 3.5rem;
-  color: var(--color-primary);
-  margin-bottom: 8px;
-  opacity: 0.85;
-}
-
-.c-hero__avatar-name {
-  font-size: 0.95rem;
-  font-weight: 800;
-  letter-spacing: 0.04em;
-  color: var(--color-navy);
-  margin-bottom: 2px;
-}
-
-.c-hero__avatar-hint {
-  font-size: 0.72rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--color-text-muted);
-}
+/* (Avatar-Regeln wurden vollständig nach images.css ausgelagert) */
 
 .c-hero__badge {
   display: inline-flex;
@@ -428,10 +347,27 @@
   transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
+.c-card--readability {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.92) 0%, rgba(246, 242, 237, 0.96) 100%);
+  border-color: rgba(22, 40, 63, 0.16);
+  backdrop-filter: blur(7px);
+  box-shadow: 0 12px 28px rgba(22, 40, 63, 0.12);
+}
+
 .c-card:hover {
   border-color: var(--color-navy);
   border-top-color: var(--color-primary);
   box-shadow: var(--shadow-hover);
+  transform: translateY(-3px);
+}
+
+@media (max-width: 767px) {
+  .c-card--readability {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, rgba(242, 236, 229, 0.96) 100%);
+    border-color: rgba(22, 40, 63, 0.22);
+    box-shadow: 0 16px 34px rgba(22, 40, 63, 0.16);
+    backdrop-filter: blur(8px);
+  }
 }
 
 .c-card__icon {
@@ -445,6 +381,18 @@
   justify-content: center;
   font-size: 1.4rem;
   margin-bottom: 14px;
+}
+
+.c-card__icon .ti {
+  line-height: 1;
+}
+
+.grid--stats .c-card {
+  border-top-width: 4px;
+}
+
+.grid--stats .c-card:hover {
+  border-top-color: var(--color-primary-hover);
 }
 
 .c-card__title {
@@ -462,19 +410,99 @@
   line-height: 1.5;
 }
 
+.stats-section {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--color-sand);
+}
+
+.c-stats-strip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  min-height: 180px;
+  background-image: url('assets/lager-1.jpg');
+  background-repeat: repeat-x;
+  background-size: auto 100%;
+  background-position: center;
+  border-top: 1px solid rgba(22, 40, 63, 0.12);
+  border-bottom: 1px solid rgba(22, 40, 63, 0.12);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+  opacity: 0.38;
+  z-index: 0;
+}
+
+.c-stats-strip::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(22, 40, 63, 0.18);
+}
+
+.stats-content {
+  position: relative;
+  z-index: 1;
+}
+
+.c-section-subheadline {
+  position: relative;
+  margin: 0 0 16px;
+  background-color: var(--color-navy);
+  color: var(--color-white);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-sm);
+  padding: 14px 18px 18px;
+  font-size: 1.15rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  box-shadow: 0 12px 24px rgba(22, 40, 63, 0.15);
+}
+
+.c-section-subheadline::after {
+  content: '';
+  position: absolute;
+  left: 18px;
+  bottom: 8px;
+  width: 48px;
+  height: 3px;
+  background-color: rgb(244, 70, 17);
+}
+
 /* ─── C-SECTION-HEADER ─── */
 .c-section-header {
+  position: relative;
   margin-bottom: 24px;
 }
 
+.c-section-header--dark {
+  background-color: var(--color-navy);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-sm);
+  padding: 18px 20px 16px;
+  box-shadow: 0 12px 24px rgba(22, 40, 63, 0.15);
+}
+
 .c-section-header__eyebrow {
-  font-size: 0.78rem;
+  font-size: 0.80rem;
   font-weight: 800;
   color: var(--color-primary);
   letter-spacing: 0.12em;
   text-transform: uppercase;
   margin-bottom: 4px;
   display: block;
+}
+
+.c-section-header--dark .c-section-header__eyebrow {
+  color: var(--color-primary);
+}
+
+.c-section-header--dark .c-section-header__title {
+  color: var(--color-white);
+  font-size: 1.40rem;
+  white-space: nowrap;
 }
 
 .c-section-header__title {
@@ -496,6 +524,32 @@
   width: 48px;
   height: 3px;
   background-color: var(--color-primary);
+}
+
+.c-section-header--dark .c-section-header__title::after {
+  background-color: rgb(244, 70, 17);
+}
+
+section.o-section + section.o-section {
+  border-top: 1px dashed rgba(244, 70, 17, 0.52);
+}
+
+@media (min-width: 480px) and (max-width: 599px) {
+  .grid--stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+}
+
+@media (max-width: 767px) {
+  .c-section-header--dark .c-section-header__title {
+    white-space: normal;
+    font-size: 1.15rem;
+  }
+
+  .c-section-header__title {
+    font-size: 1.35rem;
+  }
 }
 
 /* ─── C-REFERENCES STRIP ─── */
@@ -535,7 +589,7 @@
   color: var(--color-primary);
 }
 
-/* ─── C-FACTS STRIP (FORMATIERT & ZENTRIERT) ─── */
+/* ─── C-FACTS STRIP ─── */
 #about-fact-rows {
   display: flex;
   flex-wrap: wrap;
@@ -751,7 +805,7 @@
   border: 1px solid #FCA5A5;
 }
 
-/* ─── C-SCROLL-TRACK (Stapler-Fortschrittsanzeige) ─── */
+/* ─── C-SCROLL-TRACK ─── */
 .c-scroll-track {
   position: fixed;
   left: 0;
@@ -772,45 +826,8 @@
   will-change: left;
   overflow: visible;
 }
-/* ─── C-PHOTO-BAND (Jetzt absolut blickdicht gegen den Seitenhintergrund) ─── */
-.c-photo-band {
-  height: 10rem;
-  position: relative;
-  overflow: hidden; 
-  background-color: var(--color-card-bg); /* NEU HIER: Blockiert das Bild von hinten komplett (100% deckend) */
-}
 
-/* 1. Das ::before bleibt als leere Ebene darüber liegen */
-.c-photo-band::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 2; /* Liegt über dem Bild */
-}
-
-/* 2. Das Bild (lager-2) liegt über der deckenden Farbe */
-#photo-band-2::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: url('assets/lager-2.jpg'); 
-  background-size: cover;       
-  background-position: center;  
-  background-repeat: no-repeat; 
-  opacity: 0.3; /* Macht NUR das Bild transparent, nicht mehr die Hintergrundfarbe */
-  z-index: 1;   /* Liegt über der background-color des Hauptcontainers */
-}
-
-
-
-
-
-
-@media (min-width: 768px) {
-  .c-photo-band { height: 170px; }
-}
-
-/* ─── C-TICKER (Erfolgs-Laufband) ─── */
+/* ─── C-TICKER ─── */
 .c-ticker {
   background-color: var(--color-navy);
   overflow: hidden;
@@ -855,6 +872,7 @@
 @media (min-width: 768px) {
   .c-ticker__item { font-size: 0.95rem; }
 }
+
 /* ─── C-FOOTER ─── */
 .c-footer {
   margin-top: auto;

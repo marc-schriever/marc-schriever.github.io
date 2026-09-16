@@ -73,17 +73,7 @@ body {
   overflow-x: hidden;
 }
 
-.site-background {
-  position: fixed;
-  inset: 0;
-  background-image: url('../assets/background.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  opacity: 0.18;
-  pointer-events: none;
-  z-index: 0;
-}
+/* .site-background jetzt in images.css */
 
 /* Dezente, langsam treibende Icons über der gesamten Seite, oberhalb von background.jpg */
 .c-page-deco {

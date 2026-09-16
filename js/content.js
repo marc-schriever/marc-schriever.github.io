@@ -55,6 +55,7 @@ export const CONTENT = {
       'Diese Verbindung aus Logistikpraxis und Anwendungsentwicklung habe ich unter anderem in eigenen Lösungen umgesetzt: Ein selbst entwickelter Label-Generator reduzierte Reklamationen messbar. Ein digitales Mutter-Kind-Nachschubtool verkürzte einen zuvor rund 30-minütigen manuellen Vorgang auf etwa 20 Sekunden. Ein durchgängiges Nummern- und Zuordnungssystem für Karton, Inhalt und Palette in der Versandvorbereitung verhindert Fehlzuordnungen bei Verladung und Versand strukturell.',
       'Ich bringe damit langjährige Erfahrung in der operativen Lagerführung mit der Fähigkeit zusammen, Prozesse nicht nur zu steuern, sondern ihre Schwachstellen zu erkennen und mit geeigneten digitalen Lösungen nachhaltig zu verbessern.',
     ],
+    credoHeadline: 'PRAXIS STATT THEORIE',
     credoParagraphs: [
       'Meine Stärke liegt in der kontinuierlichen Verbesserung nach dem Kaizen-Prinzip: nicht der radikale Umbruch zählt, sondern die konsequente Summe vieler kleiner Schritte im Alltag. Dabei steht für mich nicht nur das Ergebnis im Fokus, sondern der Weg dorthin, Prozesse werden fortlaufend hinterfragt und weiterentwickelt, nicht einmalig optimiert und dann liegen gelassen.',
       'Verbesserung gelingt dabei nie im Alleingang. Ich beziehe jede Ebene im Team aktiv ein, denn die besten Ideen zur Optimierung entstehen dort, wo tatsächlich gearbeitet wird, nicht am Schreibtisch darüber.',

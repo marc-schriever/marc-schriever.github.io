@@ -1,0 +1,109 @@
+/* ============================================================================
+   IMAGES.CSS — Zentrale Sammlung aller bildbezogenen Regeln
+   ============================================================================ */
+
+/* ─── Fixer Seiten-Hintergrund ─── */
+.site-background {
+  position: fixed;
+  inset: 0;
+  background-image: url('assets/background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.18;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ─── Sektions-Hintergrundfoto, weichgezeichnet ─── */
+.o-section--photo-bg {
+  position: relative;
+}
+.o-section--photo-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(135deg, rgba(22, 40, 63, 0.55), rgba(244, 70, 17, 0.3)), var(--bg-photo);
+  background-size: cover;
+  background-position: center;
+  filter: blur(4px);
+  transform: scale(1.05);
+}
+.o-section--photo-bg .o-container {
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── Profilfoto im Hero (Flexibles Hochformat) ─── */
+.c-hero__avatar-frame {
+  position: relative;
+  width: 100%;
+  max-width: 200px; /* Maximale Breite auf Desktop */
+  height: auto;
+  aspect-ratio: 11 / 22;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-sand-light);
+  border: 2px solid var(--color-navy);
+  border-bottom: 5px solid var(--color-primary);
+  box-shadow: 0 4px 12px rgba(22, 40, 63, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: all var(--transition-fast);
+  margin: 0 auto;
+}
+
+.c-hero__avatar-frame:hover {
+  border-color: var(--color-primary);
+}
+
+.c-hero__avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center bottom;
+  display: none;
+}
+
+.c-hero__avatar-frame.has-photo .c-hero__avatar-img {
+  display: block;
+}
+
+.c-hero__avatar-frame.has-photo .c-hero__avatar-placeholder {
+  display: none;
+}
+
+.c-hero__avatar-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 16px;
+  color: var(--color-navy);
+  user-select: none;
+}
+
+.c-hero__avatar-icon {
+  font-size: 3.5rem;
+  color: var(--color-primary);
+  margin-bottom: 8px;
+  opacity: 0.85;
+}
+
+.c-hero__avatar-name {
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: var(--color-navy);
+  margin-bottom: 2px;
+}
+
+.c-hero__avatar-hint {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-text-muted);
+}

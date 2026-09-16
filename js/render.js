@@ -63,11 +63,25 @@ export function renderAbout() {
   setText('.section--about .section-title', CONTENT.about.headline);
 
   const philosophyEl = byId('about-text-philosophy');
+  const credoHeadlineEl = byId('about-credo-headline');
   const credoEl = byId('about-text-credo');
   const factsEl = byId('about-fact-rows');
 
   if (philosophyEl) renderParagraphs(philosophyEl, CONTENT.about.philosophyParagraphs);
-  if (credoEl) renderParagraphs(credoEl, CONTENT.about.credoParagraphs);
+
+  if (credoHeadlineEl) {
+    credoHeadlineEl.textContent = CONTENT.about.credoHeadline || 'PRAXIS STATT THEORIE';
+  }
+
+  if (credoEl) {
+    credoEl.textContent = '';
+    CONTENT.about.credoParagraphs.forEach((text) => {
+      const paragraph = document.createElement('p');
+      paragraph.textContent = text;
+      credoEl.appendChild(paragraph);
+    });
+  }
+
   if (factsEl) factsEl.innerHTML = CONTENT.about.facts.map(factRowTemplate).join('');
 }
 
