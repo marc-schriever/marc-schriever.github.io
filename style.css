@@ -1,8 +1,0 @@
-/* ==========================================================================
-   STYLE.CSS — OOCSS Hauptdatei (Importiert alle Module)
-   ========================================================================== */
-@import 'base.css';
-@import 'objects.css';
-@import 'components.css';
-@import 'modals.css';
-@import 'images.css';
