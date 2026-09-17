@@ -2,7 +2,7 @@ export const FLEET_COUNTS = {
     forklift: 2,
     'pallet-jack': 1,
     pallet: 1,
-    package: 6,
+    package: 12,
 };
 
 export const WAREHOUSE_ACTIVITY_COUNT = Object.values(FLEET_COUNTS)
