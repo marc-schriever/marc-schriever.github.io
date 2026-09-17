@@ -263,7 +263,7 @@
 
 .c-fact-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: 1fr;
     gap: var(--space-3);
 
     margin: 0;
@@ -289,6 +289,8 @@
 
     font-size: 0.85rem;
     line-height: 1.4;
+    overflow-wrap: anywhere;
+    hyphens: auto;
 }
 
 
@@ -647,7 +649,7 @@
     padding:
         var(--space-4)
         0
-        7rem;
+        calc(3.75rem + env(safe-area-inset-bottom, 0px));
 
     border-top: 1px solid var(--color-border);
 

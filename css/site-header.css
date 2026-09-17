@@ -1,13 +1,19 @@
 
 .c-site-header {
-    position: sticky;
+    position: fixed;
     top: 0;
-    z-index: 100;
+    right: 0;
+    left: 0;
+    z-index: 200;
 
     border-bottom: 1px solid var(--color-border);
 
-    background: transparent;
-    backdrop-filter: none;
+    background: color-mix(
+        in srgb,
+        var(--color-surface) 94%,
+        transparent
+    );
+    backdrop-filter: blur(1rem);
 
     transition:
         background-color var(--transition-fast),
@@ -36,7 +42,7 @@
 
 
 .c-navigation {
-    min-height: 4.5rem;
+    min-height: var(--header-nav-height);
 
     display: flex;
     align-items: center;
@@ -48,8 +54,11 @@
 
 .c-navigation__brand {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: baseline;
     flex-shrink: 0;
+    gap: 0.45rem;
 
     color: var(--color-text);
 
@@ -155,9 +164,12 @@
 }
 
 
-.c-ticker:hover .c-ticker__track,
-.c-ticker:focus-within .c-ticker__track {
-    animation-play-state: paused;
+@media (hover: hover) and (pointer: fine) {
+
+    .c-ticker:hover .c-ticker__track,
+    .c-ticker:focus-within .c-ticker__track {
+        animation-play-state: paused;
+    }
 }
 
 

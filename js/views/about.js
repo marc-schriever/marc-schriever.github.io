@@ -1,5 +1,5 @@
 import { PageView } from './page-view.js?v=navfix1';
-import { CONTENT } from '../content.js';
+import { CONTENT } from '../content.js?v=aboutm2';
 
 export class AboutView extends PageView {
 

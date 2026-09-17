@@ -1,9 +1,9 @@
-@import url('./tokens.css');
-@import url('./objects.css');
-@import url('./site-header.css');
-@import url('./components.css');
-@import url('./page.css');
-@import url('./navigation.css');
+@import url('./tokens.css?v=ticker4');
+@import url('./objects.css?v=ticker4');
+@import url('./site-header.css?v=ticker4');
+@import url('./components.css?v=ticker4');
+@import url('./page.css?v=ticker4');
+@import url('./navigation.css?v=ticker4');
 
 
 /* ==========================================================================
@@ -12,11 +12,34 @@
 
 @media (min-width: 48rem) {
 
+    :root {
+        --header-nav-height: 4.5rem;
+    }
+
+
+    .c-site-header {
+        position: sticky;
+        background: transparent;
+        backdrop-filter: none;
+    }
+
+
+    .o-page[data-route="home"] {
+        background-attachment: scroll, fixed, scroll;
+    }
+
+
     .o-container {
         width: min(
             calc(100% - 4rem),
             var(--content-width)
         );
+    }
+
+
+    .c-navigation__brand {
+        flex-direction: column;
+        gap: 0;
     }
 
 

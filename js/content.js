@@ -12,12 +12,12 @@ export const CONTENT = {
     name: 'MARC SCHRIEVER',
     title: 'LAGERLEITER',
     links: [
-      { href: '#home', label: 'HOME', active: true },
-      { href: '#ueber-mich', label: 'ÜBER MICH' },
-      { href: '#expertise', label: 'EXPERTISE' },
-      { href: '#faq', label: 'FRAGEN & ANTWORTEN' },
-      { href: '#referenzen', label: 'REFERENZEN' },
-      { href: '#dokumente', label: 'DOKUMENTE', id: 'nav-dokumente' },
+      { href: '#home', label: 'HOME', shortLabel: 'HOME', active: true },
+      { href: '#ueber-mich', label: 'ÜBER MICH', shortLabel: 'ÜBER' },
+      { href: '#expertise', label: 'EXPERTISE', shortLabel: 'EXPERTISE' },
+      { href: '#faq', label: 'FRAGEN & ANTWORTEN', shortLabel: 'FAQ' },
+      { href: '#referenzen', label: 'REFERENZEN', shortLabel: 'REF.' },
+      { href: '#dokumente', label: 'DOKUMENTE', shortLabel: 'DOKU', id: 'nav-dokumente' },
     ],
   },
 
@@ -54,7 +54,7 @@ export const CONTENT = {
   // ── ÜBER MICH ────────────────────────────────────────────
   about: {
     eyebrow: 'ICH BIETE...',
-    headline: 'ZIELORIENTIERUNG. VERANTWORTUNGSBEWUSSTSEIN. UMSETZUNGSSTÄRKE.',
+    headline: 'ZIELORIENTIERUNG. VERANTWORTUNGS\u00ADBEWUSSTSEIN. UMSETZUNGS\u00ADSTÄRKE.',
     philosophyParagraphs: [
       'Ich verbinde operative Logistikerfahrung mit technischem Verständnis und entwickle daraus praxisorientierte Lösungen für wiederkehrende Abläufe und Prozessschwachstellen. Dabei geht es mir nicht darum, bestehende Prozesse lediglich zu verwalten, sondern darum, sie nachvollziehbar, prozesssicher und effizient zu gestalten.',
       'Mein Ansatz folgt dabei einem klaren Grundsatz: Nicht die Disziplin des Mitarbeiters soll Abweichungen verhindern, sondern ein sauber aufgebauter Prozess. Wo Zuordnung, Erfassung oder Nachschub bislang von manueller Sorgfalt abhängig waren, setze ich auf systemgestützte Abläufe, die mögliche Fehlerquellen bereits im Prozess minimieren. Grundlage dafür ist die kontinuierliche Prozessverbesserung nach dem PDCA-Zyklus.',

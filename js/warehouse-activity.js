@@ -224,6 +224,12 @@ function getHeroArena() {
     }
 
     const box = hero.getBoundingClientRect();
+    const visibleHeight = Math.min(box.bottom, page.bottom)
+        - Math.max(box.top, page.top);
+
+    if (visibleHeight < 80) {
+        return { outer: page, inner: null };
+    }
     const padX = Math.max(118, Math.min(box.width * 0.18, 200));
     const padY = Math.max(108, Math.min(box.height * 0.26, 190));
 
@@ -391,8 +397,11 @@ function tick(timestamp) {
     const collectors = actors.filter(actor => actor.isCollector);
 
     actors.forEach(actor => {
-        actor.maxY = bounds.bottom - actor.height - 12;
         actor.minY = bounds.top + 16;
+        actor.maxY = Math.max(
+            actor.minY,
+            bounds.bottom - actor.height - 12
+        );
     });
 
     collectors.forEach(collector => {
@@ -474,8 +483,7 @@ function tick(timestamp) {
                 : (actor.vx > 0 ? 1 : -1);
         }
 
-        const depth = (actor.y - actor.minY)
-            / Math.max(actor.maxY - actor.minY, 1);
+        const depth = actorDepth(actor);
 
         actor.scale = actor.flies
             ? 0.9 - depth * 0.06
@@ -696,10 +704,17 @@ function rayToBounds(cosine, sine, outer, cx, cy, width, height) {
 }
 
 function applyCollectorScale(actor) {
-    const depth = (actor.y - actor.minY)
-        / Math.max(actor.maxY - actor.minY, 1);
+    actor.scale = 1.02 - actorDepth(actor) * 0.08;
+}
 
-    actor.scale = 1.02 - depth * 0.08;
+function actorDepth(actor) {
+    const span = actor.maxY - actor.minY;
+
+    if (span <= 1) {
+        return 0.5;
+    }
+
+    return clamp((actor.y - actor.minY) / span, 0, 1);
 }
 
 function collectPackages(collector, timestamp) {

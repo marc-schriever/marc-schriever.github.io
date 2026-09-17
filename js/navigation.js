@@ -16,15 +16,18 @@ export class Navigation {
             this.renderLinks('c-navigation__link');
 
         this.mobileElement.innerHTML =
-            this.renderLinks('c-mobile-navigation__link');
+            this.renderLinks('c-mobile-navigation__link', true);
     }
 
-    renderLinks(className) {
+    renderLinks(className, useShortLabel) {
         return this.content.nav.links
             .map(link => {
                 const route = this.getRoute(link.href);
+                const label = useShortLabel
+                    ? (link.shortLabel || link.label)
+                    : link.label;
 
-                return `<a class="${className}" href="#${this.getHash(route)}" data-route="${route}">${link.label}</a>`;
+                return `<a class="${className}" href="#${this.getHash(route)}" data-route="${route}">${label}</a>`;
             })
             .join('');
     }

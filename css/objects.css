@@ -30,8 +30,7 @@
         ),
         url("../assets/images/background.jpg")
         center / cover
-        no-repeat
-        fixed,
+        no-repeat,
         var(--color-background);
 }
 
