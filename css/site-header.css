@@ -1,0 +1,244 @@
+
+.c-site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    border-bottom: 1px solid var(--color-border);
+
+    background: transparent;
+    backdrop-filter: none;
+
+    transition:
+        background-color var(--transition-fast),
+        box-shadow var(--transition-fast);
+}
+
+
+.o-page[data-route="home"] {
+    --header-height: calc(
+        var(--header-nav-height) + var(--header-ticker-height)
+    );
+}
+
+
+.c-site-header.is-scrolled {
+    background: var(--color-surface);
+    box-shadow: var(--shadow-small);
+}
+
+
+.c-site-header:not(.is-scrolled) .c-navigation__name,
+.c-site-header:not(.is-scrolled) .c-navigation__title,
+.c-site-header:not(.is-scrolled) .c-navigation__link {
+    text-shadow: 0 0 0.7rem var(--color-surface);
+}
+
+
+.c-navigation {
+    min-height: 4.5rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: var(--space-3);
+}
+
+
+.c-navigation__brand {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+
+    color: var(--color-text);
+
+    text-decoration: none;
+}
+
+
+.c-navigation__name {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    line-height: 1.2;
+}
+
+
+.c-navigation__title {
+    color: var(--color-orange);
+
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    line-height: 1.3;
+}
+
+
+.c-navigation__links {
+    display: none;
+}
+
+
+.c-navigation__link {
+    position: relative;
+
+    padding: var(--space-2);
+
+    color: var(--color-text);
+
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    line-height: 1.25;
+
+    text-decoration: none;
+    white-space: nowrap;
+
+    transition:
+        color var(--transition-fast);
+}
+
+
+.c-navigation__link:hover,
+.c-navigation__link.is-active {
+    color: var(--color-orange);
+}
+
+
+.c-navigation__link.is-active::after {
+    content: "";
+
+    position: absolute;
+    right: var(--space-2);
+    bottom: 0;
+    left: var(--space-2);
+
+    height: 0.15rem;
+
+    background: var(--color-orange);
+}
+
+
+.c-ticker {
+    min-height: var(--header-ticker-height);
+
+    overflow: hidden;
+
+    border-top: 1px solid
+        color-mix(in srgb, #000 16%, var(--color-orange));
+
+    background: var(--color-orange);
+    color: var(--color-on-primary);
+
+    mask-image: linear-gradient(
+        to right,
+        transparent,
+        #000 1rem,
+        #000 calc(100% - 1rem),
+        transparent
+    );
+}
+
+
+.c-ticker__track {
+    display: flex;
+    width: max-content;
+
+    animation:
+        c-ticker-move
+        var(--ticker-duration, 56s)
+        linear
+        infinite;
+}
+
+
+.c-ticker:hover .c-ticker__track,
+.c-ticker:focus-within .c-ticker__track {
+    animation-play-state: paused;
+}
+
+
+.c-ticker__list {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+}
+
+
+.c-ticker__item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+
+    padding-block: 0.55rem;
+    padding-inline-start: var(--space-4);
+
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 800;
+    letter-spacing: 0.03em;
+    line-height: 1.3;
+    white-space: nowrap;
+}
+
+
+@media (min-width: 48rem) {
+
+    .c-ticker {
+        mask-image: linear-gradient(
+            to right,
+            transparent,
+            #000 1.5rem,
+            #000 calc(100% - 1.5rem),
+            transparent
+        );
+    }
+
+    .c-ticker__item {
+        font-size: 1.125rem;
+    }
+}
+
+
+.c-ticker__item::after {
+    content: "";
+
+    width: 0.45rem;
+    height: 0.45rem;
+    flex-shrink: 0;
+
+    background: currentColor;
+    opacity: 0.55;
+
+    transform: rotate(45deg);
+}
+
+
+@keyframes c-ticker-move {
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+
+    .c-ticker {
+        mask-image: none;
+    }
+
+    .c-ticker__track {
+        animation: none;
+
+        width: 100%;
+        overflow-x: auto;
+    }
+}

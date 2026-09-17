@@ -1,0 +1,544 @@
+
+/* ==========================================================================
+   MAIN
+   ========================================================================== */
+
+.c-main {
+    position: relative;
+    z-index: 3;
+
+    min-height: calc(100vh - var(--header-height));
+
+    padding-top: var(--space-6);
+    padding-bottom: 7rem;
+
+    scroll-margin-top: var(--header-height);
+}
+
+
+.c-view {
+    animation:
+        c-view-enter 280ms ease both;
+}
+
+
+@keyframes c-view-enter {
+
+    from {
+        opacity: 0;
+        transform: translateY(0.75rem);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+/* ==========================================================================
+   TYPOGRAPHY
+   ========================================================================== */
+
+.c-eyebrow {
+    margin: 0 0 var(--space-3);
+
+    color: var(--color-orange);
+
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+}
+
+
+.c-eyebrow--availability {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+
+.c-eyebrow--availability::before {
+    content: "";
+
+    width: 0.65rem;
+    height: 0.65rem;
+
+    border-radius: 50%;
+
+    background: #2ca44f;
+}
+
+
+.c-section-header {
+    margin-bottom: var(--space-6);
+}
+
+
+.c-section-header__headline {
+    max-width: 52rem;
+    margin: 0;
+
+    font-size: clamp(
+        2rem,
+        7vw,
+        4rem
+    );
+
+    line-height: 0.98;
+    letter-spacing: -0.04em;
+}
+
+
+.c-content-flow {
+    max-width: 70ch;
+}
+
+
+.c-content-flow p {
+    margin: 0 0 var(--space-4);
+
+    color: var(--color-text-muted);
+
+    font-size: 1rem;
+    line-height: 1.75;
+}
+
+
+.c-content-block {
+    margin-top: var(--space-7);
+    padding-top: var(--space-6);
+
+    border-top: 1px solid var(--color-border);
+}
+
+
+.c-content-block__headline {
+    margin: 0 0 var(--space-4);
+
+    color: var(--color-blue);
+
+    font-size: 1.4rem;
+}
+
+
+/* ==========================================================================
+   HERO
+   ========================================================================== */
+
+.c-hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+
+.c-hero__content {
+    position: relative;
+    z-index: 3;
+
+    display: grid;
+    gap: var(--space-5);
+
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: clamp(
+        var(--space-1),
+        2vw,
+        var(--space-5)
+    );
+
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-medium);
+
+    background: var(--color-surface);
+    box-shadow: var(--shadow-medium);
+}
+
+
+.c-hero__stage {
+    display: grid;
+    gap: var(--space-4);
+    align-items: start;
+}
+
+
+.c-hero__headline-row {
+    min-width: 0;
+}
+
+
+.c-hero__flow {
+    display: grid;
+    gap: var(--space-5);
+    align-items: start;
+}
+
+
+.c-hero__profile {
+    margin: 0;
+}
+
+
+.c-hero__aside {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-3);
+
+    width: min(13.75rem, 80vw);
+
+    margin-inline: auto;
+}
+
+
+.c-hero__aside .c-action-group {
+    margin-top: 0;
+    justify-content: flex-end;
+}
+
+
+.c-hero__aside .c-button {
+    width: 100%;
+}
+
+
+.c-hero__avatar-frame {
+    position: relative;
+
+    width: min(11.5rem, 70vw);
+    aspect-ratio: 3 / 4;
+
+    overflow: hidden;
+
+    display: grid;
+    place-items: center;
+
+    border: 1px solid var(--color-border);
+    border-bottom: 0.35rem solid var(--color-orange);
+    border-radius: var(--radius-medium);
+
+    background: var(--color-surface-alt);
+    box-shadow: var(--shadow-small);
+}
+
+
+.c-hero__avatar-img {
+    display: none;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center top;
+
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+
+.c-hero__avatar-frame.has-photo .c-hero__avatar-img {
+    display: block;
+}
+
+
+.c-hero__avatar-frame.has-photo::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+
+    pointer-events: auto;
+
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)'/%3E%3C/svg%3E");
+    background-size: 180px 180px;
+
+    opacity: 0.32;
+    mix-blend-mode: overlay;
+}
+
+
+.c-hero__avatar-frame.has-photo .c-hero__avatar-placeholder {
+    display: none;
+}
+
+
+.c-hero__avatar-placeholder {
+    display: grid;
+    justify-items: center;
+    gap: var(--space-2);
+
+    padding: var(--space-3);
+
+    text-align: center;
+}
+
+
+.c-hero__avatar-initials {
+    display: grid;
+    place-items: center;
+
+    width: 3.5rem;
+    height: 3.5rem;
+
+    border-radius: 50%;
+
+    background: var(--color-blue);
+    color: var(--color-on-primary);
+
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+}
+
+
+.c-hero__avatar-name {
+    color: var(--color-text);
+
+    font-weight: 800;
+    font-size: 0.9rem;
+}
+
+
+.c-hero__avatar-hint {
+    color: var(--color-text-muted);
+
+    font-size: 0.75rem;
+    line-height: 1.4;
+}
+
+
+.c-hero__headline {
+    max-width: 100%;
+    margin: 0;
+
+    font-size: clamp(
+        1.15rem,
+        5.5vw,
+        4rem
+    );
+
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    word-spacing: 0.14em;
+}
+
+
+.c-hero__subline {
+    max-width: 42rem;
+    margin: 0;
+
+    color: var(--color-blue);
+
+    font-size: clamp(
+        1.15rem,
+        3vw,
+        1.75rem
+    );
+
+    font-weight: 600;
+}
+
+
+.c-view[data-view="home"] {
+    position: relative;
+    z-index: 3;
+    isolation: isolate;
+
+    transform: none !important;
+}
+
+
+.c-view[data-view="home"] .c-home-section {
+    position: relative;
+    z-index: 3;
+}
+
+
+.c-home-activity {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+}
+
+
+.c-warehouse-asset {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    overflow: visible;
+
+    opacity: 0.28;
+    filter:
+        drop-shadow(0 0.25rem 0.5rem rgba(0, 0, 0, 0.16));
+
+    transform-origin: center;
+    will-change: transform;
+}
+
+
+.c-warehouse-asset.is-colliding {
+    opacity: 0.38;
+}
+
+
+.c-cargo {
+    fill: #d8ab6a;
+}
+
+
+.c-cargo--second {
+    fill: #c38d4a;
+}
+
+
+.c-cargo--third {
+    fill: #e0b878;
+}
+
+
+.c-cargo-tape {
+    fill: none;
+    stroke: #8a6230;
+    stroke-width: 3;
+}
+
+
+.c-pallet {
+    fill: #7a5a3a;
+}
+
+
+.c-package.is-carried {
+    z-index: 3;
+    opacity: 0.42;
+}
+
+
+.c-forklift {
+    width: clamp(4.9rem, 8.4vw, 7.7rem);
+}
+
+
+.c-forklift__forks {
+    fill: none;
+    stroke: #cfd7de;
+    stroke-width: 4;
+    stroke-linecap: square;
+}
+
+
+.c-forklift__mast {
+    fill: #cfd7de;
+}
+
+
+.c-forklift__body {
+    fill: var(--color-orange);
+}
+
+
+.c-forklift__cabin {
+    fill: var(--color-orange-dark);
+}
+
+
+.c-forklift__window {
+    fill: #101820;
+}
+
+
+.c-vehicle-wheel {
+    fill: #111111;
+}
+
+
+.c-wheel-hub {
+    fill: #cfd7de;
+}
+
+
+.c-pallet-jack {
+    width: clamp(4.55rem, 7.7vw, 7rem);
+}
+
+
+.c-pallet-jack.is-collector {
+    z-index: 2;
+    opacity: 0.4;
+}
+
+
+.c-pallet-jack.is-collector.is-collecting {
+    opacity: 0.48;
+}
+
+
+.c-pallet-jack__frame {
+    fill: none;
+    stroke: #cfd7de;
+    stroke-width: 4;
+    stroke-linecap: round;
+}
+
+
+.c-pallet-jack__handle {
+    fill: none;
+    stroke: var(--color-orange);
+    stroke-width: 5;
+    stroke-linecap: round;
+}
+
+
+.c-pallet-load {
+    width: clamp(3.85rem, 7vw, 6.3rem);
+}
+
+
+.c-pallet-load.is-collector {
+    z-index: 2;
+    opacity: 0.4;
+}
+
+
+.c-pallet-load.is-collector.is-collecting {
+    opacity: 0.48;
+}
+
+
+.c-package {
+    width: clamp(1.68rem, 3.15vw, 2.52rem);
+}
+
+
+.c-package__lid {
+    fill: #c38d4a;
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+
+    .c-warehouse-asset {
+        animation: none !important;
+    }
+
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

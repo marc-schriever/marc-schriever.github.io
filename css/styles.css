@@ -1,0 +1,155 @@
+@import url('./tokens.css');
+@import url('./objects.css');
+@import url('./site-header.css');
+@import url('./components.css');
+@import url('./page.css');
+@import url('./navigation.css');
+
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+
+@media (min-width: 48rem) {
+
+    .o-container {
+        width: min(
+            calc(100% - 4rem),
+            var(--content-width)
+        );
+    }
+
+
+    .c-navigation__links {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: flex-end;
+
+        flex: 1;
+        min-width: 0;
+
+        gap: var(--space-1) var(--space-2);
+
+        margin-left: auto;
+    }
+
+
+    .c-navigation__link {
+        font-size: 0.8rem;
+    }
+
+
+    .c-mobile-navigation {
+        display: none;
+    }
+
+
+    .c-main {
+        padding-top: var(--space-7);
+        padding-bottom: var(--space-7);
+    }
+
+
+    .c-hero__content {
+        padding-right: var(--space-7);
+    }
+
+
+    .c-hero__headline {
+        white-space: nowrap;
+        font-size: clamp(1.4rem, 4.4vw, 4rem);
+    }
+
+
+    .c-hero__aside .c-action-group {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-end;
+        width: max-content;
+        max-width: 100%;
+    }
+
+
+    .c-hero__aside .c-button {
+        width: auto;
+        white-space: nowrap;
+    }
+
+
+    .c-hero__flow {
+        grid-template-columns: minmax(0, 1fr) max-content;
+        gap: var(--space-6);
+        align-items: stretch;
+    }
+
+
+    .c-hero__aside {
+        grid-column: 2;
+        grid-row: 1;
+        justify-self: end;
+        align-self: stretch;
+        margin-inline: 0 var(--space-4);
+        width: max-content;
+        min-width: 13.75rem;
+    }
+
+
+    .c-hero__flow .c-content-flow {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+
+    .c-hero__profile {
+        margin-block: auto;
+        align-self: center;
+    }
+
+
+    .c-action-group {
+        flex-direction: row;
+    }
+
+
+    .c-card-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+
+    .c-content-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+
+    .c-fact-grid {
+        grid-template-columns:
+            repeat(4, minmax(0, 1fr));
+    }
+
+
+    .c-reference-grid {
+        grid-template-columns:
+            repeat(4, 1fr);
+    }
+
+
+    .c-site-footer {
+        padding-bottom: var(--space-4);
+    }
+
+
+    .c-site-footer__content {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+
+@media (min-width: 64rem) {
+
+    .c-navigation__link {
+        font-size: 0.95rem;
+    }
+}

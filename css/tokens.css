@@ -1,0 +1,107 @@
+@font-face {
+    font-family: "Inter Variable";
+    font-style: normal;
+    font-display: swap;
+    font-weight: 100 900;
+    src:
+        url("https://cdn.jsdelivr.net/fontsource/fonts/inter:vf@5.3.0/latin-wght-normal.woff2")
+        format("woff2-variations");
+}
+
+
+:root {
+    color-scheme: light;
+
+    --font-body:
+        "Segoe UI",
+        SegoeUI,
+        Arial,
+        sans-serif;
+
+    --font-heading:
+        "Inter Variable",
+        Inter,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    --color-background: #f5f7f9;
+    --color-background-overlay: rgba(245, 247, 249, 0.75);
+    --color-surface: #ffffff;
+    --color-surface-alt: #e9eef2;
+
+    --color-text: #18232d;
+    --color-text-muted: #5d6973;
+
+    --color-blue: #155b86;
+    --color-blue-dark: #0d3f5c;
+    --color-on-primary: #ffffff;
+
+    --color-orange: #a34700;
+    --color-orange-dark: #7f3600;
+    --color-success: #1f6f43;
+    --color-error: #a1261d;
+
+    --color-border: #d5dde3;
+    --color-border-strong: #7a8995;
+
+    --shadow-small:
+        0 0.25rem 1rem rgba(20, 35, 45, 0.08);
+
+    --shadow-medium:
+        0 0.75rem 2rem rgba(20, 35, 45, 0.12);
+
+    --radius-small: 0.2rem;
+    --radius-medium: 0.4rem;
+
+    --content-width: 72rem;
+
+    --header-nav-height: 4.5rem;
+    --header-ticker-height: 2.85rem;
+    --header-height: var(--header-nav-height);
+
+    --space-1: 0.5rem;
+    --space-2: 0.75rem;
+    --space-3: 1rem;
+    --space-4: 1.5rem;
+    --space-5: 2rem;
+    --space-6: 3rem;
+    --space-7: 4rem;
+
+    --transition-fast:
+        160ms ease;
+
+    --transition-medium:
+        280ms ease;
+}
+
+
+:root[data-theme="dark"] {
+    color-scheme: dark;
+
+    --color-background: #101820;
+    --color-background-overlay: rgba(16, 24, 32, 0.75);
+    --color-surface: #17232d;
+    --color-surface-alt: #1d2c37;
+
+    --color-text: #edf3f7;
+    --color-text-muted: #ffffff;
+
+    --color-blue: #4ca4d5;
+    --color-blue-dark: #79bee2;
+    --color-on-primary: #101820;
+
+    --color-orange: #f28a32;
+    --color-orange-dark: #ff9d4f;
+    --color-success: #75d89f;
+    --color-error: #ffb4ab;
+
+    --color-border: #30414d;
+    --color-border-strong: #667986;
+
+    --shadow-small:
+        0 0.25rem 1rem rgba(0, 0, 0, 0.2);
+
+    --shadow-medium:
+        0 0.75rem 2rem rgba(0, 0, 0, 0.3);
+}
