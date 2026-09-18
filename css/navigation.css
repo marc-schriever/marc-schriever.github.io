@@ -56,14 +56,14 @@
     color: var(--color-text);
 
     font-family: var(--font-heading);
-    font-size: 0.7rem;
+    font-size: clamp(0.58rem, 2.9vw, 0.7rem);
     font-weight: 800;
     letter-spacing: 0;
     line-height: 1.15;
     text-align: center;
     text-decoration: none;
-    white-space: normal;
-    overflow-wrap: anywhere;
+    white-space: nowrap;
+    overflow-wrap: normal;
 }
 
 
