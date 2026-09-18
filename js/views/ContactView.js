@@ -1,5 +1,5 @@
 import { PageView } from './page-view.js?v=navfix1';
-import { CONTENT } from '../content.js?v=form3';
+import { CONTENT } from '../content.js?v=mail3';
 
 export class ContactView extends PageView {
 
@@ -20,13 +20,19 @@ export class ContactView extends PageView {
                     class="c-contact-form"
                     action="${CONTENT.form.endpoint}"
                     method="POST"
+                    target="contact-sink"
                     data-contact-form
                 >
-                    <input
-                        type="hidden"
-                        name="_subject"
-                        value="Kontaktanfrage über marc-schriever.de"
-                    >
+                    <div class="c-form-honeypot" aria-hidden="true">
+                        <label for="contact-company">Firma</label>
+                        <input
+                            id="contact-company"
+                            name="company"
+                            type="text"
+                            tabindex="-1"
+                            autocomplete="off"
+                        >
+                    </div>
 
                     <div class="c-form-field">
                         <label for="contact-name">
@@ -78,6 +84,14 @@ export class ContactView extends PageView {
                     </button>
 
                     <p class="c-form-status" data-form-status aria-live="polite"></p>
+
+                    <iframe
+                        class="c-form-sink"
+                        name="contact-sink"
+                        title="Formularversand"
+                        hidden
+                        data-contact-sink
+                    ></iframe>
                 </form>
             `,
         });
@@ -102,30 +116,29 @@ export class ContactView extends PageView {
         const form = event.currentTarget;
         const status = section.querySelector('[data-form-status]');
         const submit = section.querySelector('[data-form-submit]');
+        const endpoint = String(form.action || '').trim();
 
         status.dataset.state = '';
         status.textContent = CONTENT.form.status_sending;
         submit.disabled = true;
 
         try {
-            const response = await fetch(
-                form.action,
-                {
-                    method: 'POST',
-                    body: new FormData(form),
-                    headers: {
-                        Accept: 'application/json'
-                    }
-                }
-            );
-
-            const payload = await response.json().catch(() => ({}));
-
-            if (!response.ok) {
-                throw new Error(
-                    formspreeError(payload) || `HTTP ${response.status}`
-                );
+            if (!endpoint || endpoint.includes('HIER-DEPLOY-URL')) {
+                throw new Error('Das Kontaktformular ist noch nicht mit Gmail verbunden.');
             }
+
+            const iframe = section.querySelector('[data-contact-sink]');
+
+            await new Promise((resolve) => {
+                const finish = () => {
+                    iframe.removeEventListener('load', finish);
+                    window.clearTimeout(timer);
+                    resolve();
+                };
+                const timer = window.setTimeout(finish, 4000);
+                iframe.addEventListener('load', finish, { once: true });
+                form.submit();
+            });
 
             form.reset();
             status.dataset.state = 'success';
@@ -141,19 +154,4 @@ export class ContactView extends PageView {
             submit.disabled = false;
         }
     }
-}
-
-function formspreeError(payload) {
-    if (!payload || typeof payload !== 'object') {
-        return '';
-    }
-
-    if (Array.isArray(payload.errors) && payload.errors.length) {
-        return payload.errors
-            .map(item => item.message || item.error)
-            .filter(Boolean)
-            .join(' ');
-    }
-
-    return payload.error || '';
 }

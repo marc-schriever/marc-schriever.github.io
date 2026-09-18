@@ -185,7 +185,7 @@ export const CONTENT = {
   },
 
   form: {
-    endpoint: 'https://formspree.io/f/xwlpkznw',
+    endpoint: 'https://script.google.com/macros/s/AKfycbwArd0wj41bi0oq_WXeba6jtjuFN2e8-5IgfYlqKepQN_vkczde_YCImmpv8DPyjuYThA/exec',
     label_name: 'Name',
     label_email: 'E-Mail',
     label_message: 'Nachricht',
@@ -240,7 +240,7 @@ export const CONTENT = {
     location: '28309 Bremen, Deutschland',
     // Echte Adresse eintragen, sobald das Postfach existiert.
     // Solange leer, wird keine E-Mail veröffentlicht.
-    email: 'kontakt.schriever@gmail.com',
+    email: 'marc.schriever@gmail.com',
   },
 
   datenschutz: {
