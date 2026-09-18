@@ -1,5 +1,5 @@
 import { PageView } from './page-view.js?v=navfix1';
-import { CONTENT } from '../content.js';
+import { CONTENT } from '../content.js?v=view6';
 import { QrTokenScanner } from '../qr-scanner.js';
 
 const SUPABASE_URL =
@@ -8,15 +8,19 @@ const SUPABASE_URL =
 const SUPABASE_PUBLISHABLE_KEY =
     'sb_publishable_FaQ7I0SgAHgj_E7aDGNx0Q_B7Ldw-WJ';
 
-const PROTECTED_BUCKET = 'geschuetzte-dokumente';
-const PROTECTED_FILE = 'Dokumente_MSchriever.pdf';
-const SIGNED_URL_TTL_SECONDS = 60;
+const REDEEM_FUNCTION_URL =
+    `${SUPABASE_URL}/functions/v1/redeem-document`;
 
 export class DocumentsView extends PageView {
 
     constructor(application) {
         super(application);
         this.scanner = new QrTokenScanner();
+        this.viewUrl = '';
+        this.pdfBlob = null;
+        this.onViewerKeydown = null;
+        this.viewerSection = null;
+        this.onFullscreenChange = () => this.syncFullscreenButton();
     }
 
     getRoute() {
@@ -24,6 +28,23 @@ export class DocumentsView extends PageView {
     }
 
     unmount() {
+        this.closeViewer();
+        document.removeEventListener(
+            'fullscreenchange',
+            this.onFullscreenChange
+        );
+        document.removeEventListener(
+            'webkitfullscreenchange',
+            this.onFullscreenChange
+        );
+
+        if (this.viewUrl) {
+            URL.revokeObjectURL(this.viewUrl);
+            this.viewUrl = '';
+        }
+
+        this.pdfBlob = null;
+
         return this.scanner.unmount();
     }
 
@@ -46,7 +67,7 @@ export class DocumentsView extends PageView {
                             <input
                                 id="document-token"
                                 name="token"
-                                type="password"
+                                type="text"
                                 autocomplete="off"
                                 spellcheck="false"
                                 placeholder="${documents.tokenPlaceholder}"
@@ -80,15 +101,62 @@ export class DocumentsView extends PageView {
                 <div class="c-document-result" data-document-result hidden>
                     <h2>${documents.successTitle}</h2>
                     <p>${documents.successText}</p>
-                    <a
-                        class="c-button c-button--primary"
-                        href="#"
-                        target="_blank"
-                        rel="noopener"
-                        data-document-download
+                    <button
+                        class="c-button c-button--accent"
+                        type="button"
+                        data-document-reopen
                     >
-                        ${documents.downloadButton}
-                    </a>
+                        ${documents.reopenButton}
+                    </button>
+                </div>
+
+                <div
+                    class="c-modal c-modal--document"
+                    data-document-modal
+                    hidden
+                    role="dialog"
+                    aria-modal="true"
+                    aria-labelledby="document-viewer-title"
+                >
+                    <div
+                        class="c-modal__backdrop"
+                        data-document-backdrop
+                    ></div>
+                    <div class="c-modal__window c-modal__window--document">
+                        <div class="c-modal__header">
+                            <h2
+                                class="c-modal__title"
+                                id="document-viewer-title"
+                            >
+                                ${documents.viewerTitle}
+                            </h2>
+                            <div class="c-modal__actions">
+                                <button
+                                    class="c-button c-button--secondary"
+                                    type="button"
+                                    data-document-fullscreen
+                                    aria-pressed="false"
+                                >
+                                    ${documents.fullscreenButton}
+                                </button>
+                                <button
+                                    class="c-modal__close"
+                                    type="button"
+                                    data-document-close
+                                    aria-label="Fenster schließen"
+                                >
+                                    ×
+                                </button>
+                            </div>
+                        </div>
+                        <div class="c-document-viewer">
+                            <iframe
+                                class="c-document-viewer__frame"
+                                title="Geschützte Unterlagen"
+                                data-document-viewer
+                            ></iframe>
+                        </div>
+                    </div>
                 </div>
 
                 <div
@@ -152,6 +220,32 @@ export class DocumentsView extends PageView {
             event => this.verifyToken(event, section)
         );
 
+        section.querySelector('[data-document-reopen]')
+            .addEventListener('click', () => this.openViewer(section));
+
+        section.querySelector('[data-document-close]')
+            .addEventListener('click', () => this.closeViewer(section));
+
+        section.querySelector('[data-document-fullscreen]')
+            .addEventListener('click', () => this.toggleFullscreen(section));
+
+        document.addEventListener(
+            'fullscreenchange',
+            this.onFullscreenChange
+        );
+        document.addEventListener(
+            'webkitfullscreenchange',
+            this.onFullscreenChange
+        );
+
+        section.querySelector('[data-document-backdrop]')
+            .addEventListener('click', () => this.closeViewer(section));
+
+        section.querySelector('.c-document-viewer')
+            .addEventListener('contextmenu', event => {
+                event.preventDefault();
+            });
+
         this.scanner.bind(section, token => {
             input.value = token;
             form.requestSubmit();
@@ -179,40 +273,28 @@ export class DocumentsView extends PageView {
             return;
         }
 
-        if (!window.supabase) {
-            status.textContent = CONTENT.dokumente.loadingError;
-            return;
-        }
-
         status.textContent = CONTENT.dokumente.checking;
         submit.disabled = true;
 
-        const client = window.supabase.createClient(
-            SUPABASE_URL,
-            SUPABASE_PUBLISHABLE_KEY
-        );
-
         try {
-            const { data: isValid, error: redeemError } =
-                await client.rpc(
-                    'redeem_token',
-                    { user_token: token }
-                );
+            const response = await fetch(REDEEM_FUNCTION_URL, {
+                method: 'POST',
+                headers: {
+                    apikey: SUPABASE_PUBLISHABLE_KEY,
+                    Authorization: `Bearer ${SUPABASE_PUBLISHABLE_KEY}`,
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ user_token: token }),
+            });
 
-            if (redeemError || !isValid) {
+            const payload = await response.json().catch(() => ({}));
+
+            if (response.status === 403) {
                 status.textContent = CONTENT.dokumente.invalidError;
                 return;
             }
 
-            const { data: fileData, error: fileError } =
-                await client.storage
-                    .from(PROTECTED_BUCKET)
-                    .createSignedUrl(
-                        PROTECTED_FILE,
-                        SIGNED_URL_TTL_SECONDS
-                    );
-
-            if (fileError || !fileData?.signedUrl) {
+            if (!response.ok || !payload.signedUrl) {
                 status.textContent = CONTENT.dokumente.loadingError;
                 return;
             }
@@ -220,17 +302,150 @@ export class DocumentsView extends PageView {
             const result =
                 section.querySelector('[data-document-result]');
 
-            const download =
-                section.querySelector('[data-document-download]');
+            const fileResponse = await fetch(payload.signedUrl);
 
-            download.href = fileData.signedUrl;
+            if (!fileResponse.ok) {
+                status.textContent = CONTENT.dokumente.loadingError;
+                return;
+            }
+
+            const pdfBlob = await fileResponse.blob();
+            this.pdfBlob = pdfBlob;
             form.hidden = true;
             result.hidden = false;
+            this.openViewer(section);
         } catch (error) {
             console.error('Dokumentenzugriff fehlgeschlagen.', error);
             status.textContent = CONTENT.dokumente.loadingError;
         } finally {
             submit.disabled = false;
         }
+    }
+
+    openViewer(section) {
+        const modal = section.querySelector('[data-document-modal]');
+        const viewer = section.querySelector('[data-document-viewer]');
+
+        if (!modal || !this.pdfBlob || !viewer) {
+            return;
+        }
+
+        if (this.viewUrl) {
+            URL.revokeObjectURL(this.viewUrl);
+        }
+
+        this.viewUrl = URL.createObjectURL(this.pdfBlob);
+        viewer.src = `${this.viewUrl}#toolbar=0&navpanes=0`;
+
+        this.viewerSection = section;
+        modal.hidden = false;
+        this.syncFullscreenButton();
+        section.querySelector('[data-document-close]')?.focus();
+
+        this.onViewerKeydown = event => {
+            if (event.key !== 'Escape') {
+                return;
+            }
+
+            if (this.isFullscreen()) {
+                return;
+            }
+
+            event.preventDefault();
+            this.closeViewer(section);
+        };
+
+        document.addEventListener('keydown', this.onViewerKeydown);
+    }
+
+    closeViewer(section) {
+        this.exitFullscreen();
+
+        const modal = section?.querySelector('[data-document-modal]')
+            || document.querySelector('[data-document-modal]');
+
+        if (modal) {
+            modal.hidden = true;
+            modal.classList.remove('is-fill');
+        }
+
+        this.syncFullscreenButton();
+
+        if (this.onViewerKeydown) {
+            document.removeEventListener('keydown', this.onViewerKeydown);
+            this.onViewerKeydown = null;
+        }
+    }
+
+    isFullscreen() {
+        const modal = this.viewerSection
+            ?.querySelector('[data-document-modal]');
+
+        return Boolean(
+            document.fullscreenElement
+            || document.webkitFullscreenElement
+            || modal?.classList.contains('is-fill')
+        );
+    }
+
+    async toggleFullscreen(section) {
+        const modal = section.querySelector('[data-document-modal]');
+
+        if (!modal) {
+            return;
+        }
+
+        if (this.isFullscreen()) {
+            this.exitFullscreen();
+            modal.classList.remove('is-fill');
+            this.syncFullscreenButton();
+            return;
+        }
+
+        const request = modal.requestFullscreen
+            || modal.webkitRequestFullscreen;
+
+        if (request) {
+            try {
+                await request.call(modal);
+                return;
+            } catch (error) {
+                console.error('Vollbild nicht verfügbar.', error);
+            }
+        }
+
+        modal.classList.add('is-fill');
+        this.syncFullscreenButton();
+    }
+
+    exitFullscreen() {
+        const exit = document.exitFullscreen
+            || document.webkitExitFullscreen;
+
+        if (
+            exit
+            && (document.fullscreenElement || document.webkitFullscreenElement)
+        ) {
+            exit.call(document);
+        }
+
+        this.viewerSection
+            ?.querySelector('[data-document-modal]')
+            ?.classList.remove('is-fill');
+    }
+
+    syncFullscreenButton() {
+        const button = this.viewerSection
+            ?.querySelector('[data-document-fullscreen]');
+
+        if (!button) {
+            return;
+        }
+
+        const active = this.isFullscreen();
+        button.setAttribute('aria-pressed', String(active));
+        button.textContent = active
+            ? CONTENT.dokumente.fullscreenExitButton
+            : CONTENT.dokumente.fullscreenButton;
     }
 }

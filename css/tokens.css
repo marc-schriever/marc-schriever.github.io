@@ -33,8 +33,8 @@
     --color-text: #18232d;
     --color-text-muted: #5d6973;
 
-    --color-blue: #155b86;
-    --color-blue-dark: #0d3f5c;
+    --color-blue: #005b8c; /* RAL 5017 Verkehrsblau */
+    --color-blue-dark: #004469;
     --color-on-primary: #ffffff;
 
     --color-orange: #a34700;
@@ -87,8 +87,8 @@
     --color-text: #edf3f7;
     --color-text-muted: #ffffff;
 
-    --color-blue: #4ca4d5;
-    --color-blue-dark: #79bee2;
+    --color-blue: #4ea9da;
+    --color-blue-dark: #7bbfe4;
     --color-on-primary: #101820;
 
     --color-orange: #f28a32;

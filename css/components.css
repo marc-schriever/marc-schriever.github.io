@@ -576,6 +576,27 @@
 }
 
 
+.c-document-viewer {
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-small);
+    background: var(--color-surface-alt);
+}
+
+
+.c-document-viewer__frame {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    border: 0;
+}
+
+
 /* ==========================================================================
    LEGAL PAGES
    ========================================================================== */
@@ -704,7 +725,7 @@
 .c-modal:not([hidden]) {
     position: fixed;
     inset: 0;
-    z-index: 80;
+    z-index: 250;
 
     display: grid;
     place-items: center;
@@ -739,6 +760,60 @@
 }
 
 
+.c-modal--document:not([hidden]) {
+    padding: 0;
+    place-items: stretch;
+}
+
+
+.c-modal--document .c-modal__window--document {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    padding: var(--space-3);
+
+    border-radius: 0;
+}
+
+
+.c-modal--document .c-modal__header {
+    flex: none;
+}
+
+
+.c-modal--document:fullscreen,
+.c-modal--document:-webkit-full-screen,
+.c-modal--document.is-fill:not([hidden]) {
+    padding: 0;
+    place-items: stretch;
+}
+
+
+.c-modal--document:fullscreen .c-modal__window--document,
+.c-modal--document:-webkit-full-screen .c-modal__window--document,
+.c-modal--document.is-fill .c-modal__window--document {
+    border-radius: 0;
+}
+
+
+@media (min-width: 48rem) {
+
+    .c-modal--document:not([hidden]):not(:fullscreen):not(.is-fill) {
+        padding: var(--space-3);
+    }
+
+
+    .c-modal--document:not(:fullscreen):not(.is-fill) .c-modal__window--document {
+        padding: var(--space-4);
+
+        border-radius: var(--radius-medium);
+    }
+}
+
+
 .c-modal__header {
     display: flex;
     align-items: center;
@@ -746,6 +821,20 @@
     gap: var(--space-4);
 
     margin-bottom: var(--space-4);
+}
+
+
+.c-modal__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--space-2);
+}
+
+
+.c-modal__actions .c-button {
+    width: auto;
 }
 
 
