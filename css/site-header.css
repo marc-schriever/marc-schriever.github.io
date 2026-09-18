@@ -44,11 +44,10 @@
 .c-navigation {
     min-height: var(--header-nav-height);
 
-    display: flex;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
     align-items: center;
-    justify-content: space-between;
-
-    gap: var(--space-3);
+    column-gap: var(--space-3);
 }
 
 

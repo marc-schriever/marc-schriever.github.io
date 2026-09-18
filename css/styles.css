@@ -1,6 +1,6 @@
 @import url('./tokens.css?v=tone3');
-@import url('./objects.css?v=refbg2');
-@import url('./site-header.css?v=ticker4');
+@import url('./objects.css?v=navipad1');
+@import url('./site-header.css?v=navipad1');
 @import url('./components.css?v=box2');
 @import url('./page.css?v=box1');
 @import url('./navigation.css?v=ticker4');
@@ -49,22 +49,24 @@
 
 
     .c-navigation__links {
-        display: flex;
-        flex-wrap: wrap;
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: max-content;
+        justify-content: end;
+        justify-self: end;
         align-items: center;
-        justify-content: flex-end;
-
-        flex: 1;
         min-width: 0;
 
-        gap: var(--space-1) var(--space-2);
+        gap: 0.15rem;
 
-        margin-left: auto;
+        margin-left: 0;
     }
 
 
     .c-navigation__link {
-        font-size: 0.8rem;
+        font-size: 0.68rem;
+        letter-spacing: 0.01em;
+        padding: 0.45rem 0.35rem;
     }
 
 
@@ -192,7 +194,14 @@
 
 @media (min-width: 64rem) {
 
+    .c-navigation__links {
+        gap: var(--space-1) var(--space-2);
+    }
+
+
     .c-navigation__link {
         font-size: 0.95rem;
+        letter-spacing: 0.02em;
+        padding: var(--space-2);
     }
 }

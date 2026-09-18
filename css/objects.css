@@ -162,9 +162,14 @@
     button,
     input,
     textarea,
-    summary,
-    [tabindex]
+    summary
 ):focus-visible {
     outline: 3px solid var(--color-orange);
     outline-offset: 3px;
+}
+
+
+.c-main:focus,
+.c-main:focus-visible {
+    outline: none;
 }
