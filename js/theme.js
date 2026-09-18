@@ -1,6 +1,6 @@
 export class ThemeManager {
     constructor() {
-        this.storageKey = 'marc-schriever-theme';
+        this.storageKey = 'marc-schriever-theme-v2';
 
         this.mediaQuery = window.matchMedia(
             '(prefers-color-scheme: dark)'
@@ -19,7 +19,7 @@ export class ThemeManager {
             return savedTheme;
         }
 
-        return this.mediaQuery.matches ? 'dark' : 'light';
+        return 'light';
     }
 
     applyTheme() {

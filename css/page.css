@@ -97,14 +97,22 @@
 
 
 .c-content-flow {
-    max-width: 70ch;
+    box-sizing: border-box;
+    min-width: 0;
+    padding: var(--space-4);
+
+    border-radius: var(--radius-medium);
+
+    background: color-mix(
+        in srgb,
+        var(--color-surface) 60%,
+        transparent
+    );
 }
 
 
 .c-content-flow p {
     margin: 0 0 var(--space-4);
-
-    color: var(--color-text-muted);
 
     font-size: 1rem;
     line-height: 1.75;
@@ -112,10 +120,31 @@
 
 
 .c-content-block {
+    box-sizing: border-box;
+    min-width: 0;
     margin-top: var(--space-7);
-    padding-top: var(--space-6);
+    padding: var(--space-4);
 
-    border-top: 1px solid var(--color-border);
+    border-radius: var(--radius-medium);
+
+    background: color-mix(
+        in srgb,
+        var(--color-surface) 60%,
+        transparent
+    );
+}
+
+
+/* Verschachtelt: nur der äußere Block trägt den Hintergrund */
+.c-content-block .c-content-flow {
+    padding: 0;
+    border-radius: 0;
+    background: transparent;
+}
+
+
+.c-content-page > .c-content-block + .c-content-block {
+    border-top: 0.3px dashed var(--color-border-strong);
 }
 
 
@@ -190,9 +219,8 @@
 
 
 .c-hero__aside {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
+    display: grid;
+    align-content: start;
     gap: var(--space-3);
 
     width: min(13.75rem, 80vw);

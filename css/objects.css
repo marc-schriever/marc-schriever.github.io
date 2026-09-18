@@ -4,17 +4,22 @@
 
     background:
         linear-gradient(
-            135deg,
-            var(--color-background),
-            var(--color-surface)
-        );
-         
+            var(--color-background-overlay),
+            var(--color-background-overlay)
+        ),
+        url("../assets/images/background2.jpg")
+        center / cover
+        no-repeat,
+        var(--color-background);
 
     color: var(--color-text);
 
     font-family: var(--font-body);
     font-size: 1rem;
     line-height: 1.6;
+
+    /* Fließtext (<p>, Listen) erbt diese Farbe.
+       --color-text-muted nur für echte Nebentexte (Hinweise, Captions, Status). */
 
     transition:
         background-color var(--transition-medium),
@@ -32,6 +37,79 @@
         center / cover
         no-repeat,
         var(--color-background);
+}
+
+
+.o-page[data-route="faq"] {
+    background:
+        linear-gradient(
+            var(--color-background-overlay),
+            var(--color-background-overlay)
+        ),
+        url("../assets/images/faq.jpg")
+        center / 90% auto
+        no-repeat,
+        var(--color-background);
+}
+
+
+.o-page[data-route="referenzen"] {
+    background:
+        linear-gradient(
+            var(--color-background-overlay),
+            var(--color-background-overlay)
+        ),
+        url("../assets/images/referenzen.jpg")
+        center / cover
+        no-repeat,
+        var(--color-background);
+}
+
+
+.o-page[data-route="dokumente"] {
+    background:
+        linear-gradient(
+            var(--color-background-overlay),
+            var(--color-background-overlay)
+        ),
+        url("../assets/images/pdf_image.jpg")
+        80% center / 40% auto
+        no-repeat,
+        var(--color-background);
+}
+
+
+.o-page[data-route="kontakt"] {
+    background: var(--color-background);
+}
+
+
+.o-page[data-route="kontakt"]::before {
+    content: "";
+
+    position: fixed;
+    inset: -30%;
+    z-index: 0;
+
+    background:
+        url("../assets/images/background_contact.jpg")
+        center / 70% auto
+        no-repeat;
+
+    transform: rotate(15deg);
+    pointer-events: none;
+}
+
+
+.o-page[data-route="kontakt"]::after {
+    content: "";
+
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+
+    background: var(--color-background-overlay);
+    pointer-events: none;
 }
 
 

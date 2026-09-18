@@ -1,4 +1,4 @@
-﻿import { ThemeManager } from './theme.js?v=navfix1';
+﻿import { ThemeManager } from './theme.js?v=theme2';
 import { Navigation } from './navigation.js?v=navm1';
 import { HomeView } from './views/home.js?v=herotop5';
 import { AboutView } from './views/about.js?v=aboutm2';

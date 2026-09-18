@@ -25,13 +25,13 @@
         Arial,
         sans-serif;
 
-    --color-background: #f5f7f9;
-    --color-background-overlay: rgba(245, 247, 249, 0.75);
-    --color-surface: #ffffff;
-    --color-surface-alt: #e9eef2;
+    --color-background: #dfe6ec;
+    --color-background-overlay: rgba(223, 230, 236, 0.82);
+    --color-surface: #eef2f5;
+    --color-surface-alt: #d2dbe3;
 
-    --color-text: #18232d;
-    --color-text-muted: #5d6973;
+    --color-text: #000000;
+    --color-text-muted: #4f5d68;
 
     --color-blue: #005b8c; /* RAL 5017 Verkehrsblau */
     --color-blue-dark: #004469;
@@ -79,25 +79,25 @@
 :root[data-theme="dark"] {
     color-scheme: dark;
 
-    --color-background: #101820;
-    --color-background-overlay: rgba(16, 24, 32, 0.75);
-    --color-surface: #17232d;
-    --color-surface-alt: #1d2c37;
+    --color-background: #243542;
+    --color-background-overlay: rgba(36, 53, 66, 0.72);
+    --color-surface: #2f4454;
+    --color-surface-alt: #3a5264;
 
-    --color-text: #edf3f7;
-    --color-text-muted: #ffffff;
+    --color-text: #ffffff;
+    --color-text-muted: #f0f4f7;
 
-    --color-blue: #4ea9da;
-    --color-blue-dark: #7bbfe4;
-    --color-on-primary: #101820;
+    --color-blue: #5eb0dc;
+    --color-blue-dark: #8cc6e4;
+    --color-on-primary: #1a2833;
 
     --color-orange: #f28a32;
     --color-orange-dark: #ff9d4f;
     --color-success: #75d89f;
     --color-error: #ffb4ab;
 
-    --color-border: #30414d;
-    --color-border-strong: #667986;
+    --color-border: #4a6070;
+    --color-border-strong: #7a92a3;
 
     --shadow-small:
         0 0.25rem 1rem rgba(0, 0, 0, 0.2);

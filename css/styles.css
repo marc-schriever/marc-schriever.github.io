@@ -1,8 +1,8 @@
-@import url('./tokens.css?v=ral5017');
-@import url('./objects.css?v=ticker4');
+@import url('./tokens.css?v=tone3');
+@import url('./objects.css?v=refbg2');
 @import url('./site-header.css?v=ticker4');
-@import url('./components.css?v=mail1');
-@import url('./page.css?v=ticker4');
+@import url('./components.css?v=box2');
+@import url('./page.css?v=box1');
 @import url('./navigation.css?v=ticker4');
 
 
@@ -21,6 +21,11 @@
         position: sticky;
         background: transparent;
         backdrop-filter: none;
+    }
+
+
+    .o-page {
+        background-attachment: scroll, fixed, scroll;
     }
 
 
@@ -142,6 +147,21 @@
 
     .c-content-grid {
         grid-template-columns: 1fr 1fr;
+    }
+
+
+    .c-content-grid .c-content-block:not(:first-child) {
+        border-top: 0;
+    }
+
+
+    .c-content-grid .c-content-block:nth-child(odd) {
+        border-right: 0.3px dashed var(--color-border-strong);
+    }
+
+
+    .c-content-grid .c-content-block:nth-child(-n + 2) {
+        border-bottom: 0.3px dashed var(--color-border-strong);
     }
 
 

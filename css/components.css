@@ -148,7 +148,6 @@
 .c-card__text {
     margin: 0;
 
-    color: var(--color-text-muted);
     line-height: 1.6;
 }
 
@@ -158,19 +157,39 @@
    ========================================================================== */
 
 .c-content-page {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: stretch;
+    align-items: start;
+    gap: 0;
     width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+
+.c-content-page > * {
+    grid-column: 1;
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 
 .c-content-grid {
     display: grid;
-    gap: var(--space-5);
+    gap: 0;
 }
 
 
 .c-content-grid .c-content-block {
     margin-top: 0;
-    padding-top: var(--space-5);
+    border-radius: 0;
+}
+
+
+.c-content-grid .c-content-block:not(:first-child) {
+    border-top: 0.3px dashed var(--color-border-strong);
 }
 
 
@@ -230,7 +249,6 @@
 
     padding-left: 1.25rem;
 
-    color: var(--color-text-muted);
     line-height: 1.55;
 }
 
@@ -285,8 +303,6 @@
 
 
 .c-fact dt {
-    color: var(--color-text-muted);
-
     font-size: 0.85rem;
     line-height: 1.4;
     overflow-wrap: anywhere;
@@ -311,11 +327,21 @@
 .c-list {
     display: grid;
     gap: var(--space-2);
+    box-sizing: border-box;
+    min-width: 0;
 
     margin: 0;
-    padding: 0;
+    padding: var(--space-4);
 
     list-style: none;
+
+    border-radius: var(--radius-medium);
+
+    background: color-mix(
+        in srgb,
+        var(--color-surface) 60%,
+        transparent
+    );
 }
 
 
@@ -324,7 +350,6 @@
 
     padding-left: 1.25rem;
 
-    color: var(--color-text-muted);
     line-height: 1.55;
 }
 
@@ -356,7 +381,17 @@
 
 
 .c-faq-item {
-    border-bottom: 1px solid var(--color-border);
+    box-sizing: border-box;
+    min-width: 0;
+    padding: 0 var(--space-4);
+
+    border-radius: var(--radius-medium);
+
+    background: color-mix(
+        in srgb,
+        var(--color-surface) 60%,
+        transparent
+    );
 }
 
 
@@ -385,7 +420,6 @@
 .c-faq-item__answer p {
     margin: 0;
 
-    color: var(--color-text-muted);
     line-height: 1.7;
 }
 
@@ -580,8 +614,6 @@
 
 .c-document-result p {
     margin: 0 0 var(--space-4);
-
-    color: var(--color-text-muted);
 }
 
 
@@ -620,15 +652,13 @@
     flex-direction: column;
     gap: var(--space-2);
 
-    color: var(--color-text-muted);
-
     font-style: normal;
     line-height: 1.6;
 }
 
 
 .c-legal-address strong {
-    color: var(--color-text);
+    font-weight: 700;
 }
 
 
@@ -641,7 +671,6 @@
 .c-legal-content {
     max-width: 70ch;
 
-    color: var(--color-text-muted);
     line-height: 1.7;
 }
 
@@ -707,8 +736,6 @@
 
 
 .c-site-footer__copy {
-    color: var(--color-text);
-
     font-size: 0.85rem;
     font-weight: 700;
 }
