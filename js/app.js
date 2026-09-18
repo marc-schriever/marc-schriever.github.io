@@ -1,15 +1,14 @@
 ﻿import { ThemeManager } from './theme.js?v=theme2';
-import { Navigation } from './navigation.js?v=navm1';
-import { HomeView } from './views/home.js?v=herotop5';
+import { Navigation } from './navigation.js?v=nodoc1';
+import { HomeView } from './views/home.js?v=clean1';
 import { AboutView } from './views/about.js?v=aboutm2';
 import { ExpertiseView } from './views/expertise.js?v=navfix1';
 import { FaqView } from './views/faq.js?v=navfix1';
 import { ReferencesView } from './views/references.js?v=navfix1';
 import { ContactView } from './views/ContactView.js?v=mail3';
-import { DocumentsView } from './views/DocumentsView.js?v=view7';
 import { ImpressumView } from './views/ImpressumView.js?v=email1';
 import { DatenschutzView } from './views/DatenschutzView.js?v=email1';
-import { CONTENT } from './content.js?v=navm1';
+import { CONTENT } from './content.js?v=nodoc1';
 import { Ticker } from './ticker.js?v=ticker3';
 import {
     mountWarehouseActivity,
@@ -59,7 +58,6 @@ class Application {
             new FaqView(this),
             new ReferencesView(this),
             new ContactView(this),
-            new DocumentsView(this),
             new ImpressumView(this),
             new DatenschutzView(this)
         ];

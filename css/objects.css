@@ -66,19 +66,6 @@
 }
 
 
-.o-page[data-route="dokumente"] {
-    background:
-        linear-gradient(
-            var(--color-background-overlay),
-            var(--color-background-overlay)
-        ),
-        url("../assets/images/pdf_image.jpg")
-        80% center / 40% auto
-        no-repeat,
-        var(--color-background);
-}
-
-
 .o-page[data-route="kontakt"] {
     background: var(--color-background);
 }

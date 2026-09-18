@@ -1,9 +1,9 @@
 @import url('./tokens.css?v=tone3');
-@import url('./objects.css?v=navipad1');
+@import url('./objects.css?v=nodoc1');
 @import url('./site-header.css?v=navipad1');
-@import url('./components.css?v=box2');
-@import url('./page.css?v=box1');
-@import url('./navigation.css?v=navtab3');
+@import url('./components.css?v=nodoc1');
+@import url('./page.css?v=mobile1');
+@import url('./navigation.css?v=nodoc1');
 
 
 /* ==========================================================================
@@ -90,16 +90,16 @@
     }
 
 
-    .c-hero__aside .c-action-group {
-        flex-direction: row;
-        flex-wrap: nowrap;
-        justify-content: flex-end;
+    .c-hero__actions {
+        grid-auto-flow: column;
+        grid-auto-columns: max-content;
         width: max-content;
         max-width: 100%;
+        justify-self: center;
     }
 
 
-    .c-hero__aside .c-button {
+    .c-hero__actions .c-button {
         width: auto;
         white-space: nowrap;
     }
@@ -112,31 +112,25 @@
     }
 
 
-    .c-hero__aside {
-        grid-column: 2;
-        grid-row: 1;
+    .c-hero__stack {
+        grid-template-rows: 1fr auto 10%;
         justify-self: end;
         align-self: stretch;
-        margin-inline: 0 var(--space-4);
         width: max-content;
-        min-width: 13.75rem;
+    }
+
+
+    .c-hero__media {
+        justify-self: stretch;
+        align-self: stretch;
+        width: auto;
+        min-height: 0;
+        place-items: center;
     }
 
 
     .c-hero__flow .c-content-flow {
-        grid-column: 1;
-        grid-row: 1;
-    }
-
-
-    .c-hero__profile {
-        margin-block: auto;
-        align-self: center;
-    }
-
-
-    .c-action-group {
-        flex-direction: row;
+        min-width: 0;
     }
 
 

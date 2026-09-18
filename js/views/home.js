@@ -34,8 +34,43 @@ export class HomeView extends PageView {
                 </div>
 
                 <div class="c-hero__flow">
-                    <div class="c-hero__aside">
-                        <div class="c-action-group">
+                    <div class="c-content-flow">
+                        ${CONTENT.hero.textParagraphs
+                            .map(
+                                paragraph => `<p>${paragraph}</p>`
+                            )
+                            .join('')}
+                    </div>
+
+                    <div class="c-hero__stack">
+                        <div class="c-hero__media">
+                            <figure class="c-hero__profile">
+                                <div class="c-hero__avatar-frame">
+                                    <img
+                                        class="c-hero__avatar-img"
+                                        src="${CONTENT.photo.src}"
+                                        alt="${CONTENT.photo.alt}"
+                                        width="190"
+                                        height="250"
+                                        draggable="false"
+                                    >
+                                    <div class="c-hero__avatar-placeholder">
+                                        <span
+                                            class="c-hero__avatar-initials"
+                                            aria-hidden="true"
+                                        >MS</span>
+                                        <span class="c-hero__avatar-name">
+                                            ${CONTENT.photo.name}
+                                        </span>
+                                        <span class="c-hero__avatar-hint">
+                                            ${CONTENT.photo.placeholder}
+                                        </span>
+                                    </div>
+                                </div>
+                            </figure>
+                        </div>
+
+                        <div class="c-hero__actions">
                             <button
                                 class="c-button c-button--accent"
                                 type="button"
@@ -52,39 +87,6 @@ export class HomeView extends PageView {
                                 ${CONTENT.hero.btn_secondary}
                             </button>
                         </div>
-
-                        <figure class="c-hero__profile">
-                            <div class="c-hero__avatar-frame">
-                                <img
-                                    class="c-hero__avatar-img"
-                                    src="${CONTENT.photo.src}"
-                                    alt="${CONTENT.photo.alt}"
-                                    width="190"
-                                    height="250"
-                                    draggable="false"
-                                >
-                                <div class="c-hero__avatar-placeholder">
-                                    <span
-                                        class="c-hero__avatar-initials"
-                                        aria-hidden="true"
-                                    >MS</span>
-                                    <span class="c-hero__avatar-name">
-                                        ${CONTENT.photo.name}
-                                    </span>
-                                    <span class="c-hero__avatar-hint">
-                                        ${CONTENT.photo.placeholder}
-                                    </span>
-                                </div>
-                            </div>
-                        </figure>
-                    </div>
-
-                    <div class="c-content-flow">
-                        ${CONTENT.hero.textParagraphs
-                            .map(
-                                paragraph => `<p>${paragraph}</p>`
-                            )
-                            .join('')}
                     </div>
                 </div>
             </div>

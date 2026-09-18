@@ -208,8 +208,44 @@
 
 .c-hero__flow {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     gap: var(--space-5);
     align-items: start;
+    justify-items: stretch;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+
+.c-hero__flow > .c-content-flow {
+    min-width: 0;
+}
+
+
+.c-hero__stack {
+    display: grid;
+    grid-template-rows: auto auto;
+    justify-items: center;
+    align-self: start;
+    gap: var(--space-3);
+    width: 100%;
+}
+
+
+.c-hero__actions {
+    display: grid;
+    gap: var(--space-3);
+    width: 100%;
+    justify-self: stretch;
+}
+
+
+.c-hero__media {
+    display: grid;
+    place-items: center;
+    justify-self: stretch;
+    width: 100%;
 }
 
 
@@ -218,24 +254,7 @@
 }
 
 
-.c-hero__aside {
-    display: grid;
-    align-content: start;
-    gap: var(--space-3);
-
-    width: min(13.75rem, 80vw);
-
-    margin-inline: auto;
-}
-
-
-.c-hero__aside .c-action-group {
-    margin-top: 0;
-    justify-content: flex-end;
-}
-
-
-.c-hero__aside .c-button {
+.c-hero__actions .c-button {
     width: 100%;
 }
 

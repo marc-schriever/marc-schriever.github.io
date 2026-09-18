@@ -40,16 +40,6 @@
    BUTTONS
    ========================================================================== */
 
-.c-action-group {
-    display: flex;
-    flex-direction: column;
-
-    gap: var(--space-3);
-
-    margin-top: var(--space-5);
-}
-
-
 .c-button {
     min-height: 3rem;
 
@@ -494,8 +484,7 @@
     overflow: hidden;
 }
 
-.c-contact-form,
-.c-document-form {
+.c-contact-form {
     position: relative;
     max-width: 40rem;
 
@@ -545,40 +534,18 @@
 }
 
 
-.c-token-row {
-    display: flex;
-    gap: var(--space-3);
-    align-items: stretch;
-}
-
-
-.c-token-row input {
-    min-width: 0;
-    flex: 1;
-}
-
-
-.c-token-row .c-button {
-    flex: 0 0 auto;
-    white-space: nowrap;
-}
-
-
 .c-form-field textarea {
     resize: vertical;
 }
 
 
 .c-form-status {
+    min-height: 1.3em;
+    margin: 0;
+
     color: var(--color-text-muted);
 
     font-size: 0.85rem;
-}
-
-
-.c-form-status {
-    min-height: 1.3em;
-    margin: 0;
 }
 
 
@@ -589,52 +556,6 @@
 
 .c-form-status[data-state="error"] {
     color: var(--color-error);
-}
-
-
-.c-document-result {
-    max-width: 40rem;
-
-    margin-top: var(--space-5);
-    padding: var(--space-5);
-
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-medium);
-
-    background: var(--color-surface);
-}
-
-
-.c-document-result h2 {
-    margin: 0 0 var(--space-3);
-
-    color: var(--color-blue);
-}
-
-
-.c-document-result p {
-    margin: 0 0 var(--space-4);
-}
-
-
-.c-document-viewer {
-    flex: 1;
-    min-height: 0;
-    overflow: hidden;
-
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-small);
-    background: var(--color-surface-alt);
-}
-
-
-.c-document-viewer__frame {
-    display: block;
-
-    width: 100%;
-    height: 100%;
-
-    border: 0;
 }
 
 
@@ -746,172 +667,4 @@
     color: var(--color-text-muted);
 
     font-size: 0.8rem;
-}
-
-
-/* ==========================================================================
-   QR SCANNER MODAL
-   ========================================================================== */
-
-.c-modal[hidden] {
-    display: none;
-}
-
-
-.c-modal:not([hidden]) {
-    position: fixed;
-    inset: 0;
-    z-index: 250;
-
-    display: grid;
-    place-items: center;
-    padding: var(--space-4);
-}
-
-
-.c-modal__backdrop {
-    position: absolute;
-    inset: 0;
-
-    background: color-mix(
-        in srgb,
-        var(--color-background) 35%,
-        rgb(0 0 0 / 0.55)
-    );
-}
-
-
-.c-modal__window {
-    position: relative;
-    z-index: 1;
-
-    width: min(100%, 28rem);
-    padding: var(--space-5);
-
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-medium);
-
-    background: var(--color-surface);
-    box-shadow: var(--shadow-small);
-}
-
-
-.c-modal--document:not([hidden]) {
-    padding: 0;
-    place-items: stretch;
-}
-
-
-.c-modal--document .c-modal__window--document {
-    display: flex;
-    flex-direction: column;
-
-    width: 100%;
-    height: 100%;
-    max-width: none;
-    padding: var(--space-3);
-
-    border-radius: 0;
-}
-
-
-.c-modal--document .c-modal__header {
-    flex: none;
-}
-
-
-.c-modal--document:fullscreen,
-.c-modal--document:-webkit-full-screen,
-.c-modal--document.is-fill:not([hidden]) {
-    padding: 0;
-    place-items: stretch;
-}
-
-
-.c-modal--document:fullscreen .c-modal__window--document,
-.c-modal--document:-webkit-full-screen .c-modal__window--document,
-.c-modal--document.is-fill .c-modal__window--document {
-    border-radius: 0;
-}
-
-
-@media (min-width: 48rem) {
-
-    .c-modal--document:not([hidden]):not(:fullscreen):not(.is-fill) {
-        padding: var(--space-3);
-    }
-
-
-    .c-modal--document:not(:fullscreen):not(.is-fill) .c-modal__window--document {
-        padding: var(--space-4);
-
-        border-radius: var(--radius-medium);
-    }
-}
-
-
-.c-modal__header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--space-4);
-
-    margin-bottom: var(--space-4);
-}
-
-
-.c-modal__actions {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: flex-end;
-    gap: var(--space-2);
-}
-
-
-.c-modal__actions .c-button {
-    width: auto;
-}
-
-
-.c-modal__title {
-    margin: 0;
-
-    color: var(--color-text);
-
-    font-size: 1.1rem;
-}
-
-
-.c-modal__close {
-    width: 2.25rem;
-    height: 2.25rem;
-
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-small);
-
-    background: var(--color-background);
-    color: var(--color-text);
-
-    font-size: 1.4rem;
-    line-height: 1;
-    cursor: pointer;
-}
-
-
-.c-scanner__intro {
-    margin: 0 0 var(--space-4);
-
-    color: var(--color-text-muted);
-
-    font-size: 0.9rem;
-}
-
-
-.c-scanner__reader {
-    min-height: 16rem;
-    overflow: hidden;
-
-    border-radius: var(--radius-small);
-    background: #000;
 }

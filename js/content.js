@@ -17,7 +17,6 @@ export const CONTENT = {
       { href: '#expertise', label: 'EXPERTISE', shortLabel: 'EXPERTISE' },
       { href: '#faq', label: 'FRAGEN & ANTWORTEN', shortLabel: 'FAQ' },
       { href: '#referenzen', label: 'REFERENZEN', shortLabel: 'REF.' },
-      { href: '#dokumente', label: 'DOKUMENTE', shortLabel: 'DOKU', id: 'nav-dokumente' },
     ],
   },
 
@@ -45,10 +44,10 @@ export const CONTENT = {
 
   // ── STATS ─────────────────────────────────────────────────
   stats: [
-    { icon: 'ti-users', title: 'FÜHRUNGSSTÄRKE', text: '9 Jahre Führungserfahrung in der Lagerlogistik.' },
-    { icon: 'ti-chart-line', title: 'PROZESSOPTIMIERUNG', text: 'Abläufe verbessern, Effizienz nachhaltig steigern.' },
-    { icon: 'ti-cpu', title: 'DIGITALISIERUNG', text: 'Prozesse analysieren und digital automatisieren.' },
-    { icon: 'ti-clock', title: '20+ JAHRE LOGISTIK', text: 'Operative Erfahrung vom Wareneingang bis zur Leitung.' },
+    { title: 'FÜHRUNGSSTÄRKE', text: '9 Jahre Führungserfahrung in der Lagerlogistik.' },
+    { title: 'PROZESSOPTIMIERUNG', text: 'Abläufe verbessern, Effizienz nachhaltig steigern.' },
+    { title: 'DIGITALISIERUNG', text: 'Prozesse analysieren und digital automatisieren.' },
+    { title: '20+ JAHRE LOGISTIK', text: 'Operative Erfahrung vom Wareneingang bis zur Leitung.' },
   ],
 
   // ── ÜBER MICH ────────────────────────────────────────────
@@ -202,31 +201,6 @@ export const CONTENT = {
     eyebrow: 'KONTAKT',
     headline: 'NEHMEN SIE KONTAKT AUF',
     text: 'Ich freue mich über Ihre Nachricht und melde mich persönlich bei Ihnen. Weitere Unterlagen sende ich Ihnen auf Anfrage gerne zu.',
-  },
-
-  dokumente: {
-    eyebrow: 'UNTERLAGEN',
-    title: 'Geschützte Dokumente',
-    intro: 'Bitte geben Sie Ihren persönlichen Zugangstoken ein oder scannen Sie den QR-Code, um die Unterlagen freizuschalten.',
-    tokenLabel: 'Zugangstoken',
-    tokenPlaceholder: 'Token hier eingeben...',
-    scanButton: 'QR scannen',
-    submit: 'Freischalten',
-    successTitle: 'Zugang erfolgreich verifiziert!',
-    successText: 'Das Fenster ist zu. Der Zugriff bleibt auf dieser Seite. Klicken Sie auf „Fenster wieder öffnen“. Ein neues Token brauchen Sie dafür nicht. Verlassen Sie die Seite, ist der Zugriff weg.',
-    reopenButton: 'Fenster wieder öffnen',
-    viewerTitle: 'Unterlagen',
-    fullscreenButton: 'Vollbild',
-    fullscreenExitButton: 'Vollbild beenden',
-    checking: 'Zugang wird geprüft …',
-    requiredError: 'Bitte geben Sie einen Zugangstoken ein.',
-    invalidError: 'Dieser Token ist ungültig oder wurde bereits verwendet.',
-    loadingError: 'Das Dokument konnte nicht geladen werden.',
-  },
-
-  scanner: {
-    title: 'QR-Code scannen',
-    intro: 'Richten Sie die Kamera auf den QR-Code mit Ihrem Zugangstoken.',
   },
 
   impressum: {
