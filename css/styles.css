@@ -3,7 +3,7 @@
 @import url('./site-header.css?v=navipad1');
 @import url('./components.css?v=box2');
 @import url('./page.css?v=box1');
-@import url('./navigation.css?v=navtab2');
+@import url('./navigation.css?v=navtab3');
 
 
 /* ==========================================================================
@@ -72,9 +72,10 @@
 
 
     .c-mobile-navigation__link {
-        min-height: 1.5rem;
-        font-size: 0.58rem;
-        padding: 0.15rem 0.1rem;
+        min-height: 1.85rem;
+        font-size: 0.75rem;
+        letter-spacing: 0;
+        padding: 0.25rem 0.15rem;
     }
 
 
