@@ -214,7 +214,7 @@ export const CONTENT = {
     location: '28309 Bremen, Deutschland',
     // Echte Adresse eintragen, sobald das Postfach existiert.
     // Solange leer, wird keine E-Mail veröffentlicht.
-    email: 'marc.schriever@gmail.com',
+    email: 'kontakt.schriever@gmail.com',
   },
 
   datenschutz: {
